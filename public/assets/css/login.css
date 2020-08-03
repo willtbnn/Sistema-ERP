@@ -1,0 +1,9 @@
+.loginbg{
+    background-image:url(../images/bg/4.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    box-shadow: inset 550px 550px 550px 550px rgba(22,25,31, 0.8);
+  }
+  .bg-box{
+    background-color: rgba(227, 38, 58, 0.6);
+  }
