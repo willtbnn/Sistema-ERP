@@ -61,26 +61,4 @@
     </nav>
     
     <?=$render('sidebar');?>
-    <div class="container-fluid p-0">
-        <div class="fundo m-auto py-5">
-            <div class="row justify-content-around align-items-start p-5">
-                <div class="col-lg-4 col-sm-8">
-                    <p class=" ml-5 h3">Painel de Controle</p>
-                </div>
-                <div class="col-lg-4 col-sm-8">
-                    <div class="control-jumbotron ">
-                        <div class="container ">
-                            ver a data de hoje
-                        </div>
-                    </div>
-                </div>
-            </div>   
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col rounded bg-light text-center mx-5 py-5 levanta-conteudo">
-                    <h1>Bem vindo !</h1>
-                    <p>Vamos trabalha</p>  <?=$loggedUser->name;?>
-                </div>
-            </div>
-        </div>
+    

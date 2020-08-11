@@ -8,10 +8,7 @@ $router->get('/login', 'LoginController@signin');
 
 $router->post('/login', 'LoginController@signAction');
 
-
-
-
 // Esse vai ser feito pelo usuario do sistema
-$router->get('/cadastro', 'LoginController@signup');
+$router->get('/cadastro', 'HomeController@signup');
 // recebendo cadastro de usuario
 $router->post('/cadastro', 'LoginController@signupAction');

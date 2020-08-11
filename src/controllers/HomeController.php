@@ -20,5 +20,17 @@ class HomeController extends Controller {
             'loggedUser' => $this->loggedUser 
             ]);
     }
-
+    public function signup() {
+        $flash  ='';
+        if(!empty($_SESSION['flash'])){
+            $flash = $_SESSION['flash'];
+            $_SESSION['flash'] = '';
+        }  
+        $this->render('signup', [
+            'flash' => $flash,
+            'loggedUser' => $this->loggedUser,
+        ]);
+    
+    
+}
 }

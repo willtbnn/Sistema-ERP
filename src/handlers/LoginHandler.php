@@ -50,15 +50,22 @@ class LoginHandler {
     }
     public static function addUser($name, $email, $password, $birthdate){
         $hash = password_hash($password, PASSWORD_DEFAULT);
-        $token = md5(time().rand(0,999).time());
+        // $token = md5(time().rand(0,999).time());
         User::insert([
             'email' => $email,
             'name' => $name,
             'password' => $hash,
             'birthdate' => $birthdate,
-            'token' => $token,
+            'avatar' => 'default-avatar.png',
+            'cover' => 'default.png'
+            // 'token' => $token,
         ])->execute();
 
         return $token;
+    }
+    //Aqui estou vendo como lista os usuarios
+    public static function UsuariosCa(){
+        $users = User::select()->get();
+        return $users;
     }
 }

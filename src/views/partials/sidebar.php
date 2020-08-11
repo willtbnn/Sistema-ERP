@@ -5,7 +5,7 @@
                 <img src="" alt="" class="rounded-circle">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="<?=$base;?>/" class="nav-link">
                             <i class="material-icons icon py-3">
                                 dashboard
                             </i>
@@ -13,7 +13,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="<?=$base;?>/cadastro" class="nav-link">
                             <i class="material-icons icon py-3">
                                 person
                             </i>
