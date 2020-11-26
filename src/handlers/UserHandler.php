@@ -3,7 +3,7 @@ namespace src\handlers;
 
 Use \src\models\User;
 
-class LoginHandler {
+class UserHandler {
     public static function checkLogin(){
         if(!empty($_SESSION['token'])){
             $token = $_SESSION['token'];
@@ -16,6 +16,7 @@ class LoginHandler {
                 $loggedUser->email = $data['email'];
                 $loggedUser->name = $data['name'];
                 $loggedUser->brithdate = $data['birthdate'];
+                $loggedUser->funcao = explode(',', $data['funcao']);
                 $loggedUser->city = $data['city'];
                 $loggedUser->work = $data['work'];
                 $loggedUser->avatar = $data['avatar'];
@@ -24,8 +25,38 @@ class LoginHandler {
                 return $loggedUser;
             }
         }
+        return false;     
+    }
+    //Verificando permisão do usuario logado
+    public static function temPermissao($p){
+        if(in_array($p, $this->funcao)){
+            return true;
+        }
         return false;
-        
+    }
+    //Aqui estou vendo como lista os usuarios
+    public static function getUsers(){
+        $dados = User::select()->get();
+        $users = [];
+        // foreach($dados as $listaUsers){
+        //     $users[] = $listaUsers;
+        // }
+        // transformar o resultado em objetos dos models
+        foreach($dados as $listaUsers){
+            $viewUsers = new User();
+            $viewUsers->id = $listaUsers['id'];
+            $viewUsers->email = $listaUsers['email'];
+            $viewUsers->name = $listaUsers['name'];
+            $viewUsers->password = $listaUsers['password'];
+            $viewUsers->birthdate = $listaUsers['birthdate'];
+            $viewUsers->city = $listaUsers['city'];
+            $viewUsers->work = $listaUsers['work'];
+            $viewUsers->avatar = $listaUsers['avatar'];
+            $viewUsers->cover = $listaUsers['cover'];
+
+            $users[] = $viewUsers;
+        }
+        return $users;
     }
     public static function verifyLogin($email, $password){
         $user = User::select()->where('email', $email)->one();
@@ -63,9 +94,5 @@ class LoginHandler {
 
         return $token;
     }
-    //Aqui estou vendo como lista os usuarios
-    public static function UsuariosCa(){
-        $users = User::select()->get();
-        return $users;
-    }
+    
 }

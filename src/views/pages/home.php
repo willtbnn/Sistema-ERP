@@ -1,4 +1,6 @@
-<?=$render('header', ['loggedUser'=>$loggedUser]);?>
+<?=$render('header', [
+    'loggedUser'=>$loggedUser
+    ]);?>
 <div class="container-fluid p-0">
         <div class="fundo m-auto py-5">
             <div class="row justify-content-around align-items-start p-5">
@@ -8,7 +10,11 @@
                 <div class="col-lg-4 col-sm-8">
                     <div class="control-jumbotron ">
                         <div class="container ">
-                            ver a data de hoje
+                        Hoje é dia
+                            <?php
+                                $dataAtual = new DateTime();
+                                echo $dataAtual->format('d/m/Y');
+                            ;?>
                         </div>
                     </div>
                 </div>
@@ -22,6 +28,7 @@
                 </div>
             </div>
         </div>
+        <!--
         <div class="content container">
             <main class="container-fluid mt-5">
                 <section class="row">
@@ -70,7 +77,9 @@
                     </div>
                 </section>
                 <section class="container-fluid mt-3">
+                                      
                     <div class="row">
+                     
                         <div class="col-6">
                             <div class="card text-white bg-primary mb-3">
                                 <div class="card-body">
@@ -81,6 +90,7 @@
                                 </div>
                             </div>
                         </div>
+                    
                         <div class="col-6">
                             <div class="card text-white bg-warning mb-3">
                                 <div class="card-body">
@@ -114,42 +124,29 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section>-->
                 <section class="container">
-                    <div class="row">
-                        <div class="col-md-4 my-3">
-                        Opa, <?=$loggedUser->name;?>
-                            <div class="">
-                                <h4 class="mb-2">
-                                Aqui vem codigo PHP 
-                                <p>
-                                <?=$loggedUser->brithdate;?>
-                                </p>
-                                <?=$loggedUser->avatar;?>
-                                </h4>
-                            </div>
-                        </div>
-                        <div class="col-md-4 my-3">
-                            <div class="bg-success p-3 rounded">
-                                <h4 class="mb-2">
-                                    Cliente fechados
-                                </h4>
-                            </div>
-                        </div>
-                        <div class="col-md-4 my-3">
-                            <div class="bg-mattBlackRed p-3 rounded">
-                                <h4 class="mb-2">
-                                    Clientes em avaliação
-                                </h4>
-                            </div>
-                        </div>
+                    <div class="text-center">
+                        <h1>Usuarios sistema</h1>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">itam repellat ea quibusdam fugiat iusto esse magnam saepe odio. Qui totam consequatur dolores omnis aut doloribus neque minima accusantium? Aliquid alias quasi tempora nulla aliquam ducimus sint amet minus expedita ratione, repudiandae perferendis voluptatibus, unde beatae quas impedit! Ducimus mollitia perferendis quibusdam nisi accusantium similique, eveniet quo commodi saepe facilis harum ullam amet atque voluptas dolor soluta sed sit debitis. Non laborum impedit ea. Nihil nam esse eligendi dolorum. Accusamus impedit sapiente soluta? Voluptatibus, ut.
-                        </div>
-                        <div class="col-md-6">Magnam praesentium id, velit consequatur ducimus dolores, sapiente quibusdam veritatis autem ut voluptates? Ullam cumque nihil distinctio at accusantium autem.
-                        </div>
-                    </div>
+                    <table class="table rounded-lg table-light mt-5 border  table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Função</th>
+                                <th scope="col">Data de Nascimento</th>
+                                <th scope="col px-5"> Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($users as $useritem): ?>
+                            <?=$render('user-item', [
+                                'data' =>$useritem
+                            ]);?>
+                        <?php endforeach;?>
+                        </tbody>
+                    </table>
                 </section>
             </main>
         </div>

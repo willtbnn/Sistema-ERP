@@ -1,6 +1,6 @@
 <?=$render('header', ['loggedUser'=>$loggedUser]);?>
 <main class="container justify-content-center">
-    <h1>Adicionar Funcionario</h1>
+    <h1>Adicionar Usuario do Sistema</h1>
     <div class="row">
         <div class="col-md-10 px-5 m-5 align-self-center">
             <div class="container px-5 my-5 text-dark">

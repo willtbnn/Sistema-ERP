@@ -2,7 +2,7 @@
 namespace src\controllers;
 
 use \core\Controller;
-use \src\handlers\LoginHandler;
+use \src\handlers\UserHandler;
 
 class LoginController extends Controller {
 
@@ -22,7 +22,7 @@ class LoginController extends Controller {
 
         if($email && $password){
 
-            $token = LoginHandler::verifyLogin($email, $password);
+            $token = UserHandler::verifyLogin($email, $password);
             if($token){
                 $_SESSION['token'] = $token;
                 $this->redirect('/');
@@ -63,8 +63,8 @@ class LoginController extends Controller {
                 $this->redirect('/cadastro');
             }
             // Verificando se e-mail existe 
-            if(LoginHandler::emailExists($email) === false){
-                LoginHandler::addUser($name, $email, $password, $birthdate);
+            if(UserHandler::emailExists($email) === false){
+                UserHandler::addUser($name, $email, $password, $birthdate);
                 $_SESSION['flash'] = 'Usuario cadastrado com sucesso';
                 $this->redirect('/cadastro');
             }else{
@@ -76,13 +76,16 @@ class LoginController extends Controller {
             $this->redirect('/cadastro');
         }
     }
+
+    //Nem  usando isso estou
     public function pegaUsuarios(){
         $usuario = [];
 
-        $usuario = LoginHandler::UsuariosCa();
+        $usuario = UserHandler::UsuariosCa();
 
         return $usuario;
     }
+    
     public function logout(){
         $_SESSION['token'] = '';
         $this->redirect('/login');
