@@ -15,6 +15,17 @@ $router->get('/cadastro', 'HomeController@signup');
 $router->post('/cadastro', 'LoginController@signupAction');
 $router->get('/inlogout', 'LoginController@logout');
 
-// parte de funcionarios
+// parte de funcionarios"
 $router->get('/employee', 'FunController@employees');
+//deletando funcionario
+$router->get('/endfun', 'LoginController@deleteFun');
+
+
+//adicionando funcionario
+$router->get('/employee/addfun', 'FunController@addEmployees');
+
+// Ler informações do funcionario
 $router->get('/employee/{id}/viewfun', 'FunController@fun');
+
+// edição de funcioarios
+$router->post('/employee/{id}/viewfun', 'Funcontroller@updateFun');

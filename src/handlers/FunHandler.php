@@ -44,7 +44,6 @@ class FunHandler {
             $viewEmployee->avatar = $dadosFun['avatar'];
             $viewEmployee->cover = $dadosFun['cover'];
             $viewEmployee->full_name = $dadosFun['full_name'];
-            $viewEmployee->admission_date = $dadosFun['admission_date'];
             $viewEmployee->rg_beginning = $dadosFun['rg_beginning'];
             $viewEmployee->rg_end = $dadosFun['rg_end'];
             $viewEmployee->cpf_beginning = $dadosFun['cpf_beginning'];
@@ -53,5 +52,25 @@ class FunHandler {
 
             return $viewEmployee;
         }     
+    }
+    public static function aditEmployee($id,$name,$full_name,$email,$phone,$office, $birthdate,$rg_beginning,$rg_end,$cpf_beginning,$cpf_end){
+        Funcionario::Update()
+                ->set('name', $name)
+                ->set('email', $email)
+                ->set('birthdate', $birthdate)
+                ->set('phone',$phone)
+                ->set('office',$office)
+                ->set('rg_beginning',$rg_beginning)
+                ->set('rg_end',$rg_end)
+                ->set('full_name',$full_name)
+                ->set('cpf_beginning',$cpf_beginning)
+                ->set('cpf_end',$cpf_end)
+            ->Where('id', $id)
+        ->execute();
+       
+    }
+    public static function emailExists($email){
+        $Funcionario = Funcionario::select()->where('email', $email)->one();
+        return $Funcionario ? true : false;
     }
 }
