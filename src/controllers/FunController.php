@@ -133,7 +133,68 @@ class FunController extends Controller {
             'flash' => $flash
             ]);
     }
+    public function addAction(){
+        $name = filter_input(INPUT_POST, 'name');
+        $full_name = filter_input(INPUT_POST, 'full_name');
+        $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+        $phone = filter_input(INPUT_POST, 'phone');
+        $office = filter_input(INPUT_POST, 'office');
+        $birthdate = filter_input(INPUT_POST, 'birthdate');
+        $rg_beginning = filter_input(INPUT_POST, 'rg_beginning');
+        $rg_end = filter_input(INPUT_POST, 'rg_end');
+        $cpf_beginning = filter_input(INPUT_POST, 'cpf_beginning');
+        $cpf_end = filter_input(INPUT_POST, 'cpf_end');
+
+        if($name && $email && $birthdate){
+            $birthdate = explode('/', $birthdate);
+            if(count($birthdate) != 3){
+                $_SESSION['flash'] = 'Data de nascimento inválida!';
+                $this->redirect('/employee/addfun');
+            }
+
+            $birthdate = $birthdate[2].'-'.$birthdate[1].'-'.$birthdate[0];
+
+            if(strtotime($birthdate) === false){
+                $_SESSION['flash'] = 'Data de nascimento inválida!';
+                $this->redirect('/employee/addfun');
+            }
+            // Verificando se e-mail existe 
+            if(FunHandler::emailExists($email) === false){
+                FunHandler::addFun($name,$full_name,$email,$phone,$office, $birthdate,$rg_beginning,$rg_end,$cpf_beginning,$cpf_end);
+                $_SESSION['flash'] = 'Usuario cadastrado com sucesso';
+                $this->redirect('/employee/addfun');
+            }else{
+                $_SESSION['flash'] = 'Email já cadastrado.';
+                $this->redirect('/employee/addfun');
+            }
+
+        } else{
+            $this->redirect('/employee/addfun');
+        }
+    }
+
+   
     public function deleteFun($id){
-        $this->redirect('/employee');
+        $fun = FunHandler::getFun($id);
+        
+        $id = $fun->id;
+        $flash  ='';
+        // if(!empty($_SESSION['flash'])){
+        //     $flash = $_SESSION['flash'];
+        //     $_SESSION['flash'] = '';
+        // }
+        if(!empty($id)){
+            FunHandler::delete($id);
+            $flash = 'Deletado com sucesso!';
+            $this->redirect('/employee',[
+                'flash' => $flash
+            ]);
+        }else{
+            $flash = 'Erro ao deleta !';
+            $this->redirect('/employee',[
+                'flash' => $flash
+            ]);
+        }
+        
     }
 }

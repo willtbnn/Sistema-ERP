@@ -67,10 +67,26 @@ class FunHandler {
                 ->set('cpf_end',$cpf_end)
             ->Where('id', $id)
         ->execute();
-       
+    }
+    public static function addFun($name,$full_name,$email,$phone,$office, $birthdate,$rg_beginning,$rg_end,$cpf_beginning,$cpf_end){
+        Funcionario::insert([
+            'name' => $name,
+            'full_name' => $full_name,
+            'email' => $email,
+            'phone' =>$phone,
+            'office' => $office,
+            'birthdate' => $birthdate,
+            'rg_beginning' => $rg_beginning,
+            'rg_end' => $rg_end,
+            'cpf_beginning' => $cpf_beginning,
+            'cpf_end' => $cpf_end
+        ])->execute();
     }
     public static function emailExists($email){
         $Funcionario = Funcionario::select()->where('email', $email)->one();
         return $Funcionario ? true : false;
+    }
+    public static function delete($id){
+        Funcionario::delete()->where('id', $id)->execute();
     }
 }

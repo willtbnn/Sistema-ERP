@@ -5,7 +5,7 @@
         <div class="col-md-10 px-5 m-5 align-self-center">
             <div class="container px-5 my-5 text-dark">
                 <form method="POST" action="<?=$base;?>/cadastro">
-                <!-- recebendo o flash e verificando se ele tem alguma msg para exibir -->
+                <!-- recebendo o flash e verificando se ele tem alguma msg para exibir $router->get('/employee/{id}', 'FunController@deleteFun');-->
                 <?php if(!empty($flash)): ?>
                     <div class="alert alert-danger" role="alert">
                         <?php echo $flash;?>

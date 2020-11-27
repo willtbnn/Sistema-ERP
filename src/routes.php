@@ -13,16 +13,18 @@ $router->post('/login', 'LoginController@signAction');
 $router->get('/cadastro', 'HomeController@signup');
 // recebendo cadastro de usuario
 $router->post('/cadastro', 'LoginController@signupAction');
+
 $router->get('/inlogout', 'LoginController@logout');
 
 // parte de funcionarios"
 $router->get('/employee', 'FunController@employees');
 //deletando funcionario
-$router->get('/endfun', 'LoginController@deleteFun');
+$router->get('/employee/{id}', 'FunController@deleteFun');
 
 
 //adicionando funcionario
-$router->get('/employee/addfun', 'FunController@addEmployees');
+$router->get('/addfun', 'FunController@addEmployees');
+$router->post('/addfun', 'FunController@addAction');
 
 // Ler informações do funcionario
 $router->get('/employee/{id}/viewfun', 'FunController@fun');
