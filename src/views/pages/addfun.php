@@ -6,7 +6,7 @@
 ;?>
 <!-- Tenho que coloca o formulario com as informações do usuario a parte do id  -->
 
-<form class="container mt-5" method="POST" action="<?=$base;?>/addfun">
+<form class="container mt-5" method="POST" action="<?=$base;?>/addfun" enctype="multipart/form-data">
     <div class="text-center">
         <h1>Adicionar - Funcionario</h1>
     </div>
@@ -20,25 +20,33 @@
             <input type="name" class="form-control" name="name" id="name" required >
         </div>
     </div>
-    <div class="form-row">
-        <div class="form-group col-md-6 ">
+    <div class="form-row justify-content-center">
+        <div class="form-group col-md-4">
             <label for="email">E-mail</label>
             <input type="email" class="form-control disabled" name="email" id="email" required>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-2">
             <label for="phone">Telefone</label>
             <input type="text" class="form-control" name ="phone" id="phone" required>
         </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-2">
             <label for="office">Cargo</label>
             <input type="name" class="form-control" name="office" id="office" required>
         </div>
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-2">
             <label for="birthdate">Data de nascimento</label>
             <input type="name" class="form-control" id="birthdate" name="birthdate" required>
         </div>
+        
+    </div>
+    <div class="form-row justify-content-center">
+        <div class="form-group col-md-4">
+            <label for="cover">foto do funcionario</label>
+            <input type="file" class="form-control-file btn btn-light" id="cover" name="cover" required>
+        </div>
+    </div>
+    <div class="form-row justify-content-center">
+        
         <!-- Data de admissão foi retirada -->    
         <div class="form-group col-md-1">
             <label for="rg_beginning">2 primeiros digitos RG</label>

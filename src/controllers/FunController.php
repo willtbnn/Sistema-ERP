@@ -158,9 +158,39 @@ class FunController extends Controller {
                 $_SESSION['flash'] = 'Data de nascimento inválida!';
                 $this->redirect('/employee/addfun');
             }
+            // ADICIONANDO AVATAR 
+            // if(isset($_FILES['avatar']) && !empty($_FILES['avatar']['tmp_name'])){
+            //     $newAvatar = $_FILES['avatar'];
+            //     // aqui os tipo de arquivos que ajeitamos
+            //     if(in_array($newAvatar['type'], ['image/jpeg'], ['image/jpg'],['image/png'])){
+            //         // executando a função (((AQUI REQUE ATENÇÂO PARA IMPLEMENTAÇÂO CORRETA))))
+            //         // aqui estamos pegando a imagem e difinindo o tamanho e o destino 
+            //         $avatarName = FunHandler::cutImage($newAvatar, 200, 200, 'media/avatars');
+            //         $updateFields['avatar'] = $avatarName;  
+            //     }
+            // ADICIONANDO COVER
+            if(isset($_FILES['cover']) && !empty($_FILES['cover']['tmp_name'])){
+                $newCover = $_FILES['cover'];
+               
+                // aqui os tipo de arquivos que ajeitamos http://goldbanksbr.com.br/equipe
+                
+                    // executando a função (((AQUI REQUE ATENÇÂO PARA IMPLEMENTAÇÂO CORRETA))))
+                    // aqui estamos pegando a imagem e difinindo o tamanho e o destino 
+
+                // /// DESENVOLVIMENTO 
+                    $coverName = FunHandler::cutImage($newCover, 960, 1280, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\covers');
+                    // var_dump($coverName);exit;
+                    $cover = $coverName;
+                // /// DESENVOLVIMENTO
+
+                //PRODUÇÃO
+                
+                //PRODUÇÃO
+            }
+            
             // Verificando se e-mail existe 
             if(FunHandler::emailExists($email) === false){
-                FunHandler::addFun($name,$full_name,$email,$phone,$office, $birthdate,$rg_beginning,$rg_end,$cpf_beginning,$cpf_end);
+                FunHandler::addFun($name,$full_name,$email,$phone,$office,$cover, $birthdate,$rg_beginning,$rg_end,$cpf_beginning,$cpf_end);
                 $_SESSION['flash'] = 'Usuario cadastrado com sucesso';
                 $this->redirect('/employee/addfun');
             }else{
@@ -172,8 +202,12 @@ class FunController extends Controller {
             $this->redirect('/employee/addfun');
         }
     }
+    /// ESSA FUNÇÂO ESTA SOMENTE PAR A SER UTILIZADA AQUI INICIAMENTE, VEREMOS UM METODO DE COLOCA ELA NO AXULIADORES PARA USAR EM TODO O SISTEMA SE NECESSARIO
 
-   
+    // Aqui estamos mandando o arquivo($file), pegando a largura da mesma, e altura e pegando a pasta destino com ($folder)
+    // private function cutImage($file, $w, $h, $folder){
+
+    // }
     public function deleteFun($id){
         $fun = FunHandler::getFun($id);
         

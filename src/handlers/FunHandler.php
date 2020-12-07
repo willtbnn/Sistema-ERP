@@ -68,13 +68,14 @@ class FunHandler {
             ->Where('id', $id)
         ->execute();
     }
-    public static function addFun($name,$full_name,$email,$phone,$office, $birthdate,$rg_beginning,$rg_end,$cpf_beginning,$cpf_end){
+    public static function addFun($name,$full_name,$email,$phone,$office,$cover, $birthdate,$rg_beginning,$rg_end,$cpf_beginning,$cpf_end){
         Funcionario::insert([
             'name' => $name,
             'full_name' => $full_name,
             'email' => $email,
             'phone' =>$phone,
             'office' => $office,
+            'cover' => $cover,
             'birthdate' => $birthdate,
             'rg_beginning' => $rg_beginning,
             'rg_end' => $rg_end,
@@ -88,5 +89,50 @@ class FunHandler {
     }
     public static function delete($id){
         Funcionario::delete()->where('id', $id)->execute();
+    }
+
+    // tratando da media AQUI VAMOS CORTA A IMAGEM NO TAMANHO IDEAL
+    public function cutImage($file, $w, $h, $folder){
+        list($widthOrig, $heightOrig) = getimagesize($file['tmp_name']);
+        $ratio = $widthOrig / $heightOrig;
+        
+        $newWidth = $w;
+        // a aultura vai ser porpociona a largura
+        $newHeight = $newWidth / $ratio;
+
+        // caso a altura seja meno que queremos faremos o contrario
+        if($newHeight < $h){
+            $newHeight = $h;
+            $newWidth = $newHeight * $ratio;
+        }
+        // cortando a imagem 
+        $x = $w - $newWidth;
+        $y = $h - $newHeight;
+        // cortando dois dois lado para centralizar o corte
+        $x = $x < 0 ? $x / 2 : $x;
+        $y = $y < 0 ? $y / 2 : $y;
+
+        $finalImage = imagecreatetruecolor($w, $h);
+        switch($file['type']){
+            case 'image/jpg':
+            case 'image/jpeg':
+                $image = imagecreatefromjpeg($file['tmp_name']);
+            break;
+            case 'image/png':
+                $image = imagecreatefrompng($file['tmp_name']);
+            break;
+        }
+        // pega a original
+        imagecopyresampled(
+            $finalImage, $image,
+            $x, $y, 0, 0,
+            $newWidth, $newHeight, $widthOrig, $heightOrig
+        );
+
+        $fileName = md5(time().rand(0,9999)).'.jpg';
+        //Salva imagem no servidor
+        imagepng($finalImage, $folder.'/'.$fileName);
+
+        return $fileName;
     }
 }

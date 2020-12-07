@@ -11,6 +11,13 @@
         <h1>Editar informações - Funcionario</h1>
         <input  class="d-none" type="name" class="form-control" name="id" id="id" required value="<?php echo $fun->id;?>">
     </div>
+    <div class="form-row justify-content-center">
+    <div class="form-group col-md-4">
+            <img src="<?=$base;?>/assets/images/media/covers/<?php echo $fun->cover;?>" alt="" width="100" heigth="150">
+            <label for="cover">foto do funcionario</label>
+            <input type="file" value="<?=$base;?>/assets/images/covers/<?php echo $fun->cover;?>" class="form-control-file btn btn-light" id="cover" name="cover">
+        </div>
+    </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="full_name">Nome Completo</label>

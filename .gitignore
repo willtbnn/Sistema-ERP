@@ -2,3 +2,5 @@
 composer.phar
 /vendor/
 .DS_Store
+/src/Config.php
+/public/assets/images/media/covers
