@@ -15,7 +15,7 @@
     <div class="form-group col-md-4">
             <img src="<?=$base;?>/assets/images/media/covers/<?php echo $fun->cover;?>" alt="" width="100" heigth="150">
             <label for="cover">foto do funcionario</label>
-            <input type="file" value="<?=$base;?>/assets/images/covers/<?php echo $fun->cover;?>" class="form-control-file btn btn-light" id="cover" name="cover">
+            <input type="file" disabled value="<?=$base;?>/assets/images/covers/<?php echo $fun->cover;?>" class="form-control-file btn btn-light" id="cover" name="cover">
         </div>
     </div>
     <div class="form-row">
@@ -31,7 +31,7 @@
     <div class="form-row">
         <div class="form-group col-md-6 ">
             <label for="email">E-mail</label>
-            <input type="email" class="form-control disabled" name="email" id="email" required value="<?php echo $fun->email;?>">
+            <input type="email" disabled class="form-control disabled" name="email" id="email" required value="<?php echo $fun->email;?>">
         </div>
         <div class="form-group col-md-6">
             <label for="phone">Telefone</label>

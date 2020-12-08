@@ -53,7 +53,7 @@ class FunHandler {
             return $viewEmployee;
         }     
     }
-    public static function aditEmployee($id,$name,$full_name,$email,$phone,$office, $birthdate,$rg_beginning,$rg_end,$cpf_beginning,$cpf_end){
+    public static function editEmployee($id,$name,$full_name,$email,$phone,$office, $birthdate,$rg_beginning,$rg_end,$cpf_beginning,$cpf_end){
         Funcionario::Update()
                 ->set('name', $name)
                 ->set('email', $email)

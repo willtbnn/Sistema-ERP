@@ -32,7 +32,24 @@ class HomeController extends Controller {
             'flash' => $flash,
             'loggedUser' => $this->loggedUser,
         ]);
-    
-    
+    }
+    public function deleteUser($id){
+        $users = UserHandler::getUserSingle($id);
+
+        $id = $users->id;
+       
+        if(!empty($id)){
+            UserHandler::delete($id);
+            $_SESSION['flash']= 'Deletado com sucesso!';
+            $this->redirect('/',[
+                'flash' => $flash
+            ]);
+        }else{
+            $_SESSION['flash'] = 'Erro ao deleta !';
+            $this->redirect('/',[
+                'flash' => $flash
+            ]);
+        }
+
     }
 }

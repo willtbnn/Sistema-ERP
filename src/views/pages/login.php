@@ -26,7 +26,7 @@
                     <?php if(!empty($flash)): ?>
                         <div class="alert alert-danger" role="alert">
                             <?php echo $flash;?>
-                            </div>
+                        </div>
                     <?php endif;?>
                         <div class="form-group">
                             <label for="email">Email</label>

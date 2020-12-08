@@ -34,6 +34,30 @@ class UserHandler {
         }
         return false;
     }
+    // PEGANDO SOMENTE UM USUARIO
+    public static function getUserSingle($id){
+        if(!empty($_GET['id'])){
+            $id = $_GET['id'];
+        }
+        $dadosUser = User::select()->where('id', $id)->one();
+        // print_r($dadosUser);exit;
+        
+        // transformar o resultado em objetos dos models
+        if(count($dadosUser) > 0){
+            $UserSingle = new User();
+            $UserSingle->id = $dadosUser['id'];
+            $UserSingle->email = $dadosUser['email'];
+            $UserSingle->name = $dadosUser['name'];
+            $UserSingle->birthdate = $dadosUser['birthdate'];
+            $UserSingle->avatar = $dadosUser['avatar'];
+            $UserSingle->cover = $dadosUser['cover'];
+            //essas duas rever!!!!
+            $UserSingle->id_user = $dadosUser['id_user'];
+            $UserSingle->funcao = $dadosUser['funcao'];
+
+            return $UserSingle;
+        }     
+    }
     //Aqui estou vendo como lista os usuarios
     public static function getUsers(){
         $dados = User::select()->get();
@@ -93,6 +117,9 @@ class UserHandler {
         ])->execute();
 
         return $token;
+    }
+    public static function delete($id){
+        User::delete()->where('id', $id)->execute();
     }
     
 }

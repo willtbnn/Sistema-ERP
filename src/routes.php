@@ -13,6 +13,9 @@ $router->post('/login', 'LoginController@signAction');
 $router->get('/cadastro', 'HomeController@signup');
 // recebendo cadastro de usuario
 $router->post('/cadastro', 'LoginController@signupAction');
+//deletar usuario
+$router->get('/user/{id}', 'HomeController@deleteUser');
+
 
 $router->get('/inlogout', 'LoginController@logout');
 
@@ -30,4 +33,4 @@ $router->post('/addfun', 'FunController@addAction');
 $router->get('/employee/{id}/viewfun', 'FunController@fun');
 
 // edição de funcioarios
-$router->post('/employee/{id}/viewfun', 'Funcontroller@updateFun');
+$router->post('/employee/{id}/viewfun', 'FunController@updateFun');

@@ -9,7 +9,7 @@
                 <?php if(!empty($flash)): ?>
                     <div class="alert alert-danger" role="alert">
                         <?php echo $flash;?>
-                        </div>
+                    </div>
                 <?php endif;?>
                 <div class="form-row">
                     <div class="form-group col-md-6">

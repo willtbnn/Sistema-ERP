@@ -26,7 +26,7 @@
             <input type="email" class="form-control disabled" name="email" id="email" required>
         </div>
         <div class="form-group col-md-2">
-            <label for="phone">Telefone</label>
+            <label for="phone">Celular</label>
             <input type="text" class="form-control" name ="phone" id="phone" required>
         </div>
         <div class="form-group col-md-2">
@@ -79,4 +79,18 @@
 </form>
 
 
-<?=$render('footer');?>
+<script type="text/javascript" src="<?=$base;?>/assets/js/jquery-3.4.js"></script>
+    <script type="text/javascript" src="<?=$base;?>/assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="<?=$base;?>/assets/js/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="<?=$base;?>/assets/js/script.js"></script>
+    <script src="https://unpkg.com/imask"></script>
+    <script>
+        IMask(document.getElementById('birthdate'),{mask:'00/00/0000'});
+        IMask(document.getElementById('phone'),{mask:'(00)0-0000-0000'});
+        IMask(document.getElementById('rg_beginning'),{mask:'00'});
+        IMask(document.getElementById('rg_end'),{mask:'0-0'});
+        IMask(document.getElementById('cpf_beginning'),{mask:'00'});
+        IMask(document.getElementById('cpf_end'),{mask:'00'});
+    </script>
+</body>
+</html>

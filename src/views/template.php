@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
     <title>Work</title>
 </head>
-<body>
+<body class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <button class="navbar-toggler sideMenuToggler" type="button">
             <span class="navbar-toggler-icon"></span>
