@@ -1,7 +1,7 @@
     <tr>
-      <th scope="row">
-      <img src="<?=$base;?>/assets/images/<?=$data->avatar;?>" alt="" class="rounded-circle  bg-light border border-white img-fluid" style="max-width: 2rem;">
-      </th>
+      <td scope="row d-sm-none">
+        <img src="<?=$base;?>/assets/images/<?=$data->avatar;?>" alt="" class="rounded-circle  bg-light border border-white img-fluid" style="max-width: 2rem;">
+      </td>
       <td><?=$data->name;?></td>
       <td><?=$data->work;?></td>
       <td><?=$data->email;?></td>

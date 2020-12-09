@@ -8,7 +8,7 @@
 
 <form class="container mt-5" method="POST" action="<?=$base;?>/addfun" enctype="multipart/form-data">
     <div class="text-center">
-        <h1>Adicionar - Funcionario</h1>
+        <h1>Adicionar funcionário</h1>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
@@ -67,7 +67,7 @@
         <?php if(!empty($flash)): ?>
             <div class="alert alert-danger" role="alert">
                 <?php echo $flash;?>
-                </div>
+            </div>
         <?php endif;?>
         <div class="container justify-content-center">
             <div class="form-group col-md-12 text-center">
@@ -86,7 +86,7 @@
     <script src="https://unpkg.com/imask"></script>
     <script>
         IMask(document.getElementById('birthdate'),{mask:'00/00/0000'});
-        IMask(document.getElementById('phone'),{mask:'(00)0-0000-0000'});
+        IMask(document.getElementById('phone'),{mask:'0-0000-0000'});
         IMask(document.getElementById('rg_beginning'),{mask:'00'});
         IMask(document.getElementById('rg_end'),{mask:'0-0'});
         IMask(document.getElementById('cpf_beginning'),{mask:'00'});

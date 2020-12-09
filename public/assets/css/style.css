@@ -21,7 +21,7 @@
   background-color: #084b83 !important; }
 
 .text-mattGray, .nav-link .icon, .nav-link .text {
-  color: #084b83 !important; }
+  color: #fff !important; }
 
 .bg-mattCinereous {
   background-color: #998888 !important; }
@@ -116,4 +116,7 @@
 .control-jumbotron{
     padding: 0rem 0rem !important;
 }
+}
+.dropdown-menu.show{
+  position: absolute !important;
 }

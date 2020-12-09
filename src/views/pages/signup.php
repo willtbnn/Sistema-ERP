@@ -1,9 +1,11 @@
 <?=$render('header', ['loggedUser'=>$loggedUser]);?>
-<main class="container justify-content-center">
-    <h1>Adicionar Usuario do Sistema</h1>
+<main class="container justify-content-center bg-mattBlackRed text-light">
+    <div class="text-center mt-5">
+        <h1>Adicionar Usuario</h1>
+    </div>
     <div class="row">
-        <div class="col-md-10 px-5 m-5 align-self-center">
-            <div class="container px-5 my-5 text-dark">
+        <div class="col-md-10 col-sm-12 pt-5 px-md-5 m-md-5 align-self-center">
+            <div class="container px-md-5 my-md-5">
                 <form method="POST" action="<?=$base;?>/cadastro">
                 <!-- recebendo o flash e verificando se ele tem alguma msg para exibir $router->get('/employee/{id}', 'FunController@deleteFun');-->
                 <?php if(!empty($flash)): ?>
