@@ -6,7 +6,7 @@
 ;?>
 <!-- Tenho que coloca o formulario com as informações do usuario a parte do id  -->
 
-<form class="container mt-5" method="POST" action="<?=$base;?>/employee/<?=$fun->id;?>/viewfun">
+<form class="container mt-5" method="POST" action="<?=$base;?>/employee/<?=$fun->id;?>/viewfun" enctype="multipart/form-data">
     <div class="text-center">
         <h1>Editar informações - Funcionario</h1>
         <input  class="d-none" type="name" class="form-control" name="id" id="id" required value="<?php echo $fun->id;?>">
@@ -15,7 +15,7 @@
     <div class="form-group col-md-4">
             <img src="<?=$base;?>/assets/images/media/covers/<?php echo $fun->cover;?>" alt="" width="100" heigth="150">
             <label for="cover">foto do funcionario</label>
-            <input type="file" disabled value="<?=$base;?>/assets/images/covers/<?php echo $fun->cover;?>" class="form-control-file btn btn-light" id="cover" name="cover">
+            <input type="file"  value="<?=$base;?>/assets/images/covers/<?php echo $fun->cover;?>" class="form-control-file btn btn-light" id="cover" name="cover">
         </div>
     </div>
     <div class="form-row">
@@ -31,7 +31,7 @@
     <div class="form-row">
         <div class="form-group col-md-6 ">
             <label for="email">E-mail</label>
-            <input type="email" disabled class="form-control disabled" name="email" id="email" required value="<?php echo $fun->email;?>">
+            <input type="email"  class="form-control disabled" name="email" id="email" required value="<?php echo $fun->email;?>">
         </div>
         <div class="form-group col-md-6">
             <label for="phone">Telefone</label>
@@ -69,5 +69,18 @@
     <input type="submit" class="btn btn-primary" value="Atualizar"/>
 </form>
 
-
-<?=$render('footer');?>
+    <script type="text/javascript" src="<?=$base;?>/assets/js/jquery-3.4.js"></script>
+    <script type="text/javascript" src="<?=$base;?>/assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="<?=$base;?>/assets/js/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="<?=$base;?>/assets/js/script.js"></script>
+    <script src="https://unpkg.com/imask"></script>
+    <script>
+        IMask(document.getElementById('birthdate'),{mask:'00/00/0000'});
+        IMask(document.getElementById('phone'),{mask:'0-0000-0000'});
+        IMask(document.getElementById('rg_beginning'),{mask:'00'});
+        IMask(document.getElementById('rg_end'),{mask:'0-0'});
+        IMask(document.getElementById('cpf_beginning'),{mask:'00'});
+        IMask(document.getElementById('cpf_end'),{mask:'00'});
+    </script>
+</body>
+</html>

@@ -15,21 +15,42 @@ class UserHandler {
                 $loggedUser->id = $data['id'];
                 $loggedUser->email = $data['email'];
                 $loggedUser->name = $data['name'];
-                $loggedUser->brithdate = $data['birthdate'];
+                $loggedUser->password = $data['password'];
+                $loggedUser->birthdate = $data['birthdate'];
                 $loggedUser->funcao = explode(',', $data['funcao']);
                 $loggedUser->city = $data['city'];
                 $loggedUser->work = $data['work'];
                 $loggedUser->avatar = $data['avatar'];
                 $loggedUser->cover = $data['cover'];
+                $loggedUser->token = $data['token'];
 
                 return $loggedUser;
             }
         }
         return false;     
     }
+    public static function verifyLogin($email, $password){
+        $user = User::select()->where('email', $email)->one();
+        
+        if($user){
+            if(password_verify($password, $user['password'])){
+                $token = md5(time().rand(0,999).time());
+                User::update()->set('token', $token)->where('email', $email)->execute();
+
+                return $token;
+            }
+        }
+        return false;
+    }
+    // AINDA NÂO ESTA SENDO USADO REVER
+    public static function tempoLogin(){
+        $_SESSION['registro'] = time();
+        $tempo = $_SESSION['registro'];
+        return $tempo;
+    }
     //Verificando permisão do usuario logado
-    public static function temPermissao($p){
-        if(in_array($p, $this->funcao)){
+    public static function temPermissao($p, $v){
+        if(in_array($p, $v)){
             return true;
         }
         return false;
@@ -52,7 +73,7 @@ class UserHandler {
             $UserSingle->avatar = $dadosUser['avatar'];
             $UserSingle->cover = $dadosUser['cover'];
             //essas duas rever!!!!
-            $UserSingle->id_user = $dadosUser['id_user'];
+            // $UserSingle->id_user = $dadosUser['id_user'];
             $UserSingle->funcao = $dadosUser['funcao'];
 
             return $UserSingle;
@@ -62,9 +83,6 @@ class UserHandler {
     public static function getUsers(){
         $dados = User::select()->get();
         $users = [];
-        // foreach($dados as $listaUsers){
-        //     $users[] = $listaUsers;
-        // }
         // transformar o resultado em objetos dos models
         foreach($dados as $listaUsers){
             $viewUsers = new User();
@@ -82,19 +100,7 @@ class UserHandler {
         }
         return $users;
     }
-    public static function verifyLogin($email, $password){
-        $user = User::select()->where('email', $email)->one();
-
-        if($user){
-            if(password_verify($password, $user['password'])){
-                $token = md5(time().rand(0,999).time());
-                User::update()->set('token', $token)->where('email', $email)->execute();
-
-                return $token;
-            }
-        }
-        return false;
-    }
+    
     public static function emailExists($email){
         $user = User::select()->where('email', $email)->one();
         return $user ? true : false;
@@ -103,7 +109,82 @@ class UserHandler {
         $user = User::select()->where('id', $id)->one();
         return $user ? true : false;
     }
-    public static function addUser($name, $email, $password, $birthdate){
+    //recebendo avatar sp Usuario
+    public static function cutImage($file, $w, $h, $folder){
+        list($widthOrig, $heightOrig) = getimagesize($file['tmp_name']);
+        $ratio = $widthOrig / $heightOrig;
+        
+        $newWidth = $w;
+        // a aultura vai ser porpociona a largura
+        $newHeight = $newWidth / $ratio;
+
+        // caso a altura seja meno que queremos faremos o contrario
+        if($newHeight < $h){
+            $newHeight = $h;
+            $newWidth = $newHeight * $ratio;
+        }
+        // cortando a imagem 
+        $x = $w - $newWidth;
+        $y = $h - $newHeight;
+        // cortando dois dois lado para centralizar o corte
+        $x = $x < 0 ? $x / 2 : $x;
+        $y = $y < 0 ? $y / 2 : $y;
+
+        $finalImage = imagecreatetruecolor($w, $h);
+        switch($file['type']){
+            case 'image/jpg':
+            case 'image/jpeg':
+                $image = imagecreatefromjpeg($file['tmp_name']);
+            break;
+            case 'image/png':
+                $image = imagecreatefrompng($file['tmp_name']);
+            break;
+        }
+        // pega a original
+        imagecopyresampled(
+            $finalImage, $image,
+            $x, $y, 0, 0,
+            $newWidth, $newHeight, $widthOrig, $heightOrig
+        );
+
+        $fileName = md5(time().rand(0,9999)).'.jpg';
+        //Salva imagem no servidor
+        imagepng($finalImage, $folder.'/'.$fileName);
+
+        return $fileName;
+    }
+    public static function updateBirthdate($birthdate, $id){
+        User::update()
+            ->set('birthdate', $birthdate)
+            ->where('id', $id)
+        ->execute();
+    }
+    public static function updateEmail($email, $id){
+        User::update()
+            ->set('email', $email)
+            ->where('id', $id)
+        ->execute();
+    }
+    public static function updateName($name, $id){
+        User::update()
+            ->set('name', $name)
+            ->where('id', $id)
+        ->execute();
+    }
+    public static function updatePassword($password, $id){
+        User::update()
+            ->set('password', $password)
+            ->where('id', $id)
+        ->execute();
+    }
+    public static function updateAvatar($avatar, $id){
+        User::update()
+                ->set('avatar', $avatar)
+            ->where('id', $id)
+        ->execute();
+    }
+    
+    public static function addUser($avatar, $name, $email, $password, $birthdate){
         $hash = password_hash($password, PASSWORD_DEFAULT);
         // $token = md5(time().rand(0,999).time());
         User::insert([
@@ -111,12 +192,12 @@ class UserHandler {
             'name' => $name,
             'password' => $hash,
             'birthdate' => $birthdate,
-            'avatar' => 'default-avatar.png',
+            'avatar' => $avatar,
             'cover' => 'default.png'
             // 'token' => $token,
         ])->execute();
 
-        return $token;
+        // return $token;
     }
     public static function delete($id){
         User::delete()->where('id', $id)->execute();

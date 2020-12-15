@@ -53,13 +53,39 @@ class FunHandler {
             return $viewEmployee;
         }     
     }
-    public static function editEmployee($id,$name,$full_name,$email,$phone,$office, $birthdate,$rg_beginning,$rg_end,$cpf_beginning,$cpf_end){
+    public static function editEmail($email, $id){
         Funcionario::Update()
-                ->set('name', $name)
-                ->set('email', $email)
+                    ->set('email', $email)
+                ->where('id', $id)
+            ->execute();
+    }
+    public static function editBirthate($birthdate, $id){
+        Funcionario::Update()
                 ->set('birthdate', $birthdate)
-                ->set('phone',$phone)
+            ->where('id', $id)
+        ->execute();
+    }
+    public static function editOficce($office, $id){
+        Funcionario::Update()
                 ->set('office',$office)
+            ->where('id', $id)
+        ->execute();
+    }
+    public static function editPhone($phone, $id){
+        Funcionario::Update()
+                ->set('phone',$phone)
+            ->where('id', $id)
+        ->execute();
+    }
+    public function editCover($cover, $id){
+        Funcionario::Update()
+                ->set('cover',$cover)
+            ->where('id', $id)
+        ->execute();
+    }
+    public static function editEmployee($id,$name, $full_name,$rg_beginning,$rg_end,$cpf_beginning,$cpf_end){
+        Funcionario::Update()
+                ->set('name',$name)
                 ->set('rg_beginning',$rg_beginning)
                 ->set('rg_end',$rg_end)
                 ->set('full_name',$full_name)

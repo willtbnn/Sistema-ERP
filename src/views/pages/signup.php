@@ -1,18 +1,24 @@
 <?=$render('header', ['loggedUser'=>$loggedUser]);?>
-<main class="container justify-content-center bg-mattBlackRed text-light">
+<main class="container justify-content-center">
     <div class="text-center mt-5">
         <h1>Adicionar Usuario</h1>
     </div>
     <div class="row">
         <div class="col-md-10 col-sm-12 pt-5 px-md-5 m-md-5 align-self-center">
             <div class="container px-md-5 my-md-5">
-                <form method="POST" action="<?=$base;?>/cadastro">
+                <form method="POST" action="<?=$base;?>/cadastro" enctype="multipart/form-data">
                 <!-- recebendo o flash e verificando se ele tem alguma msg para exibir $router->get('/employee/{id}', 'FunController@deleteFun');-->
                 <?php if(!empty($flash)): ?>
                     <div class="alert alert-danger" role="alert">
                         <?php echo $flash;?>
                     </div>
                 <?php endif;?>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="cover">foto do Usuário</label>
+                        <input type="file" name="avatar" id="avatar" class="form-control-file btn btn-light">
+                    </div>
+                </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="name">Nome</label>

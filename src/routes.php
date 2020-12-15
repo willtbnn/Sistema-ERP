@@ -8,16 +8,24 @@ $router->get('/login', 'LoginController@signin');
 
 
 $router->post('/login', 'LoginController@signAction');
+//logout
+$router->get('/inlogout', 'LoginController@logout');
 
 // Esse vai ser feito pelo usuario do sistema
 $router->get('/cadastro', 'HomeController@signup');
 // recebendo cadastro de usuario
-$router->post('/cadastro', 'LoginController@signupAction');
+$router->post('/cadastro', 'HomeController@signupAction');
 //deletar usuario
 $router->get('/user/{id}', 'HomeController@deleteUser');
+//Vendo informações do Usuario clicado
+$router->get('/configuration/{id}/userUpdate', 'HomeController@User');
+// Editando usuario
+$router->post('/configuration/{id}/userUpdate', 'HomeController@UpdateUser');
+//usuario logado configuração
+$router->get('/configuration', 'HomeController@UserLogged');
+// Atualizando Usuario Logado CONFIGURAÇÂO
+$router->post('/configuration/{id}', 'HomeController@UploadUserLogged');
 
-
-$router->get('/inlogout', 'LoginController@logout');
 
 // parte de funcionarios"
 $router->get('/employee', 'FunController@employees');

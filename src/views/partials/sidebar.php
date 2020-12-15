@@ -33,7 +33,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="<?=$base;?>/configuration" class="nav-link">
                             <i class="material-icons icon py-3">
                                 settings
                             </i>
