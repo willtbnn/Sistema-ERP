@@ -120,3 +120,6 @@
 .dropdown-menu.show{
   position: absolute !important;
 }
+label{
+  -webkit-text-stroke: medium mediumseagreen;
+}

@@ -42,3 +42,19 @@ $router->get('/employee/{id}/viewfun', 'FunController@fun');
 
 // edição de funcioarios
 $router->post('/employee/{id}/viewfun', 'FunController@updateFun');
+
+//calendario 
+$router->get('/calendar', 'CalendarController@index');
+
+
+//formulario de evento para calendario  @recebendo
+$router->get('/uploadEvent', 'CalendarController@toreceive');
+// Enviando evento para o calendario @enviando
+$router->post('/uploadEvent', 'CalendarController@upload');
+
+
+//Ver os clientes 
+$router->get('/viewclient', 'ClientController@viewClient');
+
+// Adicionando cliente
+$router->get('/uploadClient', 'ClientController@toreceive');

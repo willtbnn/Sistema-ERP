@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="content=Type" content="text/html" charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?=$base;?>/assets/css/style.css">
     <link rel="stylesheet" href="<?=$base;?>/assets/css/bootstrap.min.css">
     <link rel="shortcut icon" href="<?=$base;?>/assets/images/woza-shout.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+    <link href='<?=$base?>/assets/css/lib/main.css' rel='stylesheet' />
+    <script src='<?=$base?>/assets/js/lib/main.js'></script>
+    <script src='<?=$base?>/assets/js/lib/pt-br.js'></script>
     <title>Work</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
-        
+        <?php if(in_array('SECRET', $loggedUser->funcao)):?>
             <button class="sideMenuToggler rounded-circle bg-light border border-white">
                 <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-list" fill="#e32636" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
                 </svg>
             </button>
-        
+        <?php endif;?>
             <a class="navbar-brand font-weight-bold" href="#">Woza</a>
             <div>
                 <ul class="navbar-nav ml-auto">
@@ -52,8 +55,8 @@
             </div>
         </div>   
     </nav>
-    
-        <?=$render('sidebar', [
-        'loggedUser'=>$loggedUser
-        ]);?>    
+    <?php if(in_array('SECRET', $loggedUser->funcao)):?>
+        <?=$render('sidebar',[
+            'loggedUser' => $loggedUser]);?>
+    <?php endif;?>
     

@@ -16,8 +16,10 @@ class FunHandler {
             $viewFun->email = $listaFun['email'];
             $viewFun->name = $listaFun['name'];
             $viewFun->birthdate = $listaFun['birthdate'];
+            // OLHA O ERRO !
             $viewFun->city = $listaFun['phone'];
             $viewFun->work = $listaFun['office'];
+             // OLHA O ERRO !
             $viewFun->avatar = $listaFun['avatar'];
             $viewFun->cover = $listaFun['cover'];
 
