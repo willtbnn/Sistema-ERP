@@ -15,6 +15,8 @@ Vá até a pasta do projeto, pelo *prompt/terminal* e execute:
 
 Depois é só aguardar.
 
+[Banco de dados aqui!!!](https://mega.nz/file/dJpRHK6Q#B-9055xTuFoLcn1MGtjIz9ipTWQSkv-47UU6i40-l8A)
+
 ## Configuração
 Todos os arquivos de **configuração** e aplicação estão dentro da pasta *src*.
 
@@ -34,7 +36,7 @@ O ideal é criar um ***alias*** específico no servidor que direcione diretament
 namespace src\models;
 use \core\Model;
 
-class Usuario extends Model {
+class Users extends Model {
 
 }
 ```
