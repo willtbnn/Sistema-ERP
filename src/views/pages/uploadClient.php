@@ -17,12 +17,16 @@
             <label for="service">Tipo de serviço prestado</label>
             <select id="service" class="form-control" name="service">
                 <option selected>...</option>
-                <option>Refim</option>
-                <option>Sessão</option>
-                <option>Investimento</option>
-                <option>Novo</option>
-
-            </select>
+                <option>cessão</option>
+                <option>investimento</option>
+                <option>Empréstimo Consignado</option>
+                <option>Cartão de Crédito</option>
+                <option>Financiamentos</option>
+                <option>Portabilidade</option>
+                <option>Crédito Pessoal</option>
+                <option>Cartão Saque</option>
+                <option>Crédito SIAPE | INSS</option>
+           </select>
         </div>
     </div>
     <div class="form-row">
@@ -39,7 +43,6 @@
             <input type="text" name="phone" class="form-control" id="phone">
         </div>
     </div>
-
     <div class="form-row justify-content-center">
         <div class="form-group col-md-4 text-center">
             <label for="rg">Foto do RG</label><br>
@@ -47,7 +50,7 @@
             <input type="file" name="rg" id="rg" class="form-control-file btn mt-2 btn-dark" value="<?=$client->rg;?>">
         </div>
         <div class="form-group col-md-4 text-center">
-            <label for="cpf">Foto do CPF</label><br>
+            <label for="cpf">Foto do CPF </label><i class="text-muted">(caso o cliente não tenha no RG) </i><br>
             <img src="<?=$base;?>/assets/images/media/anexos/cpf/<?=$client->cpf;?>" alt="" width="200" heigth="250">
             <input type="file" name="cpf" id="cpf" class="form-control-file btn mt-2 btn-dark" value="<?=$client->cpf;?>">
         </div>
@@ -80,7 +83,7 @@
             <textarea name="commint" class="form-control" id="commint" rows="3"></textarea>
         </div>
         <div class="form-group col-md-4 text-center">
-            <label for="printzap">Espelho</label><br>
+            <label for="printzap">Conversa Whatsapp.txt</label><br><i class="text-muted">(caso haja)</i>
             <img src="<?=$base;?>/assets/images/media/anexos/zap/<?=$client->printzap;?>" alt="" width="200" heigth="250">
             <input type="file" name="printzap" id="printzap" class="form-control-file btn mt-2 btn-dark" value="<?=$client->printzap;?>">
         </div>
@@ -89,7 +92,7 @@
         <input type="submit" value="enviar" class="btn btn-success">
     </div>
 </form>
-<script type="text/javascript" src="<?=$base;?>/assets/js/jquery-3.4.js"></script>
+    <script type="text/javascript" src="<?=$base;?>/assets/js/jquery-3.4.js"></script>
     <script type="text/javascript" src="<?=$base;?>/assets/js/bootstrap.js"></script>
     <script type="text/javascript" src="<?=$base;?>/assets/js/jquery.slimscroll.min.js"></script>
     <script type="text/javascript" src="<?=$base;?>/assets/js/script.js"></script>

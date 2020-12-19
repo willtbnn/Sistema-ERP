@@ -123,3 +123,6 @@
 label{
   -webkit-text-stroke: medium mediumseagreen;
 }
+label.edit{
+  -webkit-text-stroke: medium mediumblue !important;
+}
