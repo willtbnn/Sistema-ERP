@@ -85,4 +85,7 @@ class ClientController extends Controller {
             'client' => $clients
         ]);
     }
+    public function editClient($id){
+
+    }
 }

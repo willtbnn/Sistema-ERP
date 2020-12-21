@@ -47,34 +47,34 @@
         <div class="form-group col-md-4 text-center">
             <label for="rg">Foto do RG</label><br>
             <img src="<?=$base;?>/assets/images/media/anexos/rg/<?=$client->rg;?>" alt="" width="200" heigth="250">
-            <input type="file" name="rg" id="rg" class="form-control-file btn mt-2 btn-dark" value="<?=$client->rg;?>">
+            <input type="file" name="rg" id="rg" class="form-control-file btn mt-2 btn-dark">
         </div>
         <div class="form-group col-md-4 text-center">
             <label for="cpf">Foto do CPF </label><i class="text-muted">(caso o cliente não tenha no RG) </i><br>
             <img src="<?=$base;?>/assets/images/media/anexos/cpf/<?=$client->cpf;?>" alt="" width="200" heigth="250">
-            <input type="file" name="cpf" id="cpf" class="form-control-file btn mt-2 btn-dark" value="<?=$client->cpf;?>">
+            <input type="file" name="cpf" id="cpf" class="form-control-file btn mt-2 btn-dark">
         </div>
         <div class="form-group col-md-4 text-center">
             <label for="photo_client">Foto do Cliente</label><br>
             <img src="<?=$base;?>/assets/images/media/anexos/self/<?=$client->photo_client;?>" alt="" width="200" heigth="250">
-            <input type="file" name="photo_client" id="photo_client" class="form-control-file btn mt-2 btn-dark" value="<?=$client->photo_client;?>">
+            <input type="file" name="photo_client" id="photo_client" class="form-control-file btn mt-2 btn-dark">
         </div>
     </div>
     <div class="form-row justify-content-center">
         <div class="form-group col-md-4 text-center">
             <label for="extract">Extrato</label><br>
             <img src="<?=$base;?>/assets/images/media/anexos/extrato/<?=$client->extract;?>" alt="" width="200" heigth="250">
-            <input type="file" name="extract" id="extract" class="form-control-file btn mt-2 btn-dark" value="<?=$client->extract;?>">
+            <input type="file" name="extract" id="extract" class="form-control-file btn mt-2 btn-dark">
         </div>
         <div class="form-group col-md-4 text-center">
             <label for="residence">Comprovante de residencia</label><br>
             <img src="<?=$base;?>/assets/images/media/anexos/comprovante/<?=$client->residence;?>" alt="" width="200" heigth="250">
-            <input type="file" name="residence" id="residence" class="form-control-file btn mt-2 btn-dark" value="<?=$client->residence;?>">
+            <input type="file" name="residence" id="residence" class="form-control-file btn mt-2 btn-dark">
         </div>
         <div class="form-group col-md-4 text-center">
             <label for="mirror">Espelho</label><br>
             <img src="<?=$base;?>/assets/images/media/anexos/espelho/<?=$client->mirror;?>" alt="" width="200" heigth="250">
-            <input type="file" name="mirror" id="mirror" class="form-control-file btn mt-2 btn-dark" value="<?=$client->mirror;?>">
+            <input type="file" name="mirror" id="mirror" class="form-control-file btn mt-2 btn-dark">
         </div>
     </div>
     <div class="form-row">
@@ -85,7 +85,7 @@
         <div class="form-group col-md-4 text-center">
             <label for="printzap">Conversa Whatsapp.txt</label><br><i class="text-muted">(caso haja)</i>
             <img src="<?=$base;?>/assets/images/media/anexos/zap/<?=$client->printzap;?>" alt="" width="200" heigth="250">
-            <input type="file" name="printzap" id="printzap" class="form-control-file btn mt-2 btn-dark" value="<?=$client->printzap;?>">
+            <input type="file" name="printzap" id="printzap" class="form-control-file btn mt-2 btn-dark">
         </div>
     </div>
     <div class="text-center">

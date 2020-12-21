@@ -33,23 +33,23 @@ class ClientHandler {
         return $client;
     }
 
-    //////// REVER O RECEBIMENTO DE FOTOS !
-    // public static function setClient($name,$email,$phone,$service,$id_user,$name_user,$rg, $cpf='',$photo_client='', $extract='',$residence='',$mirror=''){
-    //     Client::insert([
-    //         'name' => $name,
-    //         'email' => $email,
-    //         'phone' => $phone,
-    //         'service' => $service,
-    //         'id_user' => $id_user,
-    //         'name_user' => $name_user,
-    //         'rg' => $rg,
-    //         'cpf' => $cpf,
-    //         'photo_client' => $photo_client,
-    //         'extrat' => $extrat,
-    //         'residence' => $residence,
-    //         'mirror' =>$mirror
-    //     ])->execute();
-    // }
+    ////// REVER O RECEBIMENTO DE FOTOS !
+    public static function setClient($name,$email,$phone,$service,$id_user,$name_user,$rg, $cpf,$photo_client, $extract,$residence,$mirror){
+        Client::insert([
+            'name' => $name,
+            'email' => $email,
+            'phone' => $phone,
+            'service' => $service,
+            'id_user' => $id_user,
+            'name_user' => $name_user,
+            'rg' => $rg,
+            'cpf' => $cpf,
+            'photo_client' => $photo_client,
+            'extract' => $extract,
+            'residence' => $residence,
+            'mirror' =>$mirror
+        ])->execute();
+    }
     public static function setImage($file, $w, $h, $folder){
         list($widthOrig, $heightOrig) = getimagesize($file['tmp_name']);
         $ratio = $widthOrig / $heightOrig;

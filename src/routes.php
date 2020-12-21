@@ -70,3 +70,8 @@ $router->get('/viewclient', 'ClientController@viewClient');
 $router->get('/uploadclient', 'ClientController@toreceive');
 //recebendo envio de cliente
 $router->post('/uploadclient', 'ClientController@addClient');
+
+//Editando cliente
+$router->get('/viewclient/{id}/editclient', 'ClientController@editClient');
+//Ecxluindo cliente
+$router->get('/viewclient/{id}/delclient', 'ClientController@delClient');
