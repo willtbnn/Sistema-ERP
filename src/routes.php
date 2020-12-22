@@ -51,7 +51,7 @@ $router->get('/calendar', 'CalendarController@index');
 $router->get('/viewschedule', 'CalendarController@view');
 // vendo agendamento(seeSchedule)
 $router->get('/schedule/{id}/editevent', 'CalendarController@seeSchedule');
-// vendo agendamento(seeSchedule)
+// atualizando agendamento(seeSchedule)
 $router->post('/schedule/{id}/editevent', 'CalendarController@updateSchedule');
 // deletando agendamentoschedule
 $router->get('/schedule/{id}', 'CalendarController@delSchedule');
@@ -71,7 +71,10 @@ $router->get('/uploadclient', 'ClientController@toreceive');
 //recebendo envio de cliente
 $router->post('/uploadclient', 'ClientController@addClient');
 
-//Editando cliente
-$router->get('/viewclient/{id}/editclient', 'ClientController@editClient');
-//Ecxluindo cliente
+//Abrindo cliente para edição cliente
+$router->get('/viewclient/{id}/editclient', 'ClientController@viewSingleClient');
+// Editando Cliente
+$router->post('/viewclient/{id}/editclient', 'ClientController@updateClient');
+
+//Excluindo cliente
 $router->get('/viewclient/{id}/delclient', 'ClientController@delClient');

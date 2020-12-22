@@ -32,7 +32,36 @@ class ClientHandler {
         }
         return $client;
     }
+    // Pegando Somente um Cliente
+    public static function getClient($id){
+        if(!empty($_GET['id'])){
+            $id = $_GET['id'];
+        }
+        $dados = Client::select()->where('id', $id)->one();
+        // print_r($dadosFun);exit;
+        
+        // transformar o resultado em objetos dos models
+        if(count($dados) > 0){
+            $viewClient = new Client();
+            $viewClient->id = $dados['id'];
+            $viewClient->email = $dados['email'];
+            $viewClient->name = $dados['name'];
+            $viewClient->service = $dados['service'];
+            $viewClient->phone = $dados['phone'];
+            $viewClient->comment = $dados['comment'];
+            $viewClient->rg = $dados['rg'];
+            $viewClient->cpf = $dados['cpf'];
+            $viewClient->photo_client = $dados['photo_client'];
+            $viewClient->extract = $dados['extract'];
+            $viewClient->residence = $dados['residence'];
+            $viewClient->mirror = $dados['mirror'];
+            $viewClient->printzap = $dados['printzap'];
+            $viewClient->id_user = $dados['id_user'];
+            $viewClient->name_user = $dados['name_user'];
 
+            return $viewClient;
+        }
+    }
     ////// REVER O RECEBIMENTO DE FOTOS !
     public static function setClient($name,$email,$phone,$service,$id_user,$name_user,$rg, $cpf,$photo_client, $extract,$residence,$mirror){
         Client::insert([
@@ -92,5 +121,76 @@ class ClientHandler {
         imagepng($finalImage, $folder.'/'.$fileName);
 
         return $fileName;
+    }
+    /// PARTE DE UPDATE ///
+    public static function editService($service, $id){
+        Client::Update()
+                ->set('service',$service)
+            ->where('id', $id)
+        ->execute();
+    }
+    public static function editPhone($phone, $id){
+        Client::Update()
+                ->set('phone',$phone)
+            ->where('id', $id)
+        ->execute();
+    }
+    public static function editEmail($email, $id){
+        Client::Update()
+                    ->set('email', $email)
+                ->where('id', $id)
+            ->execute();
+    }
+    public function editRg($rg, $id){
+        Client::Update()
+                ->set('rg', $rg)
+            ->where('id', $id)
+        ->execute();
+    }
+    public function editCpf($cpf, $id){
+        Client::Update()
+                ->set('cpf', $cpf)
+            ->where('id', $id)
+        ->execute();
+    }
+    public function editSelf($photo_client, $id){
+        Client::Update()
+                ->set('photo_client', $photo_client)
+            ->where('id', $id)
+        ->execute();
+    }
+    public function editExtract($extract, $id){
+        Client::Update()
+                ->set('extract', $extract)
+            ->where('id', $id)
+        ->execute();
+    }
+    public function editResidence($residence, $id){
+        Client::Update()
+                ->set('residence', $residence)
+            ->where('id', $id)
+        ->execute();
+    }
+    public function editMirror($mirror, $id){
+        Client::Update()
+                ->set('mirror', $mirror)
+            ->where('id', $id)
+        ->execute();
+    }
+    public function printZap($printzap, $id){
+        Client::Update()
+                ->set('printzap', $printzap)
+            ->where('id', $id)
+        ->execute();
+    }
+    public function editName($name, $id){
+        Client::Update()
+                ->set('name', $name)
+            ->where('id', $id)
+        ->execute();
+    }
+    //FIM DA PARTE DE UPDATE//
+    public static function delete($id){
+        Client::delete()->where('id', $id)->execute();
     }
 }

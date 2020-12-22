@@ -1,7 +1,7 @@
 <?=$render('header', 
 [
     'loggedUser'=>$loggedUser,
-    'Client'=> $client,
+    'client'=> $client,
 ])
 ;?>
 <section class="container">
