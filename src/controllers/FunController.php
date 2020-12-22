@@ -92,7 +92,6 @@ class FunController extends Controller {
             }else{
                 $_SESSION['flash'] = 'Email já cadastrado.';
                 $this->redirect('/employee', [
-                    
                     'loggedUser' => $this->loggedUser,
                     'fun' => $fun,]);
                 // print_r($id);exit;
@@ -209,12 +208,6 @@ class FunController extends Controller {
             $this->redirect('/employee/addfun');
         }
     }
-    /// ESSA FUNÇÂO ESTA SOMENTE PAR A SER UTILIZADA AQUI INICIAMENTE, VEREMOS UM METODO DE COLOCA ELA NO AXULIADORES PARA USAR EM TODO O SISTEMA SE NECESSARIO
-
-    // Aqui estamos mandando o arquivo($file), pegando a largura da mesma, e altura e pegando a pasta destino com ($folder)
-    // private function cutImage($file, $w, $h, $folder){
-
-    // }
     public function deleteFun($id){
         $fun = FunHandler::getFun($id);
         $id = $fun->id;

@@ -24,6 +24,7 @@
         $('#visualizaTudo #id').text(info.event.id);
         $('#visualizaTudo #title').text(info.event.title);
         $('#visualizaTudo #start').text(info.event.start.toLocaleString());
+        $('#visualizaTudo #hour').text(info.event.extendedProps.hour.toLocaleString());
         $('#visualizaTudo #name_user').text(info.event.extendedProps.name_user);
         $('#visualizaTudo #name').text(info.event.extendedProps.name);
         $('#visualizaTudo #email').text(info.event.extendedProps.email);
@@ -62,8 +63,12 @@
             <dd class="col-sm-9" id="title" ></dd>
           </dl>
           <dl class="row">
-            <dt class="col-sm-3">Horario começo</dt>
+            <dt class="col-sm-3">Data Marcada</dt>
             <dd class="col-sm-9" id="start" ></dd>
+          </dl>
+          <dl class="row">
+            <dt class="col-sm-3">Hora Marcada</dt>
+            <dd class="col-sm-9" id="hour" ></dd>
           </dl>
           <dl class="row">
             <dt class="col-sm-3">Nome do Cliente</dt>

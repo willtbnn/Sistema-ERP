@@ -1,10 +1,13 @@
-<?=$render('header',[
-    'loggedUser' => $loggedUser
-]);?>
+<?=$render('header', 
+[
+    'loggedUser'=>$loggedUser,
+    'client'=> $client,
+])
+;?>
 
-<form  class="container mt-5" method="POST" action="<?=$base;?>/UploadClient" enctype="multipart/form-data">
+<form  class="container mt-5" method="POST" action="<?=$base;?>/viewclient/<?=$client->id;?>/editclient" enctype="multipart/form-data">
     <div class="text-center">
-        <h1 class="h1">Adicionando Cliente</h1>
+        <h1 class="h1">Utualizando dados do Cliente</h1>
         <!-- recebendo o flash e verificando se ele tem alguma msg para exibir -->
     <?php if(!empty($flash)): ?>
         <div class="alert alert-danger" role="alert">
@@ -16,7 +19,7 @@
         <div class="form-group col-md-4 text-center">
             <label for="service">Tipo de serviço prestado</label>
             <select id="service" class="form-control" name="service">
-                <option selected>...</option>
+                <option selected><?=$client->service;?></option>
                 <option>cessão</option>
                 <option>investimento</option>
                 <option>Empréstimo Consignado</option>
@@ -29,18 +32,21 @@
            </select>
         </div>
     </div>
+    <div class="d-none">
+    <input type="text" name="name" class="" id="name" value="<?=$client->id;?>">
+    </div>
     <div class="form-row">
         <div class="form-group col-4">
             <label for="name">Nome</label>
-            <input type="text" name="name" class="form-control" id="name">
+            <input type="text" name="name" class="form-control" id="name" value="<?=$client->name;?>">
         </div>
         <div class="form-group col-4">
             <label for="email">Email</label>
-            <input type="email" name="email" class="form-control" id="email">
+            <input type="email" name="email" class="form-control" id="email" value="<?=$client->email;?>">
         </div>
         <div class="form-group col-4">
             <label for="phone">Telefone do cliente</label>
-            <input type="text" name="phone" class="form-control" id="phone">
+            <input type="text" name="phone" class="form-control" id="phone" value="<?=$client->phone;?>">
         </div>
     </div>
     <div class="form-row justify-content-center">

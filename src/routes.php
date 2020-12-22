@@ -26,7 +26,7 @@ $router->get('/configuration', 'HomeController@UserLogged');
 // Atualizando Usuario Logado CONFIGURAÇÂO
 $router->post('/configuration/{id}', 'HomeController@UploadUserLogged');
 
-
+/////////////////////////Router DE FUNCIONARIOS/////////////////////////
 // parte de funcionarios"
 $router->get('/employee', 'FunController@employees');
 //deletando funcionario
@@ -43,18 +43,38 @@ $router->get('/employee/{id}/viewfun', 'FunController@fun');
 // edição de funcioarios
 $router->post('/employee/{id}/viewfun', 'FunController@updateFun');
 
+
+/////////////////////////Router DE AGENDAMENTO/////////////////////////
 //calendario 
 $router->get('/calendar', 'CalendarController@index');
-
+// Visualizando agendamentos cadastrados
+$router->get('/viewschedule', 'CalendarController@view');
+// vendo agendamento(seeSchedule)
+$router->get('/schedule/{id}/editevent', 'CalendarController@seeSchedule');
+// atualizando agendamento(seeSchedule)
+$router->post('/schedule/{id}/editevent', 'CalendarController@updateSchedule');
+// deletando agendamentoschedule
+$router->get('/schedule/{id}', 'CalendarController@delSchedule');
 
 //formulario de evento para calendario  @recebendo
-$router->get('/uploadEvent', 'CalendarController@toreceive');
+$router->get('/uploadevent', 'CalendarController@toreceive');
 // Enviando evento para o calendario @enviando
-$router->post('/uploadEvent', 'CalendarController@upload');
+$router->post('/uploadevent', 'CalendarController@upload');
 
 
+/////////////////////////Router DE CLIENTE/////////////////////////
 //Ver os clientes 
 $router->get('/viewclient', 'ClientController@viewClient');
 
 // Adicionando cliente
-$router->get('/uploadClient', 'ClientController@toreceive');
+$router->get('/uploadclient', 'ClientController@toreceive');
+//recebendo envio de cliente
+$router->post('/uploadclient', 'ClientController@addClient');
+
+//Abrindo cliente para edição cliente
+$router->get('/viewclient/{id}/editclient', 'ClientController@viewSingleClient');
+// Editando Cliente
+$router->post('/viewclient/{id}/editclient', 'ClientController@updateClient');
+
+//Excluindo cliente
+$router->get('/viewclient/{id}/delclient', 'ClientController@delClient');
