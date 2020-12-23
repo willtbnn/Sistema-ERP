@@ -3,7 +3,7 @@
         <img src="<?=$base;?>/assets/images/media/avatars/<?=$data->avatar;?>" alt="" class="rounded-circle  bg-light border border-white img-fluid" style="max-width: 2rem;">
       </td>
       <td><?=$data->name;?></td>
-      <td><?=$data->work;?></td>
+      <td><?=$data->funcao;?></td>
       <td><?=$data->email;?></td>
       <td>
         <a href="<?=$base;?>/configuration/<?=$data->id;?>/userUpdate" class="mx-5">

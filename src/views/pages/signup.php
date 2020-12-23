@@ -28,17 +28,30 @@
                         <label for="birthdate">Data de nascimento</label>
                         <input type="text" class="form-control" name="birthdate" id="birthdate" placeholder="Data de nascimento">
                     </div>
-                </div>                
-                    <div class="form-group">
+                </div>
+                <div class="form-row text-center">              
+                    <div class="form-group col-4">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" name="email" id="email" aria-describedby=" " placeholder="Digite o email">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-4">
+                        <label for="funcao">Cargo do usuario</label>
+                        <select id="funcao" class="form-control" name="funcao">
+                            <option selected>...</option>
+                            <option>Coordenador</option>
+                            <option>Gerente</option>
+                            <option>Funcionario</option>
+                        </select>
+                    </div>
+                
+                    <div class="form-group col-4">
                         <label for="senha">Senha</label>
                         <input type="password" class="form-control" name="password" id="senha" placeholder="senha">
                     </div>
+                </div>  
                     <div class="text-center mt-4">
                         <input type="submit" class="btn btn-primary" value="Fazer cadastro"/>
+                        <a href="<?=$base;?>" class="btn btn-secondary">Cancelar</a>
                     </div>
 
                 </form>

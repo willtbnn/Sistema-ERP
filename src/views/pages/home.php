@@ -24,7 +24,7 @@
             <?php echo $flash;?>
         </div>
     <?php endif;?>
-    <?php if(in_array('SECRET', $loggedUser->funcao)):?>
+    <?php if($loggedUser->funcao == 'Desenvolvedor' || $loggedUser->funcao == 'Coordenador'):?>
         <main class="mt-5">
             <section class="row justify-content-center">
                 <div class="text-center col-12">

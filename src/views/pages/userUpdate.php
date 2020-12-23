@@ -27,15 +27,25 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?php echo $users->email;?>">
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label for="birthdate">Data de nascimento</label>
                         <input type="text" class="form-control" name="birthdate" id="birthdate" placeholder="Data de nascimento" value="<?php echo date('d/m/Y', strtotime($users->birthdate));?>">
                     </div>
+                    <div class="form-group col-md-4">
+                        <label for="funcao">Cargo do usuario</label>
+                        <select id="funcao" class="form-control" name="funcao">
+                            <option selected><?php echo $users->funcao;?></option>
+                            <option>Coordenador</option>
+                            <option>Gerente</option>
+                            <option>Funcionario</option>
+                        </select>
+                    </div>
                 </div>
+                
                 <div class="form-row">              
                     <div class="form-group col-md-6">
                         <label for="senha">Senha</label>

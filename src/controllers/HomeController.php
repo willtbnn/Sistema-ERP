@@ -4,6 +4,7 @@ namespace src\controllers;
 use \core\Controller;
 use \src\handlers\UserHandler;
 
+
 class HomeController extends Controller {
         
     private $loggedUser;
@@ -40,7 +41,7 @@ class HomeController extends Controller {
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $password = filter_input(INPUT_POST, 'password'); 
         $birthdate = filter_input(INPUT_POST, 'birthdate');
-
+        $funcao = filter_input(INPUT_POST, 'funcao');
         if($name && $email && $password && $birthdate){
             $birthdate = explode('/', $birthdate);
             if(count($birthdate) != 3){
@@ -75,7 +76,7 @@ class HomeController extends Controller {
             }
             // Verificando se e-mail existe 
             if(UserHandler::emailExists($email) === false){
-                UserHandler::addUser($avatar, $name, $email, $password, $birthdate);
+                UserHandler::addUser($avatar, $name, $email, $password, $birthdate, $funcao);
                 $_SESSION['flash'] = 'Usuario cadastrado com sucesso';
                 $this->redirect('/cadastro');
             }else{
@@ -107,7 +108,7 @@ class HomeController extends Controller {
     public function UserLogged(){
         if(!empty($this->loggedUser->id) && isset($this->loggedUser->id)){
             //verificando permissao do usuario logado a entra na página
-            if(UserHandler::temPermissao('MASTER', $this->loggedUser->funcao) == true){
+            if(UserHandler::temPermissao($this->loggedUser->funcao) == true){
                 $this->render('/configuration', [
                     'loggedUser' => $this->loggedUser,
                 ]);
@@ -135,6 +136,8 @@ class HomeController extends Controller {
         $newPassword = filter_input(INPUT_POST, 'password');
         $newPasswordConf = filter_input(INPUT_POST, 'password-conf');
         $birthdate = filter_input(INPUT_POST, 'birthdate');
+        $funcao = filter_input(INPUT_POST, 'funcao');
+        
         // echo $this->loggedUser->avatar;exit;
         // print_r($_FILES['avatar']);exit;
         if(!empty($birthdate)){
@@ -162,15 +165,24 @@ class HomeController extends Controller {
                 // aqui estamos pegando a imagem e difinindo o tamanho e o destino 
                 $avatarName = UserHandler::cutImage($newAvatar, 200, 200, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\avatars');
                 $avatar = $avatarName; 
-                
-                //PRODUÇÃO
-                // $avatarName = UserHandler::cutImage($newAvatar, 200, 200, '/home/u445206020/domains/goldbanksbr.com.br/public_html/works/public/assets/images/media/avatars');
-                // $avatar = $avatarName; 
-                //PRODUÇÃO
             }
             UserHandler::updateAvatar($avatar, $id);
         }
-        // Verificando se e-mail existe 
+        if(!empty($name)) {
+            UserHandler::updateName($name, $id);
+        }
+        if(!empty($funcao)) {
+            UserHandler::updateFuncao($funcao, $id);
+        }
+        if(!empty($newPassword) && !empty($newPasswordConf)) {
+            if($newPassword !== $newPasswordConf) {
+                $_SESSION['flash'] = 'Senhas não conferem!';
+                $this->redirect('/');
+            }
+            $hash = password_hash($newPassword, PASSWORD_DEFAULT);
+            UserHandler::updatePassword($hash, $id);
+        }
+         // Verificando se e-mail existe 
         if(!empty($email)){
             $email = filter_var($email, FILTER_VALIDATE_EMAIL);
             if($email === false) {
@@ -185,18 +197,6 @@ class HomeController extends Controller {
                 }
             }
             UserHandler::updateEmail($email, $id);
-        }
-        if(!empty($newPassword) && !empty($newPasswordConf)) {
-            if($newPassword !== $newPasswordConf) {
-                $_SESSION['flash'] = 'Senhas não conferem!';
-                $this->redirect('/');
-            }
-            $hash = password_hash($newPassword, PASSWORD_DEFAULT);
-            UserHandler::updatePassword($hash, $id);
-        }
-        if(!empty($name)) {
-            UserHandler::updateName($name, $id);
-            echo $users->name;exit;
         }
         $this->redirect('/');
     }

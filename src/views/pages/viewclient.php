@@ -29,7 +29,7 @@
         <?php foreach($client as $clientIten): ?>
         
         <!-- se o usuario loggado tiver adicionado aparece ou contem permissão MASTER-->
-        <?php if($loggedUser->id == $clientIten->id_user || in_array('MASTER', $loggedUser->funcao)):?>
+        <?php if($loggedUser->id == $clientIten->id_user || $loggedUser->funcao == 'Desenvolvedor' || $loggedUser->funcao == 'Coordenador'):?>
 
             <tr>
                 <th scope="row" class="text-center tira rounded-circle">

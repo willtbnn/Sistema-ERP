@@ -17,7 +17,7 @@ class UserHandler {
                 $loggedUser->name = $data['name'];
                 $loggedUser->password = $data['password'];
                 $loggedUser->birthdate = $data['birthdate'];
-                $loggedUser->funcao = explode(',', $data['funcao']);
+                $loggedUser->funcao = $data['funcao'];
                 $loggedUser->city = $data['city'];
                 $loggedUser->work = $data['work'];
                 $loggedUser->avatar = $data['avatar'];
@@ -49,8 +49,8 @@ class UserHandler {
         return $tempo;
     }
     //Verificando permisão do usuario logado
-    public static function temPermissao($p, $v){
-        if(in_array($p, $v)){
+    public static function temPermissao($p){
+        if($p == 'Desenvolvedor' || $p == 'Coordenador'){
             return true;
         }
         return false;
@@ -95,6 +95,7 @@ class UserHandler {
             $viewUsers->work = $listaUsers['work'];
             $viewUsers->avatar = $listaUsers['avatar'];
             $viewUsers->cover = $listaUsers['cover'];
+            $viewUsers->funcao = $listaUsers['funcao'];
 
             $users[] = $viewUsers;
         }
@@ -177,6 +178,12 @@ class UserHandler {
             ->where('id', $id)
         ->execute();
     }
+    public static function updateFuncao($funcao, $id){
+        User::update()
+            ->set('funcao', $funcao)
+            ->where('id', $id)
+        ->execute();
+    }
     public static function updateAvatar($avatar, $id){
         User::update()
                 ->set('avatar', $avatar)
@@ -184,7 +191,7 @@ class UserHandler {
         ->execute();
     }
     
-    public static function addUser($avatar, $name, $email, $password, $birthdate){
+    public static function addUser($avatar, $name, $email, $password, $birthdate,$funcao){
         $hash = password_hash($password, PASSWORD_DEFAULT);
         // $token = md5(time().rand(0,999).time());
         User::insert([
@@ -193,6 +200,7 @@ class UserHandler {
             'password' => $hash,
             'birthdate' => $birthdate,
             'avatar' => $avatar,
+            'funcao' => $funcao,
             'cover' => 'default.png'
             // 'token' => $token,
         ])->execute();

@@ -12,7 +12,7 @@
                             
                         </a>
                     </li>
-                    <?php if(in_array('MASTER', $loggedUser->funcao)):?>
+                    <?php if($loggedUser->funcao == 'Desenvolvedor' || $loggedUser->funcao == 'Coordenador'):?>
                     <li class="nav-item">
                         <a href="<?=$base;?>/cadastro" class="nav-link">
                             <i class="material-icons icon py-3">

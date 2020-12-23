@@ -27,5 +27,12 @@ class PermissionHandler {
         $users[] = $viewUsers;
     }
     return $users;
-}
+    }
+    //Verificando permisão do usuario logado
+    public static function temPermissao($p){
+        if($p == 'Desenvolvedor' || $p == 'Coordenador'){
+            return true;
+        }
+        return false;
+    }
 }

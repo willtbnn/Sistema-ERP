@@ -19,7 +19,9 @@
                 </svg>
             </button>
         
-            <a class="navbar-brand font-weight-bold" href="#">Woza</a>
+            <a href="#" class="navbar-brand">
+                <img src="<?=$base;?>/assets/images/woza-shout.png" width="40" height="30" alt="">
+            </a>
             <div>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
