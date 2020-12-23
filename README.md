@@ -1,8 +1,9 @@
 ## Woza em seu primeiro projeto 
 
 
->Um projeto que se comunica com página web da empresa, onde através dele pode está atualizando os funcionários da empresa e suas informação, para consulta do cliente e interessados. 
->Também integramos ao sistema funcionalidade de agendamento, onde o funcionário poderá esta colocando seus compromissos para controle e monitoramento de seus superiores tanto a rotina quanto a custo do compromisso agendando.
+>Um projeto que se comunica com página web da empresa, onde através dele pode está atualizando os funcionários da empresa e suas informação, para consulta do cliente e interessados.
+ 
+>>Também integramos ao sistema funcionalidade de agendamento, onde o funcionário poderá esta colocando seus compromissos para controle e monitoramento de seus superiores tanto a rotina quanto a custo do compromisso agendando.
 
 >>Outra funcionalidade integrada é a função de cadastra cliente e seus documentos de forma que os superiores possam esta vendo e coletando as informações, armazenando no banco de dados para consulta a qualquer hora. 
 
