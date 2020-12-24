@@ -5,8 +5,8 @@
     <div class="container mt-5 pt-5 text-light">
         <div class="row">
             <div class="col rounded bg-mattBlackRed text-center mx-5 py-5 levanta-conteudo">
-                <h1>Bem vindo !</h1>
-                <p>Vamos trabalha <?=$loggedUser->name;?></p> 
+                <h1>Bem vindo!</h1>
+                <p>Vamos trabalhar <?=$loggedUser->name;?></p> 
                 <p>
                 Hoje é dia
                     <?php

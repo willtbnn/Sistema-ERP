@@ -4,7 +4,7 @@ namespace src;
 class Config {
 
     //developer
-    const BASE_DIR = '/goldbanks/works/public';
+    const BASE_DIR = '/Sistema-ERP/public';
 
     const DB_DRIVER = 'mysql';
     const DB_HOST = 'localhost';
