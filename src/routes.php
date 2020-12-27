@@ -11,7 +11,7 @@ $router->post('/login', 'LoginController@signAction');
 //logout
 $router->get('/inlogout', 'LoginController@logout');
 
-// Esse vai ser feito pelo usuario do sistema
+// Esse vai ser feito pelo usuario do sistema Adicionando Usuario no sistema
 $router->get('/cadastro', 'HomeController@signup');
 // recebendo cadastro de usuario
 $router->post('/cadastro', 'HomeController@signupAction');

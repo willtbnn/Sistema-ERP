@@ -63,12 +63,13 @@ class ClientHandler {
         }
     }
     ////// REVER O RECEBIMENTO DE FOTOS !
-    public static function setClient($name,$email,$phone,$service,$id_user,$name_user,$rg, $cpf,$photo_client, $extract,$residence,$mirror){
+    public static function setClient($name,$email,$phone,$service,$comment,$id_user,$name_user,$rg, $cpf,$photo_client, $extract,$residence,$mirror,$zap){
         Client::insert([
             'name' => $name,
             'email' => $email,
             'phone' => $phone,
             'service' => $service,
+            'comment' =>$comment,
             'id_user' => $id_user,
             'name_user' => $name_user,
             'rg' => $rg,
@@ -76,8 +77,17 @@ class ClientHandler {
             'photo_client' => $photo_client,
             'extract' => $extract,
             'residence' => $residence,
-            'mirror' =>$mirror
+            'mirror' =>$mirror,
+            'printzap' => $zap
         ])->execute();
+    }
+    public function setTxt($file, $folder){
+        $hbrazil = date("H(i(s", mktime(gmdate("H")-3, gmdate("i"), gmdate("s"), gmdate("m"), gmdate("d"), gmdate("Y")));
+        $textName = $hbrazil.'.txt';
+    
+        move_uploaded_file($file['tmp_name'], $folder.'/'.$textName);
+        return $textName;
+        
     }
     public static function setImage($file, $w, $h, $folder){
         list($widthOrig, $heightOrig) = getimagesize($file['tmp_name']);
@@ -177,7 +187,7 @@ class ClientHandler {
             ->where('id', $id)
         ->execute();
     }
-    public function printZap($printzap, $id){
+    public function editZap($printzap, $id){
         Client::Update()
                 ->set('printzap', $printzap)
             ->where('id', $id)
@@ -186,6 +196,12 @@ class ClientHandler {
     public function editName($name, $id){
         Client::Update()
                 ->set('name', $name)
+            ->where('id', $id)
+        ->execute();
+    }
+    public function editComment($comment, $id){
+        Client::Update()
+                ->set('comment', $comment)
             ->where('id', $id)
         ->execute();
     }

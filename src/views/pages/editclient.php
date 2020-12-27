@@ -2,7 +2,9 @@
 [
     'loggedUser'=>$loggedUser,
     'client'=> $client,
-])
+]);
+
+
 ;?>
 
 <form  class="container mt-5" method="POST" action="<?=$base;?>/viewclient/<?=$client->id;?>/editclient" enctype="multipart/form-data">
@@ -35,6 +37,7 @@
     <div class="d-none">
     <input type="text" name="name" class="" id="name" value="<?=$client->id;?>">
     </div>
+    
     <div class="form-row">
         <div class="form-group col-4">
             <label for="name">Nome</label>
@@ -85,17 +88,54 @@
     </div>
     <div class="form-row">
         <div class="form-group col-4">
-            <label for="commint">Comentarios</label>
-            <textarea name="commint" class="form-control" id="commint" rows="3"></textarea>
+            <label for="comment">Comentarios</label>
+            <textarea name="comment" class="form-control" id="comment" rows="3"><?php echo $client->comment;?></textarea>
         </div>
         <div class="form-group col-md-4 text-center">
             <label for="printzap">Conversa Whatsapp.txt</label><br><i class="text-muted">(caso haja)</i>
-            <img src="<?=$base;?>/assets/images/media/anexos/zap/<?=$client->printzap;?>" alt="" width="200" heigth="250">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Abrir mensangem
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Conversa Whatsapp</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 text-end">
+                                <?php if(!empty($client->printzap)){
+                                $texto = file_get_contents('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/zap/'.$client->printzap);
+                                $vendo = explode(" - ", $texto);
+                                $ver = implode("<hr>", $vendo);
+                                echo $ver;}else{
+                                    echo "Não foi enviado nenhuma conversa";
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+                </div>
+            </div>
+            </div>
             <input type="file" name="printzap" id="printzap" class="form-control-file btn mt-2 btn-dark">
         </div>
     </div>
     <div class="text-center">
         <input type="submit" value="enviar" class="btn btn-success">
+        <a href="<?=$base;?>/viewclient" class="btn btn-secondary">Cancelar</a>
     </div>
 </form>
     <script type="text/javascript" src="<?=$base;?>/assets/js/jquery-3.4.js"></script>

@@ -105,6 +105,7 @@ class FunController extends Controller {
             FunHandler::editPhone($phone, $id);
         }
         if(isset($_FILES['cover']) && !empty($_FILES['cover']['tmp_name'])){
+            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/covers/'.$fun->cover);
             $newCover = $_FILES['cover'];
             /// DESENVOLVIMENTO 
             $coverName = FunHandler::cutImage($newCover, 960, 1280, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\covers');
@@ -212,6 +213,7 @@ class FunController extends Controller {
         $fun = FunHandler::getFun($id);
         $id = $fun->id;
         if(!empty($id)){
+            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/covers/'.$fun->cover);
             FunHandler::delete($id);
             $_SESSION['flash']= 'Deletado com sucesso!';
             $this->redirect('/employee');

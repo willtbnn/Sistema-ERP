@@ -88,22 +88,6 @@ class HomeController extends Controller {
             $this->redirect('/cadastro');
         }
     }
-    public function deleteUser($id){
-        // Esse render é para pegar id unico 
-        $users = UserHandler::getUserSingle($id);
-
-        $id = $users->id;
-       
-        if(!empty($id)){
-            UserHandler::delete($id);
-            $_SESSION['flash']= 'Deletado com sucesso!';
-            $this->redirect('/');
-        }else{
-            $_SESSION['flash'] = 'Erro ao deleta !';
-            $this->redirect('/');
-        }
-
-    }
     //configurando usuario logado
     public function UserLogged(){
         if(!empty($this->loggedUser->id) && isset($this->loggedUser->id)){
@@ -130,7 +114,6 @@ class HomeController extends Controller {
     }
     public function UpdateUser($id){
         $users = UserHandler::getUserSingle($id);
-        
         $name = filter_input(INPUT_POST, 'name',FILTER_SANITIZE_SPECIAL_CHARS);
         $email = filter_input(INPUT_POST, 'email');
         $newPassword = filter_input(INPUT_POST, 'password');
@@ -155,9 +138,10 @@ class HomeController extends Controller {
             }
             UserHandler::updateBirthdate($birthdate, $id);
         }
-        // ADICIONANDO AVATAR DO USUARIO
+        // Fazendo Update no Avatar
         if(isset($_FILES['avatar']) && !empty($_FILES['avatar']['tmp_name'])){
             $newAvatar = $_FILES['avatar'];
+            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/avatars/'.$users->avatar);
             /// DESENVOLVIMENTO 
             $files_permissions = array('image/jpeg','image/jpg','image/png');
             if(in_array($newAvatar['type'],$files_permissions)){
@@ -228,6 +212,7 @@ class HomeController extends Controller {
         // ADICIONANDO AVATAR DO USUARIO
         if(isset($_FILES['avatar']) && !empty($_FILES['avatar']['tmp_name'])){
             $newAvatar = $_FILES['avatar'];
+            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/avatars/'.$this->loggedUser->avatar);
             /// DESENVOLVIMENTO 
             $files_permissions = array('image/jpeg','image/jpg','image/png');
             if(in_array($newAvatar['type'],$files_permissions)){
@@ -271,5 +256,22 @@ class HomeController extends Controller {
             UserHandler::updateName($name, $id);
         }
         $this->redirect('/configuration');
+    }
+    public function deleteUser($id){
+        // Esse render é para pegar id unico 
+        $users = UserHandler::getUserSingle($id);
+
+        $id = $users->id;
+       
+        if(!empty($id)){
+            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/avatars/'.$users->avatar);
+            UserHandler::delete($id);
+            $_SESSION['flash']= 'Deletado com sucesso!';
+            $this->redirect('/');
+        }else{
+            $_SESSION['flash'] = 'Erro ao deleta !';
+            $this->redirect('/');
+        }
+
     }
 }

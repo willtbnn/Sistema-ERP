@@ -79,8 +79,8 @@
     </div>
     <div class="form-row">
         <div class="form-group col-4">
-            <label for="commint">Comentarios</label>
-            <textarea name="commint" class="form-control" id="commint" rows="3"></textarea>
+            <label for="comment">Comentarios</label>
+            <textarea name="comment" class="form-control" id="comment" rows="3"></textarea>
         </div>
         <div class="form-group col-md-4 text-center">
             <label for="printzap">Conversa Whatsapp.txt</label><br><i class="text-muted">(caso haja)</i>

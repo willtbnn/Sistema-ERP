@@ -36,6 +36,7 @@ class ClientController extends Controller {
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $phone = filter_input(INPUT_POST, 'phone');
         $service = filter_input(INPUT_POST, 'service');
+        $comment = filter_input(INPUT_POST, 'comment');
         if(isset($_FILES['rg']) && !empty($_FILES['rg']['tmp_name'])){
             $newRg = $_FILES['rg'];
             /// DESENVOLVIMENTO 
@@ -78,7 +79,15 @@ class ClientController extends Controller {
             
             $mirror = $mirrorName;
         }
-        ClientHandler::setClient($name,$email,$phone,$service,$id_user,$name_user,$rg, $cpf, $photo_client, $extract, $residence, $mirror);
+        if(isset($_FILES['printzap']) && !empty($_FILES['printzap']['tmp_name'])){
+            $newPrintzap = $_FILES['printzap'];
+            $permitidos = ['text/plain'];
+            if(in_array($_FILES['printzap']['type'], $permitidos)){
+            $zapName = ClientHandler::setTxt($newPrintzap, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\zap');
+            }
+            $zap = $zapName;
+        }
+        ClientHandler::setClient($name,$email,$phone,$service,$comment,$id_user,$name_user,$rg, $cpf, $photo_client, $extract, $residence, $mirror,$zap);
         $clients = ClientHandler::getAllClient();
         $this->redirect('/viewclient', [
             'loggedUser' => $this->loggedUser,
@@ -103,6 +112,7 @@ class ClientController extends Controller {
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $phone = filter_input(INPUT_POST, 'phone');
         $service = filter_input(INPUT_POST, 'service');
+        $comment = filter_input(INPUT_POST, 'comment');
         if(!empty($service)){
             ClientHandler::editService($service, $id);
         }
@@ -112,7 +122,11 @@ class ClientController extends Controller {
         if(!empty($email)){
             ClientHandler::editEmail($email, $id);
         }
+        if(!empty($comment)){
+            ClientHandler::editComment($comment, $id);
+        }
         if(isset($_FILES['rg']) && !empty($_FILES['rg']['tmp_name'])){
+            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/rg/'.$client->rg);
             $newRg = $_FILES['rg'];
             /// DESENVOLVIMENTO 
             $rgName = ClientHandler::setImage($newRg, 960, 1280, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\rg');
@@ -121,6 +135,7 @@ class ClientController extends Controller {
             ClientHandler::editRg($rg,$id);
         }
         if(isset($_FILES['cpf']) && !empty($_FILES['cpf']['tmp_name'])){
+            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/cpf/'.$client->cpf);
             $newCpf = $_FILES['cpf'];
             /// DESENVOLVIMENTO 
             $cpfName = ClientHandler::setImage($newCpf, 960, 1280, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\cpf');
@@ -129,6 +144,7 @@ class ClientController extends Controller {
             ClientHandler::editCpf($cpf, $id);
         }
         if(isset($_FILES['photo_client']) && !empty($_FILES['photo_client']['tmp_name'])){
+            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/self/'.$client->photo_client);
             $newPhoto_client = $_FILES['photo_client'];
             /// DESENVOLVIMENTO 
             $photo_clientName = ClientHandler::setImage($newPhoto_client, 960, 1280, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\self');
@@ -137,6 +153,7 @@ class ClientController extends Controller {
             ClientHandler::editSelf($photo_client, $id);
         }
         if(isset($_FILES['extract']) && !empty($_FILES['extract']['tmp_name'])){
+            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/extrato/'.$client->extract);
             $newExtract = $_FILES['extract'];
             /// DESENVOLVIMENTO 
             $extractName = ClientHandler::setImage($newExtract, 960, 1280, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\extrato');
@@ -145,6 +162,7 @@ class ClientController extends Controller {
             ClientHandler::editExtract($extract, $id);
         }
         if(isset($_FILES['residence']) && !empty($_FILES['residence']['tmp_name'])){
+            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/comprovante/'.$client->residence);
             $newResidence = $_FILES['residence'];
             /// DESENVOLVIMENTO 
             $residenceName = ClientHandler::setImage($newResidence, 960, 1280, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\comprovante');
@@ -153,12 +171,23 @@ class ClientController extends Controller {
             ClientHandler::editResidence($residence, $id);
         }
         if(isset($_FILES['mirror']) && !empty($_FILES['mirror']['tmp_name'])){
+            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/espelho/'.$client->mirror);
             $newMirror = $_FILES['mirror'];
             /// DESENVOLVIMENTO 
             $mirrorName = ClientHandler::setImage($newMirror, 960, 1280, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\espelho');
             
             $mirror = $mirrorName;
             ClientHandler::editMirror($mirror, $id);
+        }
+        if(isset($_FILES['printzap']) && !empty($_FILES['printzap']['tmp_name'])){
+            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/zap/'.$client->printzap);
+            $newPrintzap = $_FILES['printzap'];
+            $permitidos = ['text/plain'];
+            if(in_array($_FILES['printzap']['type'], $permitidos)){
+            $zapName = ClientHandler::setTxt($newPrintzap, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\zap');
+            }
+            $zap = $zapName;
+            ClientHandler::editZap($zap, $id);
         }
         if(!empty($name)){
             ClientHandler::editName($name,$id);
