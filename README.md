@@ -26,14 +26,23 @@ Depois é só aguardar.
 >>namespace src;
 >>class Config {
 >>    //developer
+>>
 >>    const BASE_DIR = '/Sistema-ERP/public';
+>>
 >>    const DB_DRIVER = 'mysql';
+>>
 >>    const DB_HOST = 'localhost'; ->>nome host do seu banco de dados
+>>
 >>    const DB_DATABASE = 'works'; ->>banco de dados (baixe no link acima)
+>>
 >>    CONST DB_USER = 'root'; ->>usuario do banco de dados
+>>
 >>    const DB_PASS = ''; ->>senha so seu banco de dados
+>>
 >>    const ERROR_CONTROLLER = 'ErrorController';
+>>
 >>    const DEFAULT_ACTION = 'index';
+>>
 >>}
 
 ## Configuração
