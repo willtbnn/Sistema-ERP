@@ -21,6 +21,21 @@ Depois é só aguardar.
 
 [Banco de dados aqui!!!](https://mega.nz/file/dJpRHK6Q#B-9055xTuFoLcn1MGtjIz9ipTWQSkv-47UU6i40-l8A)
 
+>cria config.php com as seguintes configurações 
+>><?php
+>>namespace src;
+>>class Config {
+>>    //developer
+>>    const BASE_DIR = '/Sistema-ERP/public';
+>>    const DB_DRIVER = 'mysql';
+>>    const DB_HOST = 'localhost'; ->>nome host do seu banco de dados
+>>    const DB_DATABASE = 'works'; ->>banco de dados (baixe no link acima)
+>>    CONST DB_USER = 'root'; ->>usuario do banco de dados
+>>    const DB_PASS = ''; ->>senha so seu banco de dados
+>>    const ERROR_CONTROLLER = 'ErrorController';
+>>    const DEFAULT_ACTION = 'index';
+>>}
+
 ## Configuração
 Todos os arquivos de **configuração** e aplicação estão dentro da pasta *src*.
 
