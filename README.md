@@ -9,11 +9,6 @@
 
 >Estamos trabalhando em novas funcionalidades que atenda a demanda.
 
-Este projeto esta baseado em experiência de varios aprendizados, colocaremos aqui tudo o póssivel em prativa de php, javascript, bootstrap e possivelmente ajax e json. 
-
-No inicio só estou utilizando uma biblioteca que é IMask e icones em formato svg.
-Comecei o uso de Sass(usand scout app) mais minha maquina deu ruim, então parei e continuei usando Css normal.
-
 ## Instalação
 Você pode clonar este repositório OU baixar o .zip
 
