@@ -29,11 +29,13 @@ As configurações de Banco de Dados e URL estão no arquivo *src/Config.php*
 É importante configurar corretamente a constante *BASE_DIR*:
 > const BASE_DIR = '/**PastaDoProjeto**/public';
 
-Outro importancia e o index.php da '/**PastaDoProjeto**/';<br>
-Aqui estamos temos que cria um header para  '/**PastaDoProjeto**/public';<br>
+Outro importancia e o index.php da '/**PastaDoProjeto**/';<br><br>
+Aqui estamos temos que cria um header para  **'/PastaDoProjeto/public'**;<br><br>
 >Exemplo:
+>
 >**header('Location: http://localhost/Sistema-ERP/public/login');**
 >
+
 ## Uso
 Você deve acessar a pasta *public* do projeto.
 
