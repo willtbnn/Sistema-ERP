@@ -40,42 +40,42 @@ class ClientController extends Controller {
         if(isset($_FILES['rg']) && !empty($_FILES['rg']['tmp_name'])){
             $newRg = $_FILES['rg'];
             /// DESENVOLVIMENTO 
-            $rgName = ClientHandler::setImage($newRg, 960, 1280, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\rg');
+            $rgName = ClientHandler::ImageNoCut($newRg,'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\rg');
             
             $rg = $rgName;
         }
         if(isset($_FILES['cpf']) && !empty($_FILES['cpf']['tmp_name'])){
             $newCpf = $_FILES['cpf'];
             /// DESENVOLVIMENTO 
-            $cpfName = ClientHandler::setImage($newCpf, 960, 1280, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\cpf');
+            $cpfName = ClientHandler::ImageNoCut($newCpf,'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\cpf');
             
             $cpf = $cpfName;
         }
         if(isset($_FILES['photo_client']) && !empty($_FILES['photo_client']['tmp_name'])){
             $newPhoto_client = $_FILES['photo_client'];
             /// DESENVOLVIMENTO 
-            $photo_clientName = ClientHandler::setImage($newPhoto_client, 960, 1280, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\self');
+            $photo_clientName = ClientHandler::ImageNoCut($newPhoto_client,'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\self');
             
             $photo_client = $photo_clientName;
         }
         if(isset($_FILES['extract']) && !empty($_FILES['extract']['tmp_name'])){
             $newExtract = $_FILES['extract'];
             /// DESENVOLVIMENTO 
-            $extractName = ClientHandler::setImage($newExtract, 960, 1280, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\extrato');
+            $extractName = ClientHandler::ImageNoCut($newExtract,'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\extrato');
             
             $extract = $extractName;
         }
         if(isset($_FILES['residence']) && !empty($_FILES['residence']['tmp_name'])){
             $newResidence = $_FILES['residence'];
             /// DESENVOLVIMENTO 
-            $residenceName = ClientHandler::setImage($newResidence, 960, 1280, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\comprovante');
+            $residenceName = ClientHandler::ImageNoCut($newResidence,'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\comprovante');
             
             $residence = $residenceName;
         }
         if(isset($_FILES['mirror']) && !empty($_FILES['mirror']['tmp_name'])){
             $newMirror = $_FILES['mirror'];
             /// DESENVOLVIMENTO 
-            $mirrorName = ClientHandler::setImage($newMirror, 960, 1280, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\espelho');
+            $mirrorName = ClientHandler::ImageNoCut($newMirror,'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\espelho');
             
             $mirror = $mirrorName;
         }
@@ -83,7 +83,7 @@ class ClientController extends Controller {
             $newPrintzap = $_FILES['printzap'];
             $permitidos = ['text/plain'];
             if(in_array($_FILES['printzap']['type'], $permitidos)){
-            $zapName = ClientHandler::setTxt($newPrintzap, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\zap');
+            $zapName = ClientHandler::setTxt($newPrintzap,'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\zap');
             }
             $zap = $zapName;
         }
@@ -129,7 +129,7 @@ class ClientController extends Controller {
             unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/rg/'.$client->rg);
             $newRg = $_FILES['rg'];
             /// DESENVOLVIMENTO 
-            $rgName = ClientHandler::setImage($newRg, 960, 1280, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\rg');
+            $rgName = ClientHandler::ImageNoCut($newRg, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\rg');
             
             $rg = $rgName;
             ClientHandler::editRg($rg,$id);
@@ -138,7 +138,7 @@ class ClientController extends Controller {
             unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/cpf/'.$client->cpf);
             $newCpf = $_FILES['cpf'];
             /// DESENVOLVIMENTO 
-            $cpfName = ClientHandler::setImage($newCpf, 960, 1280, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\cpf');
+            $cpfName = ClientHandler::ImageNoCut($newCpf, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\cpf');
             
             $cpf = $cpfName;
             ClientHandler::editCpf($cpf, $id);
@@ -147,7 +147,7 @@ class ClientController extends Controller {
             unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/self/'.$client->photo_client);
             $newPhoto_client = $_FILES['photo_client'];
             /// DESENVOLVIMENTO 
-            $photo_clientName = ClientHandler::setImage($newPhoto_client, 960, 1280, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\self');
+            $photo_clientName = ClientHandler::ImageNoCut($newPhoto_client, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\self');
             
             $photo_client = $photo_clientName;
             ClientHandler::editSelf($photo_client, $id);
@@ -156,7 +156,7 @@ class ClientController extends Controller {
             unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/extrato/'.$client->extract);
             $newExtract = $_FILES['extract'];
             /// DESENVOLVIMENTO 
-            $extractName = ClientHandler::setImage($newExtract, 960, 1280, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\extrato');
+            $extractName = ClientHandler::ImageNoCut($newExtract, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\extrato');
             
             $extract = $extractName;
             ClientHandler::editExtract($extract, $id);
@@ -165,7 +165,7 @@ class ClientController extends Controller {
             unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/comprovante/'.$client->residence);
             $newResidence = $_FILES['residence'];
             /// DESENVOLVIMENTO 
-            $residenceName = ClientHandler::setImage($newResidence, 960, 1280, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\comprovante');
+            $residenceName = ClientHandler::ImageNoCut($newResidence, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\comprovante');
             
             $residence = $residenceName;
             ClientHandler::editResidence($residence, $id);
@@ -174,7 +174,7 @@ class ClientController extends Controller {
             unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/espelho/'.$client->mirror);
             $newMirror = $_FILES['mirror'];
             /// DESENVOLVIMENTO 
-            $mirrorName = ClientHandler::setImage($newMirror, 960, 1280, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\espelho');
+            $mirrorName = ClientHandler::ImageNoCut($newMirror, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\espelho');
             
             $mirror = $mirrorName;
             ClientHandler::editMirror($mirror, $id);

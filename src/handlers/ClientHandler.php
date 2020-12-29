@@ -89,6 +89,20 @@ class ClientHandler {
         return $textName;
         
     }
+    public static function ImageNoCut($file, $folder){
+        switch($file['type']){
+            case 'image/jpg':
+            case 'image/jpeg':
+                $image = imagecreatefromjpeg($file['tmp_name']);
+            break;
+            case 'image/png':
+                $image = imagecreatefrompng($file['tmp_name']);
+            break;
+        }
+        $fileName = md5(time().rand(0,9999)).'.jpg';
+        move_uploaded_file($file['tmp_name'], $folder.'/'.$fileName);
+        return $fileName;
+    }
     public static function setImage($file, $w, $h, $folder){
         list($widthOrig, $heightOrig) = getimagesize($file['tmp_name']);
         $ratio = $widthOrig / $heightOrig;

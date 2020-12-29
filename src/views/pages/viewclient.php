@@ -33,7 +33,7 @@
 
             <tr>
                 <th scope="row" class="text-center tira rounded-circle">
-                    <img src="<?=$base;?>/assets/images/media/anexos/self<?=$clientIten->photo_client;?>" alt="" class="rounded-circle bg-light border border-white img-fluid" style="max-width: 1.5rem;">
+                    <img src="<?=$base;?>/assets/images/media/anexos/self/<?=$clientIten->photo_client;?>" alt="" class="rounded-circle bg-light border border-white img-fluid" style="max-width: 1.5rem;">
                 </th>
                 <td><?=$clientIten->name;?></td>
                 <td><?=$clientIten->service;?></td>
