@@ -19,13 +19,33 @@ Vá até a pasta do projeto, pelo *prompt/terminal* e execute:
 
 Depois é só aguardar.
 
-[Banco de dados aqui!!!](https://mega.nz/file/dJpRHK6Q#B-9055xTuFoLcn1MGtjIz9ipTWQSkv-47UU6i40-l8A)
+[Banco de dados aqui!!!](https://mega.nz/file/dJpRHK6Q#B-9055xTuFoLcn1MGtjIz9ipTWQSkv-47UU6i40-l8A)<br>
 
+>Para instalar primeiro passo é cria o banco de dados com o nome works;
+>Em seguida importa as tabelas banco de dados baixado em cima.
+<br>
 ## Configuração
 Todos os arquivos de **configuração** e aplicação estão dentro da pasta *src*.
 
-As configurações de Banco de Dados e URL estão no arquivo *src/Config.php*
+As configurações de Banco de Dados e URL terão que ser criada  no arquivo *src/Config.php*
+>Com as seguintes linhas de código
+<?php<br>
+namespace src;<br>
 
+class Config {<br>
+
+    //developer<br>
+    const BASE_DIR = '/Sistema-ERP/public/';// url base do sistema <br>
+
+    const DB_DRIVER = 'mysql';<br>
+    const DB_HOST = 'localhost'; //local do banco de dados <br>
+    const DB_DATABASE = 'works'; //nome do banco de dados<br>
+    CONST DB_USER = 'root';// nome de login no banco de dados<br> 
+    const DB_PASS = '';// senha de login no banco de dados <br>
+
+    const ERROR_CONTROLLER = 'ErrorController';<br>
+    const DEFAULT_ACTION = 'index';<br>
+}<br>
 É importante configurar corretamente a constante *BASE_DIR*:
 > const BASE_DIR = '/**PastaDoProjeto**/public';
 

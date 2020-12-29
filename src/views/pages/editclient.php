@@ -58,7 +58,7 @@
             <div class="card">
                 <div class="card-body">
                     <img src="<?=$base;?>/assets/images/media/anexos/rg/<?=$client->rg;?>" alt="" width="200" heigth="250">
-                    <?php if(empty($client->cpf)):?>
+                    <?php if(empty($client->rg)):?>
                         <div class="alert alert-warning" role="alert">
                         Não enviada
                         </div>

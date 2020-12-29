@@ -32,15 +32,18 @@
     <div class="form-row">
         <div class="form-group col-4">
             <label for="name">Nome</label>
-            <input type="text" name="name" class="form-control" id="name">
+            <input type="text" name="name" class="form-control" required id="name">
+            <p class="text-muted">*Campo obrigatório</p>
         </div>
         <div class="form-group col-4">
             <label for="email">Email</label>
-            <input type="email" name="email" class="form-control" id="email">
+            <input type="email" name="email" class="form-control" required id="email">
+            <p class="text-muted">*Campo obrigatório</p>
         </div>
         <div class="form-group col-4">
             <label for="phone">Telefone do cliente</label>
-            <input type="text" name="phone" class="form-control" id="phone">
+            <input type="text" name="phone" class="form-control" required id="phone">
+            <p class="text-muted">*Campo obrigatório</p>
         </div>
     </div>
     <div class="form-row justify-content-center">
@@ -81,9 +84,11 @@
             <input type="file" name="printzap" id="printzap" class="form-control-file btn mt-2 btn-dark">
         </div>
     </div>
-    <div class="text-center">
-        <input type="submit" value="enviar" class="btn btn-success">
+    <div class="text-center my-5">
+        <input type="submit" value="enviar" class="btn btn-success mr-5">
+        <a href="<?=$base;?>/viewclient" class="btn btn-secondary">Cancelar</a>
     </div>
+    <p class="text-muted">* Todos os campos são essenciais, mas há opção de incrementa depois!</p>
 </form>
     <script type="text/javascript" src="<?=$base;?>/assets/js/jquery-3.4.js"></script>
     <script type="text/javascript" src="<?=$base;?>/assets/js/bootstrap.js"></script>

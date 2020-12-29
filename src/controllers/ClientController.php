@@ -89,7 +89,9 @@ class ClientController extends Controller {
         }
         ClientHandler::setClient($name,$email,$phone,$service,$comment,$id_user,$name_user,$rg, $cpf, $photo_client, $extract, $residence, $mirror,$zap);
         $clients = ClientHandler::getAllClient();
+        $_SESSION['flash'] = 'Cliente adicionado com sucesso';
         $this->redirect('/viewclient', [
+            'flash' => $flash,
             'loggedUser' => $this->loggedUser,
             'client' => $clients
         ]);
@@ -106,6 +108,11 @@ class ClientController extends Controller {
             ]);
     }
     public function updateClient($id){
+        $flash  =  $_SESSION['flash'] ;
+        if(!empty($_SESSION['flash'])){
+            $flash = $_SESSION['flash'];
+            $_SESSION['flash'] = '';
+        }
         $client = ClientHandler::getClient($id);
         $id = $client->id;
         $name = filter_input(INPUT_POST, 'name');
@@ -160,6 +167,7 @@ class ClientController extends Controller {
             
             $extract = $extractName;
             ClientHandler::editExtract($extract, $id);
+            $_SESSION['flash'] = 'Extrato atualizado com sucesso';
         }
         if(isset($_FILES['residence']) && !empty($_FILES['residence']['tmp_name'])){
             unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/comprovante/'.$client->residence);
@@ -171,7 +179,7 @@ class ClientController extends Controller {
             ClientHandler::editResidence($residence, $id);
         }
         if(isset($_FILES['mirror']) && !empty($_FILES['mirror']['tmp_name'])){
-            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/espelho/'.$client->mirror);
+            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/zap/'.$client->mirror);
             $newMirror = $_FILES['mirror'];
             /// DESENVOLVIMENTO 
             $mirrorName = ClientHandler::ImageNoCut($newMirror, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\espelho');
@@ -188,27 +196,35 @@ class ClientController extends Controller {
             }
             $zap = $zapName;
             ClientHandler::editZap($zap, $id);
+            $_SESSION['flash'] = 'Conversa zap atualizada com sucesso';
         }
         if(!empty($name)){
             ClientHandler::editName($name,$id);
             $_SESSION['flash'] = 'Nome do cliente atualizado com sucesso';
         $this->redirect('/viewclient', [
             'loggedUser' => $this->loggedUser,
-            'client' => $clients        
+            'client' => $clients,     
         ]);
         }
         $_SESSION['flash'] = 'Cliente atualizado com sucesso';
         $this->redirect('/viewclient', [
             'loggedUser' => $this->loggedUser,
-            'client' => $clients        
+            'client' => $clients,      
         ]);
     }
     public function delClient($id){
         $client = ClientHandler::getClient($id);
         $id = $client->id;
         if(!empty($id)){
+            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/rg/'.$client->rg);
+            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/cpf/'.$client->cpf);
+            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/self/'.$client->photo_client);
+            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/extrato/'.$client->extract);
+            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/comprovante/'.$client->residence);
+            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/zap/'.$client->mirror);
+            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/zap/'.$client->printzap);
             ClientHandler::delete($id);
-            $_SESSION['flash']= 'Deletado com sucesso!';
+            $_SESSION['flash'] = 'Deletado com sucesso!';
             $this->redirect('/viewclient');
         }else{
             $_SESSION['flash'] = 'Erro ao deleta !';
