@@ -17,11 +17,17 @@ class HomeController extends Controller {
     }
 
     public function index() {
+        $flash  ='';
+        if(!empty($_SESSION['flash'])){
+            $flash = $_SESSION['flash'];
+            $_SESSION['flash'] = '';
+        }
         $users = UserHandler::getUsers();
         
         $this->render('home', [
             'loggedUser' => $this->loggedUser,
             'users' => $users,
+            'flash' => $flash
             ]);
     }
     public function signup() {

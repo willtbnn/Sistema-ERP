@@ -32,6 +32,11 @@ class CalendarController extends Controller {
         ]);
     }
     public function seeSchedule($id){
+        $flash  ='';
+        if(!empty($_SESSION['flash'])){
+            $flash = $_SESSION['flash'];
+            $_SESSION['flash'] = '';
+        }
         // $id = $this->loggedUser->id;
         $events = EventHandler::getEventsingle($id);
         
@@ -103,8 +108,14 @@ class CalendarController extends Controller {
         ]);
     }
     public function toreceive($id){
+        $flash  ='';
+        if(!empty($_SESSION['flash'])){
+            $flash = $_SESSION['flash'];
+            $_SESSION['flash'] = '';
+        }
         $this->render('uploadevent', [
             'loggedUser' => $this->loggedUser,
+            'flash' => $flash
         ]);
     }
     public function upload($id_user){
@@ -154,7 +165,7 @@ class CalendarController extends Controller {
         }
         $events = EventHandler::setEvents($name,$email,$title,$address,$start,$hour,$phone,$color,$cost,$id_user,$name_user);
         $_SESSION['flash'] = 'Agendamento cadastrado com sucesso';
-        $this->render('uploadevent', [
+        $this->redirect('/uploadevent', [
             'loggedUser' => $this->loggedUser,
             'flash' => $flash
         ]);

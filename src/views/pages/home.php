@@ -1,8 +1,8 @@
 <?=$render('header', [
-    'loggedUser'=>$loggedUser
+    'loggedUser'=>$loggedUser,
     ]);?>
 <div class="container-fluid p-0">
-    <div class="container mt-5 pt-5 text-light">
+    <div class="container mt-5 text-light">
         <div class="row">
             <div class="col rounded bg-mattBlackRed text-center mx-5 py-5 levanta-conteudo">
                 <h1>Bem vindo !</h1>
@@ -20,8 +20,11 @@
     <div class="content container">
     <!-- recebendo o flash e verificando se ele tem alguma msg para exibir -->
     <?php if(!empty($flash)): ?>
-        <div class="alert alert-danger" role="alert">
-            <?php echo $flash;?>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin:0;right:0;bottom:0;position:absolute;">
+            <strong><?php echo $flash;?></strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
     <?php endif;?>
     <?php if($loggedUser->funcao == 'Desenvolvedor' || $loggedUser->funcao == 'Coordenador'):?>

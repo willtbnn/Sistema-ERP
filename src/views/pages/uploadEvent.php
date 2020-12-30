@@ -1,6 +1,5 @@
 <?=$render('header',[
     'loggedUser' => $loggedUser,
-    'flash' => $flash
 ]);?>
 
 <form  class="container mt-5" method="POST" action="<?=$base;?>/uploadevent">
@@ -8,8 +7,11 @@
         <h1 class="h1">Adicionando agendamento ao seu calendario</h1>
         <!-- recebendo o flash e verificando se ele tem alguma msg para exibir -->
     <?php if(!empty($flash)): ?>
-        <div class="alert alert-danger" role="alert">
-            <?php echo $flash;?>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong><?php echo $flash;?></strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
     <?php endif;?>
     </div>
@@ -34,35 +36,35 @@
     <div class="form-row">
         <div class="form-group col-4">
             <label for="name">Nome do cliente</label>
-            <input type="text" name="name" class="form-control" id="name">
+            <input type="text" name="name" class="form-control" required id="name">
         </div>
         <div class="form-group col-4">
             <label for="start">Data Marcada</label>
-            <input type="date" name="start" class="form-control" id="start">
+            <input type="date" name="start" class="form-control" required id="start">
         </div>
         <div class="form-group col-4">
             <label for="hour">Hora Marcada</label>
-            <input type="time" name="hour" class="form-control" id="hour">
+            <input type="time" name="hour" class="form-control" required id="hour">
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-4">
             <label for="address">Endereço do cliente</label>
-            <input type="text" name="address" class="form-control" id="address" >
+            <input type="text" name="address" class="form-control" required id="address" >
         </div>
         <div class="form-group col-4">
             <label for="email">Email do cliente</label>
-            <input type="email" name="email" class="form-control" id="email" >
+            <input type="email" name="email" class="form-control" required id="email" >
         </div>
         <div class="form-group col-4">
             <label for="phone">Telefone do cliente</label>
-            <input type="text" name="phone" class="form-control" id="phone">
+            <input type="text" name="phone" class="form-control" required id="phone">
         </div>
     </div>
     <div class="form-row justify-content-center">
         <div class="form-group col-4 text-center">
             <label for="cost">Custo de locomoção</label>
-            <input type="text" name="cost" class="form-control" placeholder="digite só números" id="cost">
+            <input type="text" name="cost" class="form-control" placeholder="digite só números" required id="cost">
         </div>
     </div>
     <div class="text-center">

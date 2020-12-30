@@ -3,10 +3,7 @@
     'loggedUser'=>$loggedUser,
     'client'=> $client,
 ]);
-
-
 ;?>
-
 <form  class="container mt-5" method="POST" action="<?=$base;?>/viewclient/<?=$client->id;?>/editclient" enctype="multipart/form-data">
     <div class="text-center">
         <h1 class="h1">Utualizando dados do Cliente</h1>

@@ -1,12 +1,17 @@
 <?=$render('header',['loggedUser'=>$loggedUser,'client'=> $client]);?>
 <section class="container">
-    <div class="text-center">
+    <div class="text-center mt-5">
         <h1>Clientes cadastrados</h1>
-        <?php if(!empty($flash)): ?>
-            <div class="alert alert-danger" role="alert">
-                <?=$flash;?>
+        <div class="container p-5" style="margin:0;right:0;bottom:0;position:absolute;width:auto;heigth:auto;">
+            <?php if(!empty($flash)): ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong><?php echo $flash;?></strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         <?php endif;?>
+        </div>
     </div>
     <a class="btn bg-mattBlackRed rounded add" href="<?=$base;?>/uploadclient">
         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="icon bi bi-plus-circle" viewBox="0 0 16 16">
@@ -54,7 +59,9 @@
                     if(empty($clientIten->rg)){
                         array_push($array, $clientIten->rg);
                     }; $result = count($array);?>
-                    <span title="Informações que faltam" class="badge badge-danger" style="position:fixed;"><?=$result;?></span>
+                    <!-- Adicionando badge com condição de existencia -->
+                    <span title="Informações que faltam" class="badge badge-danger 
+                    <?php echo ($result > 0)?'':'d-none';?>" style="position:fixed;"><?=$result;?></span>
                 </th>
                 <td><?=$clientIten->name;?></td>
                 <td><?=$clientIten->service;?></td>

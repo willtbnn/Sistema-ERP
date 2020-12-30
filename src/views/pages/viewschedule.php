@@ -6,13 +6,16 @@
 ])
 ;?>
 <section class="container">
-    <div class="text-center">
+    <div class="text-center mt-5">
         <h1>Agendamentos</h1>
         <?php if(!empty($flash)): ?>
-            <div class="alert alert-danger" role="alert">
-                <?php echo $flash;?>
-            </div>
-        <?php endif;?>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong><?php echo $flash;?></strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif;?>
     </div>
     <a class="btn bg-mattBlackRed adds" href="<?=$base;?>/uploadevent">
     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="icon bi bi-plus-circle" viewBox="0 0 16 16">

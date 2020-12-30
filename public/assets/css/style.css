@@ -126,9 +126,10 @@ label{
 label.edit{
   -webkit-text-stroke: medium mediumblue !important;
 }
+
 a.add:hover::after{
   content: "  Adicionar cliente ";
-  transition: all 9s;
+  transition-duration: all 9s;
   color: #fff;
 }
 a.addf:hover::after{
@@ -138,7 +139,7 @@ a.addf:hover::after{
 }
 a.adds:hover::after{
   content: "  Adicionar Agendamento ";
-  transition: all 9s;
+  transition-duration: all 9s;
   color: #fff;
 }
 span.badge:hover{

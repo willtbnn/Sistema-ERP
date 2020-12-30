@@ -5,12 +5,15 @@
 ])
 ;?>
 <section class="container">
-    <div class="text-center">
+    <div class="text-center mt-5">
         <h1>Funcionarios cadastrados</h1>
         <?php if(!empty($flash)): ?>
-            <div class="alert alert-danger" role="alert">
-                <?php echo $flash;?>
-            </div>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin:0;right:0;bottom:0;position:absolute;">
+            <strong><?php echo $flash;?></strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         <?php endif;?>
     </div>
     <a class="btn bg-mattBlackRed addf" href="<?=$base;?>/addfun">
