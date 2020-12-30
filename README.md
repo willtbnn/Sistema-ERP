@@ -23,7 +23,7 @@ Depois é só aguardar.
 
 >Para instalar primeiro passo é cria o banco de dados com o nome works;
 >Em seguida importa as tabelas banco de dados baixado em cima.
-<br>
+
 ## Configuração
 Todos os arquivos de **configuração** e aplicação estão dentro da pasta *src*.
 
@@ -57,6 +57,8 @@ Aqui estamos temos que cria um header para  **'/PastaDoProjeto/public'**;
 >
 >**header('Location: http://localhost/Sistema-ERP/public/login');**
 >
+
+Estruruta de pasta para salva arquivos: ![alt text](http://woza.com.br/estruturadepasta-works.JPG "Estrutura de pasta")
 
 ## Uso
 Você deve acessar a pasta *public* do projeto.
