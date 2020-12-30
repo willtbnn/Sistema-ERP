@@ -1,4 +1,6 @@
-## Woza em seu primeiro projeto 
+# Woza projeto Works 
+
+[logo]: http://woza.com.br/assets/img/woza-shout.png "Woza Soluções Digitais"
 
 
 >Um projeto que se comunica com página web da empresa, onde através dele pode está atualizando os funcionários da empresa e suas informação, para consulta do cliente e interessados.
@@ -10,6 +12,7 @@
 >Estamos trabalhando em novas funcionalidades que atenda a demanda.
 
 ## Instalação
+
 Você pode clonar este repositório OU baixar o .zip
 
 Ao descompactar, é necessário rodar o **composer** pra instalar as dependências e gerar o *autoload*.
@@ -52,18 +55,29 @@ class Config {<br>
 > const BASE_DIR = '/**PastaDoProjeto**/public';
 
 Outro importancia e o index.php da '/**PastaDoProjeto**/';
-Aqui estamos temos que cria um header para  **'/PastaDoProjeto/public'**;
->Exemplo:
->
->**header('Location: http://localhost/Sistema-ERP/public/login');**
->
 
-Estruruta de pasta para salva arquivos: ![alt text](http://woza.com.br/estruturadepasta-works.JPG "Estrutura de pasta")
+Aqui tem que cria um header para  **'/PastaDoProjeto/public'**;
+
+>Exemplo:
+```php
+// aqui esta reledicionando para pasta public
+<?php
+header('Location: http://localhost/Sistema-ERP/public/login');?>
+```
+
+Estruruta de pasta para salva arquivos, da forma que esta o nosso **controller** atual: 
+
+![alt text](http://woza.com.br/estruturadepasta-works.JPG "Estrutura de pasta")
 
 ## Uso
 Você deve acessar a pasta *public* do projeto.
 
 O ideal é criar um ***alias*** específico no servidor que direcione diretamente para a pasta *public*.
+Como já mencionado!
+
+Temos login ficticio criado no banco de dados com a senha 123, ou você pode cria um direto no banco de dados para tera que colocar a senha no forma de hash md5. 
+
+Então o indicado é usar já existente, caso acha algum problema ou dúvida entre em contato.
 
 ## Modelo de MODEL
 ```php
