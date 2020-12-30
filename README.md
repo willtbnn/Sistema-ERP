@@ -29,8 +29,9 @@ Todos os arquivos de **configuração** e aplicação estão dentro da pasta *sr
 
 As configurações de Banco de Dados e URL terão que ser criada  no arquivo *src/Config.php*
 >Com as seguintes linhas de código
-<?php<br>
-namespace src;<br>
+```php
+<?php
+namespace src;
 
 class Config {<br>
 
@@ -45,12 +46,13 @@ class Config {<br>
 
     const ERROR_CONTROLLER = 'ErrorController';<br>
     const DEFAULT_ACTION = 'index';<br>
-}<br>
+}
+```
 É importante configurar corretamente a constante *BASE_DIR*:
 > const BASE_DIR = '/**PastaDoProjeto**/public';
 
-Outro importancia e o index.php da '/**PastaDoProjeto**/';<br><br>
-Aqui estamos temos que cria um header para  **'/PastaDoProjeto/public'**;<br><br>
+Outro importancia e o index.php da '/**PastaDoProjeto**/';
+Aqui estamos temos que cria um header para  **'/PastaDoProjeto/public'**;
 >Exemplo:
 >
 >**header('Location: http://localhost/Sistema-ERP/public/login');**
