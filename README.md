@@ -1,7 +1,7 @@
+
+![alt text](http://woza.com.br/oza.png "Woza Soluções Digitais")
+
 # Woza projeto Works 
-
-![alt text](http://woza.com.br/woza-shout.png "Woza Soluções Digitais")
-
 
 >Um projeto que se comunica com página web da empresa, onde através dele pode está atualizando os funcionários da empresa e suas informação, para consulta do cliente e interessados.
  
