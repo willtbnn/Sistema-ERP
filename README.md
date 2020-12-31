@@ -1,5 +1,5 @@
 
-![alt text](http://woza.com.br/oza.png "Woza Soluções Digitais")
+![alt text](http://woza.com.br/oza.png "Woza Soluçoes web")
 
 # Woza projeto Works 
 
