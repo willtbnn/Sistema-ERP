@@ -53,6 +53,12 @@ class CalendarController extends Controller {
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $title = filter_input(INPUT_POST, 'title'); 
         $address = filter_input(INPUT_POST, 'address');
+        $address_neigh = filter_input(INPUT_POST, 'address_neigh');
+        $address_city = filter_input(INPUT_POST, 'address_city');
+        $address_state = filter_input(INPUT_POST, 'address_state');
+        $address_zipcode = filter_input(INPUT_POST, 'address_zipcode');
+        $address_number = filter_input(INPUT_POST, 'address_number');
+        $address2 = filter_input(INPUT_POST, 'address2');
         $start = filter_input(INPUT_POST, 'start');
         $hour = filter_input(INPUT_POST, 'hour');
         $phone = filter_input(INPUT_POST, 'phone');
@@ -88,7 +94,7 @@ class CalendarController extends Controller {
                     break;
             }
             // echo $name;exit;
-            EventHandler::updateEvent($id, $name, $email, $title, $address, $start, $hour, $phone, $color,$cost);
+            EventHandler::updateEvent($id, $name, $email, $title, $address,$address_neigh, $address_city,$address_state,$address_zipcode,$address_number,$address2, $start, $hour, $phone, $color,$cost);
             $_SESSION['flash'] = 'Alterado com sucesso';
             $this->redirect('/viewschedule', [
                 'loggedUser' => $this->loggedUser,
@@ -130,6 +136,12 @@ class CalendarController extends Controller {
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $title = filter_input(INPUT_POST, 'title'); 
         $address = filter_input(INPUT_POST, 'address');
+        $address_neigh = filter_input(INPUT_POST, 'address_neigh');
+        $address_city = filter_input(INPUT_POST, 'address_city');
+        $address_state = filter_input(INPUT_POST, 'address_state');
+        $address_zipcode = filter_input(INPUT_POST, 'address_zipcode');
+        $address_number = filter_input(INPUT_POST, 'address_number');
+        $address2 = filter_input(INPUT_POST, 'address2');
         $start = filter_input(INPUT_POST, 'start');
         $hour = filter_input(INPUT_POST, 'hour');;
         $phone = filter_input(INPUT_POST, 'phone');
@@ -163,7 +175,7 @@ class CalendarController extends Controller {
                 $color = '#D2691E';
                 break;
         }
-        $events = EventHandler::setEvents($name,$email,$title,$address,$start,$hour,$phone,$color,$cost,$id_user,$name_user);
+        $events = EventHandler::setEvents($name,$email,$title,$address,$address_neigh, $address_city,$address_state,$address_zipcode,$address_number,$address2,$start,$hour,$phone,$color,$cost,$id_user,$name_user);
         $_SESSION['flash'] = 'Agendamento cadastrado com sucesso';
         $this->redirect('/uploadevent', [
             'loggedUser' => $this->loggedUser,

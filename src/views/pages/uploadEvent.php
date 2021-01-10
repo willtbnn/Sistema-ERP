@@ -4,7 +4,7 @@
 
 <form  class="container mt-5" method="POST" action="<?=$base;?>/uploadevent">
     <div class="text-center">
-        <h1 class="h1">Adicionando agendamento ao seu calendario</h1>
+        <h1 class="h1">Adicionando agendamento ao sistema </h1>
         <!-- recebendo o flash e verificando se ele tem alguma msg para exibir -->
     <?php if(!empty($flash)): ?>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -48,9 +48,35 @@
         </div>
     </div>
     <div class="form-row">
-        <div class="form-group col-4">
-            <label for="address">Endereço do cliente</label>
+        <div class="form-group col-2">
+            <label for="address_zipcode">Cep</label>
+            <input type="text" name="address_zipcode" class="form-control" required id="address_zipcode">
+        </div>
+        <div class="form-group col-3">
+            <label for="address">Rua</label>
             <input type="text" name="address" class="form-control" required id="address" >
+        </div>
+        <div class="form-group col-1">
+            <label for="address_number">Número</label>
+            <input type="text" name="address_number" class="form-control" required id="address_number" >
+        </div>
+        <div class="form-group col-2">
+            <label for="address_neigh">Bairro</label>
+            <input type="text" name="address_neigh" class="form-control" required id="address_neigh">
+        </div>
+        <div class="form-group col-2">
+            <label for="address_city">Cidade</label>
+            <input type="text" name="address_city" class="form-control" required id="address_city">
+        </div>
+        <div class="form-group col-1">
+            <label for="address_state">Estado</label>
+            <input type="text" name="address_state" class="form-control" required id="address_state">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-4">
+            <label for="address2">Complento</label>
+            <input type="text" name="address2" class="form-control" required id="address2">
         </div>
         <div class="form-group col-4">
             <label for="email">Email do cliente</label>
@@ -67,7 +93,7 @@
             <input type="text" name="cost" class="form-control" placeholder="digite só números" required id="cost">
         </div>
     </div>
-    <div class="text-center">
+    <div class="text-center mb-5">
         <input type="submit" value="enviar" class="btn btn-success">
     </div>
 </form>
@@ -75,6 +101,7 @@
     <script type="text/javascript" src="<?=$base;?>/assets/js/bootstrap.js"></script>
     <script type="text/javascript" src="<?=$base;?>/assets/js/jquery.slimscroll.min.js"></script>
     <script type="text/javascript" src="<?=$base;?>/assets/js/script.js"></script>
+    <script type="text/javascript" src="<?=$base;?>/assets/js/script_events_add.js"></script>
     <script src="https://unpkg.com/imask"></script>
     <script>
         IMask(document.getElementById('phone'),{mask:'0-0000-0000'});

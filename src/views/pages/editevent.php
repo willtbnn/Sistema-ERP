@@ -47,9 +47,35 @@
         </div>
     </div>
     <div class="form-row">
+        <div class="form-group col-2">
+            <label class="edit" for="address_zipcode">Cep</label>
+            <input type="text" name="address_zipcode" class="form-control" required id="address_zipcode" value="<?=$event->address_zipcode;?>">
+        </div>
+        <div class="form-group col-3">
+            <label class="edit" for="address">Rua</label>
+            <input type="text" name="address" class="form-control" required id="address" value="<?=$event->address;?>">
+        </div>
+        <div class="form-group col-1">
+            <label class="edit" for="address_number">Número</label>
+            <input type="text" name="address_number" class="form-control" required id="address_number" value="<?=$event->address_number;?>">
+        </div>
+        <div class="form-group col-2">
+            <label class="edit" for="address_neigh">Bairro</label>
+            <input type="text" name="address_neigh" class="form-control" required id="address_neigh" value="<?=$event->address_neigh;?>">
+        </div>
+        <div class="form-group col-2">
+            <label class="edit" for="address_city">Cidade</label>
+            <input type="text" name="address_city" class="form-control" required id="address_city" value="<?=$event->address_city;?>">
+        </div>
+        <div class="form-group col-1">
+            <label class="edit"  for="address_state">Estado</label>
+            <input type="text" name="address_state" class="form-control" required id="address_state" value="<?=$event->address_state;?>">
+        </div>
+    </div>
+    <div class="form-row">
         <div class="form-group col-4">
-            <label class="edit" for="address">Endereço do cliente</label>
-            <input type="text" name="address" class="form-control" id="address" value="<?=$event->address;?>"">
+            <label class="edit" for="address2">Complento</label>
+            <input type="text" name="address2" class="form-control" required id="address2" value="<?=$event->address2;?>">
         </div>
         <div class="form-group col-4">
             <label class="edit" for="email">Email do cliente</label>
@@ -66,14 +92,15 @@
             <input type="text" name="cost" class="form-control" placeholder="digite só números" id="cost" value="<?=$event->cost;?>">
         </div>
     </div>
-    <div class="text-center">
+    <div class="text-center mb-5">
         <input type="submit" value="editar" class="btn btn-primary">
     </div>
 </form>
-<script type="text/javascript" src="<?=$base;?>/assets/js/jquery-3.4.js"></script>
+    <script type="text/javascript" src="<?=$base;?>/assets/js/jquery-3.4.js"></script>
     <script type="text/javascript" src="<?=$base;?>/assets/js/bootstrap.js"></script>
     <script type="text/javascript" src="<?=$base;?>/assets/js/jquery.slimscroll.min.js"></script>
     <script type="text/javascript" src="<?=$base;?>/assets/js/script.js"></script>
+    <script type="text/javascript" src="<?=$base;?>/assets/js/script_events_add.js"></script>
     <script src="https://unpkg.com/imask"></script>
     <script>
         IMask(document.getElementById('phone'),{mask:'0-0000-0000'});

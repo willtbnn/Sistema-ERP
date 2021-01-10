@@ -60,6 +60,12 @@ class EventHandler {
             $eventSingle->name = $dadosEvent['name'];
             $eventSingle->email = $dadosEvent['email'];
             $eventSingle->address = $dadosEvent['address'];
+            $eventSingle->address_neigh = $dadosEvent['address_neigh'];
+            $eventSingle->address_city = $dadosEvent['address_city'];
+            $eventSingle->address_state = $dadosEvent['address_state'];
+            $eventSingle->address_zipcode = $dadosEvent['address_zipcode'];
+            $eventSingle->address_number = $dadosEvent['address_number'];
+            $eventSingle->address2 = $dadosEvent['address2'];
             $eventSingle->phone = $dadosEvent['phone'];
             $eventSingle->color = $dadosEvent['color'];
             $eventSingle->cost = $dadosEvent['cost'];
@@ -68,12 +74,18 @@ class EventHandler {
             return $eventSingle;
         }     
     }
-    public static function setEvents($name,$email,$title,$address,$start,$hour,$phone,$color,$cost,$id_user,$name_user){
+    public static function setEvents($name,$email,$title,$address,$address_neigh, $address_city,$address_state,$address_zipcode,$address_number,$address2,$start,$hour,$phone,$color,$cost,$id_user,$name_user){
         Event::insert([
             'name' => $name,
             'email' => $email,
             'title' => $title,
             'address' => $address,
+            'address_neigh' => $address_neigh,
+            'address_city' => $address_city,
+            'address_state' => $address_state,
+            'address_zipcode' => $address_zipcode,
+            'address_number' => $address_number,
+            'address2' => $address2,
             'start' => $start,
             'hour' => $hour,
             'phone' => $phone,
@@ -83,12 +95,18 @@ class EventHandler {
             'name_user' => $name_user
         ])->execute();
     }
-    public static function updateEvent($id,$name,$email,$title,$address,$start,$hour,$phone,$color,$cost){
+    public static function updateEvent($id,$name,$email,$title,$address,$address_neigh, $address_city,$address_state,$address_zipcode,$address_number,$address2,$start,$hour,$phone,$color,$cost){
         Event::Update()
             ->set('name', $name)
             ->set('email', $email)
             ->set('title', $title)
             ->set('address', $address)
+            ->set('address_neigh', $address_neigh)
+            ->set('address_city', $address_city)
+            ->set('address_state', $address_state)
+            ->set('address_zipcode', $address_zipcode)
+            ->set('address_number', $address_number)
+            ->set('address2', $address2)
             ->set('start', $start)
             ->set('hour', $hour)
             ->set('phone', $phone)
