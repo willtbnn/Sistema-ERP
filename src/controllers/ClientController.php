@@ -242,22 +242,27 @@ class ClientController extends Controller {
         ]);
     }
     public function delClient($id){
-        $client = ClientHandler::getClient($id);
-        $id = $client->id;
-        if(!empty($id)){
-            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/rg/'.$client->rg);
-            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/cpf/'.$client->cpf);
-            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/self/'.$client->photo_client);
-            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/extrato/'.$client->extract);
-            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/comprovante/'.$client->residence);
-            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/zap/'.$client->mirror);
-            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/zap/'.$client->printzap);
-            ClientHandler::delete($id);
-            $_SESSION['flash'] = 'Deletado com sucesso!';
-            $this->redirect('/viewclient');
-        }else{
-            $_SESSION['flash'] = 'Erro ao deleta !';
-            $this->redirect('/viewclient');
+        if(UserHandler::temPermissao($this->loggedUser->funcao) == true){
+            $client = ClientHandler::getClient($id);
+            $id = $client->id;
+            if(!empty($id)){
+                unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/rg/'.$client->rg);
+                unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/cpf/'.$client->cpf);
+                unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/self/'.$client->photo_client);
+                unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/extrato/'.$client->extract);
+                unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/comprovante/'.$client->residence);
+                unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/zap/'.$client->mirror);
+                unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/zap/'.$client->printzap);
+                ClientHandler::delete($id);
+                $_SESSION['flash'] = '<b class="text-primary">Deletado com sucesso!</b>';
+                $this->redirect('/viewclient');
+            }else{
+                $_SESSION['flash'] = '<b class="text-danger">Erro ao deleta !</b>';
+                $this->redirect('/viewclient');
+            }
+        } else{
+            $_SESSION['flash'] = '<b class="text-danger">Fale com seus superioreso motivo de excluir, somente eles podem apagar do banco de dados. </b>';
+                $this->redirect('/viewclient');
         }
     }
 }

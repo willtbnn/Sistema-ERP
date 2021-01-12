@@ -41,6 +41,10 @@ class HomeController extends Controller {
             'loggedUser' => $this->loggedUser,
         ]);
     }
+    
+    public function helps() {
+        $this->render('help', ['loggedUser' => $this->loggedUser]);
+    }
     /// adicioando Usuario
     public function signupAction(){
         $name = filter_input(INPUT_POST, 'name');

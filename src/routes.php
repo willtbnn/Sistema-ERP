@@ -24,7 +24,9 @@ $router->post('/configuration/{id}/userUpdate', 'HomeController@UpdateUser');
 //usuario logado configuração
 $router->get('/configuration', 'HomeController@UserLogged');
 // Atualizando Usuario Logado CONFIGURAÇÂO
-$router->post('/configuration/{id}', 'HomeController@UploadUserLogged');
+$router->get('/configuration/{id}', 'HomeController@UploadUserLogged');
+
+$router->get('/help', 'HomeController@helps');
 
 /////////////////////////Router DE FUNCIONARIOS/////////////////////////
 // parte de funcionarios"

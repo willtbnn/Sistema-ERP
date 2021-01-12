@@ -30,7 +30,7 @@ class PermissionHandler {
     }
     //Verificando permisão do usuario logado
     public static function temPermissao($p){
-        if($p == 'Desenvolvedor' || $p == 'Coordenador'){
+        if($p == 'Desenvolvedor' || $p == 'Coordenador' || $p == 'Gerente'){
             return true;
         }
         return false;

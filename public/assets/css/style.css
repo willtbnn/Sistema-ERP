@@ -145,3 +145,11 @@ a.adds:hover::after{
 span.badge:hover{
   cursor: pointer;
 }
+.version{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+.hover-pointer{
+  cursor: pointer;
+}

@@ -20,6 +20,12 @@ class EventHandler {
             $name = urldecode($eventsList['name']);
             $email = $eventsList['email'];
             $address = urldecode($eventsList['address']);
+            $address_neigh = urldecode($eventsList['address_neigh']);
+            $address_city = urldecode($eventsList['address_city']);
+            $address_state = urldecode($eventsList['address_state']);
+            $address_zipcode = urldecode($eventsList['address_zipcode']);
+            $address_number = urldecode($eventsList['address_number']);
+            $address2 = urldecode($eventsList['address2']);
             $phone = $eventsList['phone'];
             $cost = $eventsList['cost']; 
             $color = $eventsList['color'];
@@ -34,6 +40,12 @@ class EventHandler {
                 'name' => $name,
                 'email' => $email,
                 'address' => $address,
+                'address_neigh' => $address_neigh,
+                'address_city' => $address_city,
+                'address_state' => $address_state,
+                'address_zipcode' => $address_zipcode,
+                'address_number' => $address_number,
+                'address2' => $address2,
                 'phone' => $phone,
                 'cost' => $cost,
                 'color' => $color,

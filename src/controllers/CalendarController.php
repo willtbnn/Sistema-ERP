@@ -176,21 +176,26 @@ class CalendarController extends Controller {
                 break;
         }
         $events = EventHandler::setEvents($name,$email,$title,$address,$address_neigh, $address_city,$address_state,$address_zipcode,$address_number,$address2,$start,$hour,$phone,$color,$cost,$id_user,$name_user);
-        $_SESSION['flash'] = 'Agendamento cadastrado com sucesso';
+        $_SESSION['flash'] = '<b class="text-success">Agendamento cadastrado com sucesso</b>';
         $this->redirect('/uploadevent', [
             'loggedUser' => $this->loggedUser,
             'flash' => $flash
         ]);
     }
     public function delSchedule($id){
-        $event = EventHandler::getEventsingle($id);
-        $id = $event->id;
-        if(!empty($id)){
-            EventHandler::delete($id);
-            $_SESSION['flash']= 'Deletado com sucesso!';
-            $this->redirect('/viewschedule');
+        if(UserHandler::temPermissao($this->loggedUser->funcao) == true){
+            $event = EventHandler::getEventsingle($id);
+            $id = $event->id;
+            if(!empty($id)){
+                EventHandler::delete($id);
+                $_SESSION['flash']= '<b class="text-primary">Deletado com sucesso!</b>';
+                $this->redirect('/viewschedule');
+            }else{
+                $_SESSION['flash'] = '<b class="text-danger">Erro ao deleta !</b>';
+                $this->redirect('/viewschedule');
+            }
         }else{
-            $_SESSION['flash'] = 'Erro ao deleta !';
+            $_SESSION['flash']= '<b class="text-danger">Fale com seus superiores o motivo de excluir, somente eles podem apagar do banco de dados.</b>';
             $this->redirect('/viewschedule');
         }
     }

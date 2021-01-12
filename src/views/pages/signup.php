@@ -22,7 +22,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="name">Nome</label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="name">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="nome">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="birthdate">Data de nascimento</label>
@@ -32,7 +32,7 @@
                 <div class="form-row text-center">              
                     <div class="form-group col-4">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" name="email" id="email" aria-describedby=" " placeholder="Digite o email">
+                        <input type="email" class="form-control" name="email" id="email" aria-describedby=" " placeholder="Digite o email" required>
                     </div>
                     <div class="form-group col-4">
                         <label for="funcao">Cargo do usuario</label>
@@ -46,7 +46,7 @@
                 
                     <div class="form-group col-4">
                         <label for="senha">Senha</label>
-                        <input type="password" class="form-control" name="password" id="senha" placeholder="senha">
+                        <input type="password" class="form-control" name="password" id="senha" placeholder="senha" required>
                     </div>
                 </div>  
                     <div class="text-center mt-4">
