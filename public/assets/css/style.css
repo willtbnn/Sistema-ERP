@@ -112,6 +112,11 @@
   left: inherit !important;
   right: 0 !important;
 }
+@media (min-width: 768px){
+  .ml-home {
+      padding-left: 100px !important;
+  }
+}
 @media (min-width: 576px){
 .control-jumbotron{
     padding: 0rem 0rem !important;
@@ -152,4 +157,10 @@ span.badge:hover{
 }
 .hover-pointer{
   cursor: pointer;
+}
+#j_sucesso,#j_enviando,#j_error{
+  display: none;
+}
+#js_sucesso,#js_enviando,#js_error{
+  display: none;
 }

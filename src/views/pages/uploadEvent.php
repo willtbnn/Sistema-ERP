@@ -1,7 +1,6 @@
 <?=$render('header',[
     'loggedUser' => $loggedUser,
 ]);?>
-
 <form  class="container mt-5" method="POST" action="<?=$base;?>/uploadevent">
     <div class="text-center">
         <h1 class="h1">Adicionando agendamento ao sistema </h1>

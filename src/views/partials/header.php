@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php //habilitando o cors
+    header("Access-Control-Allow-Origin: *");
+?>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

@@ -3,6 +3,7 @@ namespace src\controllers;
 
 use \core\Controller;
 use \src\handlers\UserHandler;
+use \src\handlers\EventHandler;
 
 
 class HomeController extends Controller {
@@ -23,11 +24,12 @@ class HomeController extends Controller {
             $_SESSION['flash'] = '';
         }
         $users = UserHandler::getUsers();
-        
+        $events = EventHandler::getEvents();
         $this->render('home', [
             'loggedUser' => $this->loggedUser,
             'users' => $users,
-            'flash' => $flash
+            'flash' => $flash,
+            'events' => $events,
             ]);
     }
     public function signup() {

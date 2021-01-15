@@ -46,42 +46,43 @@ class ClientController extends Controller {
         if(isset($_FILES['rg']) && !empty($_FILES['rg']['tmp_name'])){
             $newRg = $_FILES['rg'];
             /// DESENVOLVIMENTO 
-            $rgName = ClientHandler::ImageNoCut($newRg,'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\rg');
+            
+            $rgName = ClientHandler::ImageNoCut($newRg,'C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/rg');
             
             $rg = $rgName;
         }
         if(isset($_FILES['cpf']) && !empty($_FILES['cpf']['tmp_name'])){
             $newCpf = $_FILES['cpf'];
             /// DESENVOLVIMENTO 
-            $cpfName = ClientHandler::ImageNoCut($newCpf,'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\cpf');
+            $cpfName = ClientHandler::ImageNoCut($newCpf,'C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/cpf');
             
             $cpf = $cpfName;
         }
         if(isset($_FILES['photo_client']) && !empty($_FILES['photo_client']['tmp_name'])){
             $newPhoto_client = $_FILES['photo_client'];
             /// DESENVOLVIMENTO 
-            $photo_clientName = ClientHandler::ImageNoCut($newPhoto_client,'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\self');
+            $photo_clientName = ClientHandler::ImageNoCut($newPhoto_client,'C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/self');
             
             $photo_client = $photo_clientName;
         }
         if(isset($_FILES['extract']) && !empty($_FILES['extract']['tmp_name'])){
             $newExtract = $_FILES['extract'];
             /// DESENVOLVIMENTO 
-            $extractName = ClientHandler::ImageNoCut($newExtract,'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\extrato');
+            $extractName = ClientHandler::ImageNoCut($newExtract,'C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/extrato');
             
             $extract = $extractName;
         }
         if(isset($_FILES['residence']) && !empty($_FILES['residence']['tmp_name'])){
             $newResidence = $_FILES['residence'];
             /// DESENVOLVIMENTO 
-            $residenceName = ClientHandler::ImageNoCut($newResidence,'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\comprovante');
+            $residenceName = ClientHandler::ImageNoCut($newResidence,'C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/comprovante');
             
             $residence = $residenceName;
         }
         if(isset($_FILES['mirror']) && !empty($_FILES['mirror']['tmp_name'])){
             $newMirror = $_FILES['mirror'];
             /// DESENVOLVIMENTO 
-            $mirrorName = ClientHandler::ImageNoCut($newMirror,'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\espelho');
+            $mirrorName = ClientHandler::ImageNoCut($newMirror,'C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/espelho');
             
             $mirror = $mirrorName;
         }
@@ -89,7 +90,7 @@ class ClientController extends Controller {
             $newPrintzap = $_FILES['printzap'];
             $permitidos = ['text/plain'];
             if(in_array($_FILES['printzap']['type'], $permitidos)){
-            $zapName = ClientHandler::setTxt($newPrintzap,'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\zap');
+            $zapName = ClientHandler::setTxt($newPrintzap,'C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/zap');
             }
             $zap = $zapName;
         }
@@ -148,7 +149,7 @@ class ClientController extends Controller {
             $newRg = $_FILES['rg'];
             }
             /// DESENVOLVIMENTO 
-            $rgName = ClientHandler::ImageNoCut($newRg, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\anexos\rg');
+            $rgName = ClientHandler::ImageNoCut($newRg, 'C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/rg');
             
             $rg = $rgName;
             ClientHandler::editRg($rg,$id);

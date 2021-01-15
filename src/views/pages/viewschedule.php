@@ -38,7 +38,7 @@
         <?php foreach($event as $eventIten): ?>
         
         <!-- se o usuario loggado tiver adicionado aparece ou contem permissão MASTER-->
-        <?php if($loggedUser->id == $eventIten['id_user'] || $loggedUser->funcao == 'Desenvolvedor' || $loggedUser->funcao == 'Coordenador'):?>
+        <?php if($loggedUser->id == $eventIten['id_user'] || $loggedUser->funcao == 'Desenvolvedor' || $loggedUser->funcao == 'Coordenador' || $loggedUser->funcao == 'Gerente'):?>
 
             <tr class="table table-hover">
                 <th scope="row" class="text-center tira rounded-circle">
