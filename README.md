@@ -9,6 +9,8 @@
 
 >>Outra funcionalidade integrada é a função de cadastra cliente e seus documentos de forma que os superiores possam esta vendo e coletando as informações, armazenando no banco de dados para consulta a qualquer hora. 
 
+>>Nova funcionalidade é a criação de roteiros para os consultores esta vendo e melhorando a sua dinâmica com o cliente, com intuito de início de abordagem melhor com o cliente. Roteiros será criado somente pelos gerentes e coordenadores da empresa. 
+
 >Estamos trabalhando em novas funcionalidades que atenda a demanda.
 
 ## Instalação
@@ -22,7 +24,7 @@ Vá até a pasta do projeto, pelo *prompt/terminal* e execute:
 
 Depois é só aguardar.
 
-[Banco de dados aqui!!!](https://mega.nz/file/dJpRHK6Q#B-9055xTuFoLcn1MGtjIz9ipTWQSkv-47UU6i40-l8A)<br>
+[Banco de dados aqui!!!](https://mega.nz/file/sVhy0QrS#p9WW1xU_jo-kNNjWe2w8aMaAjW6-_R2g0pEABRYmH68)<br>
 
 >Para instalar primeiro passo é cria o banco de dados com o nome works;
 >Em seguida importa as tabelas banco de dados baixado em cima.
@@ -60,14 +62,14 @@ Aqui tem que cria um header para  **'/PastaDoProjeto/public'**;
 
 >Exemplo:
 ```php
-// aqui esta reledicionando para pasta public
+// aqui esta redirecionando para pasta public
 <?php
 header('Location: http://localhost/Sistema-ERP/public/login');?>
 ```
 
 Estruruta de pasta para salva arquivos, da forma que esta o nosso **controller** atual: 
 
-![alt text](http://woza.com.br/estruturadepasta-works.JPG "Estrutura de pasta")
+![alt text](http://woza.com.br/estruturadepasta-works2.JPG "Estrutura de pasta")
 
 ## Uso
 Você deve acessar a pasta *public* do projeto.
