@@ -79,7 +79,7 @@ class FunHandler {
             ->where('id', $id)
         ->execute();
     }
-    public function editCover($cover, $id){
+    public static function editCover($cover, $id){
         Funcionario::Update()
                 ->set('cover',$cover)
             ->where('id', $id)
@@ -120,7 +120,7 @@ class FunHandler {
     }
 
     // tratando da media AQUI VAMOS CORTA A IMAGEM NO TAMANHO IDEAL
-    public function cutImage($file, $w, $h, $folder){
+    public static function cutImage($file, $w, $h, $folder){
         list($widthOrig, $heightOrig) = getimagesize($file['tmp_name']);
         $ratio = $widthOrig / $heightOrig;
         

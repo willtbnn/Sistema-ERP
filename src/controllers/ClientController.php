@@ -1,6 +1,7 @@
 <?php
 namespace src\controllers;
 
+use src\Config;
 use \core\Controller;
 use \src\handlers\UserHandler;
 use  \src\handlers\PermissionHandler;
@@ -8,6 +9,7 @@ use \src\handlers\ClientHandler;
 
 class ClientController extends Controller {
     private $loggedUser;
+    private $dir = Config::BASE_PAST;
     
     public function __construct(){
         $this->loggedUser = UserHandler::checkLogin();
@@ -36,6 +38,7 @@ class ClientController extends Controller {
         ]);
     }
     public function addClient(){
+        $flash  ='';
         $id_user = $this->loggedUser->id;
         $name_user = $this->loggedUser->name;
         $name = filter_input(INPUT_POST, 'name');
@@ -47,42 +50,42 @@ class ClientController extends Controller {
             $newRg = $_FILES['rg'];
             /// DESENVOLVIMENTO 
             
-            $rgName = ClientHandler::ImageNoCut($newRg,'C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/rg');
+            $rgName = ClientHandler::ImageNoCut($newRg, $this->dir.'/assets/images/media/anexos/rg');
             
             $rg = $rgName;
         }
         if(isset($_FILES['cpf']) && !empty($_FILES['cpf']['tmp_name'])){
             $newCpf = $_FILES['cpf'];
             /// DESENVOLVIMENTO 
-            $cpfName = ClientHandler::ImageNoCut($newCpf,'C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/cpf');
+            $cpfName = ClientHandler::ImageNoCut($newCpf, $this->dir.'/assets/images/media/anexos/cpf');
             
             $cpf = $cpfName;
         }
         if(isset($_FILES['photo_client']) && !empty($_FILES['photo_client']['tmp_name'])){
             $newPhoto_client = $_FILES['photo_client'];
             /// DESENVOLVIMENTO 
-            $photo_clientName = ClientHandler::ImageNoCut($newPhoto_client,'C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/self');
+            $photo_clientName = ClientHandler::ImageNoCut($newPhoto_client, $this->dir.'/assets/images/media/anexos/self');
             
             $photo_client = $photo_clientName;
         }
         if(isset($_FILES['extract']) && !empty($_FILES['extract']['tmp_name'])){
             $newExtract = $_FILES['extract'];
             /// DESENVOLVIMENTO 
-            $extractName = ClientHandler::ImageNoCut($newExtract,'C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/extrato');
+            $extractName = ClientHandler::ImageNoCut($newExtract, $this->dir.'/assets/images/media/anexos/extrato');
             
             $extract = $extractName;
         }
         if(isset($_FILES['residence']) && !empty($_FILES['residence']['tmp_name'])){
             $newResidence = $_FILES['residence'];
             /// DESENVOLVIMENTO 
-            $residenceName = ClientHandler::ImageNoCut($newResidence,'C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/comprovante');
+            $residenceName = ClientHandler::ImageNoCut($newResidence, $this->dir.'/assets/images/media/anexos/comprovante');
             
             $residence = $residenceName;
         }
         if(isset($_FILES['mirror']) && !empty($_FILES['mirror']['tmp_name'])){
             $newMirror = $_FILES['mirror'];
             /// DESENVOLVIMENTO 
-            $mirrorName = ClientHandler::ImageNoCut($newMirror,'C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/espelho');
+            $mirrorName = ClientHandler::ImageNoCut($newMirror, $this->dir.'/assets/images/media/anexos/espelho');
             
             $mirror = $mirrorName;
         }
@@ -90,7 +93,7 @@ class ClientController extends Controller {
             $newPrintzap = $_FILES['printzap'];
             $permitidos = ['text/plain'];
             if(in_array($_FILES['printzap']['type'], $permitidos)){
-            $zapName = ClientHandler::setTxt($newPrintzap,'C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/zap');
+            $zapName = ClientHandler::setTxt($newPrintzap, $this->dir.'/assets/images/media/anexos/zap');
             }
             $zap = $zapName;
         }
@@ -145,11 +148,11 @@ class ClientController extends Controller {
         }
         if(isset($_FILES['rg']) && !empty($_FILES['rg']['tmp_name'])){
             if(!empty($client->rg)){
-                unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/rg/'.$client->rg);
+                unlink( $this->dir.'/assets/images/media/anexos/rg/'.$client->rg);
             $newRg = $_FILES['rg'];
             }
             /// DESENVOLVIMENTO 
-            $rgName = ClientHandler::ImageNoCut($newRg, 'C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/rg');
+            $rgName = ClientHandler::ImageNoCut($newRg,  $this->dir.'/assets/images/media/anexos/rg');
             
             $rg = $rgName;
             ClientHandler::editRg($rg,$id);
@@ -157,7 +160,7 @@ class ClientController extends Controller {
         }
         if(isset($_FILES['cpf']) && !empty($_FILES['cpf']['tmp_name'])){
             if(!empty($client->cpf)){
-                unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/cpf/'.$client->cpf);
+                unlink( $this->dir.'/assets/images/media/anexos/cpf/'.$client->cpf);
             }
             $newCpf = $_FILES['cpf'];
             /// DESENVOLVIMENTO 
@@ -169,7 +172,7 @@ class ClientController extends Controller {
         }
         if(isset($_FILES['photo_client']) && !empty($_FILES['photo_client']['tmp_name'])){
             if(!empty($client->photo_client)){
-                unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/self/'.$client->photo_client);
+                unlink( $this->dir.'/assets/images/media/anexos/self/'.$client->photo_client);
             }
             $newPhoto_client = $_FILES['photo_client'];
             /// DESENVOLVIMENTO 
@@ -181,7 +184,7 @@ class ClientController extends Controller {
         }
         if(isset($_FILES['extract']) && !empty($_FILES['extract']['tmp_name'])){
             if(!empty($client->extract)){
-                unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/extrato/'.$client->extract);
+                unlink( $this->dir.'/assets/images/media/anexos/extrato/'.$client->extract);
             }
             $newExtract = $_FILES['extract'];
             /// DESENVOLVIMENTO 
@@ -193,7 +196,7 @@ class ClientController extends Controller {
         }
         if(isset($_FILES['residence']) && !empty($_FILES['residence']['tmp_name'])){
             if($client->residence){
-                unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/comprovante/'.$client->residence);
+                unlink( $this->dir.'/assets/images/media/anexos/comprovante/'.$client->residence);
             }
             $newResidence = $_FILES['residence'];
             /// DESENVOLVIMENTO 
@@ -205,7 +208,7 @@ class ClientController extends Controller {
         }
         if(isset($_FILES['mirror']) && !empty($_FILES['mirror']['tmp_name'])){
             if($client->mirror){
-                unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/zap/'.$client->mirror);
+                unlink( $this->dir.'/assets/images/media/anexos/zap/'.$client->mirror);
             }
             $newMirror = $_FILES['mirror'];
             /// DESENVOLVIMENTO 
@@ -217,7 +220,7 @@ class ClientController extends Controller {
         }
         if(isset($_FILES['printzap']) && !empty($_FILES['printzap']['tmp_name'])){
             if(!empty($client->printzap)){
-                unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/zap/'.$client->printzap);
+                unlink( $this->dir.'/assets/images/media/anexos/zap/'.$client->printzap);
             }
             $newPrintzap = $_FILES['printzap'];
             $permitidos = ['text/plain'];
@@ -234,12 +237,12 @@ class ClientController extends Controller {
             $_SESSION['flash'] = 'Nome do cliente atualizado com sucesso';
         $this->redirect('/viewclient', [
             'loggedUser' => $this->loggedUser,
-            'client' => $clients,     
+            'client' => $client,     
         ]);
         }
         $this->redirect('/viewclient', [
             'loggedUser' => $this->loggedUser,
-            'client' => $clients,     
+            'client' => $client,     
         ]);
     }
     public function delClient($id){
@@ -247,13 +250,13 @@ class ClientController extends Controller {
             $client = ClientHandler::getClient($id);
             $id = $client->id;
             if(!empty($id)){
-                unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/rg/'.$client->rg);
-                unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/cpf/'.$client->cpf);
-                unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/self/'.$client->photo_client);
-                unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/extrato/'.$client->extract);
-                unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/comprovante/'.$client->residence);
-                unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/zap/'.$client->mirror);
-                unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/anexos/zap/'.$client->printzap);
+                unlink( $this->dir.'/assets/images/media/anexos/rg/'.$client->rg);
+                unlink( $this->dir.'/assets/images/media/anexos/cpf/'.$client->cpf);
+                unlink( $this->dir.'/assets/images/media/anexos/self/'.$client->photo_client);
+                unlink( $this->dir.'/assets/images/media/anexos/extrato/'.$client->extract);
+                unlink( $this->dir.'/assets/images/media/anexos/comprovante/'.$client->residence);
+                unlink( $this->dir.'/assets/images/media/anexos/zap/'.$client->mirror);
+                unlink( $this->dir.'/assets/images/media/anexos/zap/'.$client->printzap);
                 ClientHandler::delete($id);
                 $_SESSION['flash'] = '<b class="text-primary">Deletado com sucesso!</b>';
                 $this->redirect('/viewclient');

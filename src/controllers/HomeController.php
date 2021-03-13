@@ -1,5 +1,6 @@
 <?php
 namespace src\controllers;
+use src\Config;
 
 use \core\Controller;
 use \src\handlers\UserHandler;
@@ -9,7 +10,7 @@ use \src\handlers\EventHandler;
 class HomeController extends Controller {
         
     private $loggedUser;
-    
+    private $dirPast = Config::BASE_PAST;
     public function __construct(){
         $this->loggedUser = UserHandler::checkLogin();
         if($this->loggedUser === false){
@@ -76,7 +77,7 @@ class HomeController extends Controller {
                 if(in_array($newAvatar['type'],$files_permissions)){
                     // executando a função (((AQUI REQUE ATENÇÂO PARA IMPLEMENTAÇÂO CORRETA))))
                     // aqui estamos pegando a imagem e difinindo o tamanho e o destino 
-                    $avatarName = UserHandler::cutImage($newAvatar, 200, 200, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\avatars');
+                    $avatarName = UserHandler::cutImage($newAvatar, 200, 200, $this->dirPast.'\assets\images\media\avatars');
                     $avatar = $avatarName; 
                     
                     //PRODUÇÃO
@@ -153,13 +154,13 @@ class HomeController extends Controller {
         // Fazendo Update no Avatar
         if(isset($_FILES['avatar']) && !empty($_FILES['avatar']['tmp_name'])){
             $newAvatar = $_FILES['avatar'];
-            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/avatars/'.$users->avatar);
+            unlink($this->dirPast.'/assets/images/media/avatars/'.$users->avatar);
             /// DESENVOLVIMENTO 
             $files_permissions = array('image/jpeg','image/jpg','image/png');
             if(in_array($newAvatar['type'],$files_permissions)){
                 // executando a função (((AQUI REQUE ATENÇÂO PARA IMPLEMENTAÇÂO CORRETA))))
                 // aqui estamos pegando a imagem e difinindo o tamanho e o destino 
-                $avatarName = UserHandler::cutImage($newAvatar, 200, 200, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\avatars');
+                $avatarName = UserHandler::cutImage($newAvatar, 200, 200, $this->dirPast.'\assets\images\media\avatars');
                 $avatar = $avatarName; 
             }
             UserHandler::updateAvatar($avatar, $id);
@@ -224,13 +225,13 @@ class HomeController extends Controller {
         // ADICIONANDO AVATAR DO USUARIO
         if(isset($_FILES['avatar']) && !empty($_FILES['avatar']['tmp_name'])){
             $newAvatar = $_FILES['avatar'];
-            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/avatars/'.$this->loggedUser->avatar);
+            unlink($this->dirPast.'/assets/images/media/avatars/'.$this->loggedUser->avatar);
             /// DESENVOLVIMENTO 
             $files_permissions = array('image/jpeg','image/jpg','image/png');
             if(in_array($newAvatar['type'],$files_permissions)){
                 // executando a função (((AQUI REQUE ATENÇÂO PARA IMPLEMENTAÇÂO CORRETA))))
                 // aqui estamos pegando a imagem e difinindo o tamanho e o destino 
-                $avatarName = UserHandler::cutImage($newAvatar, 200, 200, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\avatars');
+                $avatarName = UserHandler::cutImage($newAvatar, 200, 200, $this->dirPast.'\assets\images\media\avatars');
                 $avatar = $avatarName; 
                 
                 //PRODUÇÃO
@@ -276,7 +277,7 @@ class HomeController extends Controller {
         $id = $users->id;
        
         if(!empty($id)){
-            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/avatars/'.$users->avatar);
+            unlink($this->dirPast.'/assets/images/media/avatars/'.$users->avatar);
             UserHandler::delete($id);
             $_SESSION['flash']= 'Deletado com sucesso!';
             $this->redirect('/');

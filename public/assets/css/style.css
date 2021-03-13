@@ -164,3 +164,6 @@ span.badge:hover{
 #js_sucesso,#js_enviando,#js_error{
   display: none;
 }
+#js_enviandoUpload,#js_errorUpload,#js_sucessoUpload{
+  display: none;
+}

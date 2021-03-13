@@ -17,19 +17,24 @@ class Controller {
             $base .= ':'.$_SERVER['SERVER_PORT'];
         }
         $base .= Config::BASE_DIR;
-        
+
         return $base;
     }
+    private function getDir(){
+        $dir = Config::BASE_PAST;
 
+        return $dir;
+    }
     private function _render($folder, $viewName, $viewData = []) {
         if(file_exists('../src/views/'.$folder.'/'.$viewName.'.php')) {
             extract($viewData);
             $render = fn($vN, $vD = []) => $this->renderPartial($vN, $vD);
             $base = $this->getBaseUrl();
+            $dir = $this->getDir();
             require '../src/views/'.$folder.'/'.$viewName.'.php';
         }
     }
-
+    
     private function renderPartial($viewName, $viewData = []) {
         $this->_render('partials', $viewName, $viewData);
     }

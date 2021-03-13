@@ -41,16 +41,17 @@ namespace src;
 class Config {<br>
 
     //developer<br>
-    const BASE_DIR = '/Sistema-ERP/public/';// url base do sistema <br>
-
-    const DB_DRIVER = 'mysql';<br>
+    const BASE_DIR = '/Sistema-ERP/public';// url base do sistema <br>
+    const BASE_PAST = 'C:/xampp/htdocs/Sistema-ERP/public/'; //base do projeto 
+    
+    const DB_DRIVER = 'mysql';
     const DB_HOST = 'localhost'; //local do banco de dados <br>
     const DB_DATABASE = 'works'; //nome do banco de dados<br>
     CONST DB_USER = 'root';// nome de login no banco de dados<br> 
     const DB_PASS = '';// senha de login no banco de dados <br>
 
-    const ERROR_CONTROLLER = 'ErrorController';<br>
-    const DEFAULT_ACTION = 'index';<br>
+    const ERROR_CONTROLLER = 'ErrorController';
+    const DEFAULT_ACTION = 'index';
 }
 ```
 É importante configurar corretamente a constante *BASE_DIR*:

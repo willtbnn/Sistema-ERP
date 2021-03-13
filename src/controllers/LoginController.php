@@ -40,13 +40,13 @@ class LoginController extends Controller {
     
 
     //Nem  usando isso estou
-    public function pegaUsuarios(){
-        $usuario = [];
+    // public function pegaUsuarios(){
+    //     $usuario = [];
 
-        $usuario = UserHandler::UsuariosCa();
+    //     $usuario = UserHandler::UsuariosCa();
 
-        return $usuario;
-    }
+    //     return $usuario;
+    // }
     
     public function logout(){
         $_SESSION['token'] = '';

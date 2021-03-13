@@ -81,7 +81,7 @@ class ClientHandler {
             'printzap' => $zap
         ])->execute();
     }
-    public function setTxt($file, $folder){
+    public static function setTxt($file, $folder){
         $hbrazil = date("H(i(s", mktime(gmdate("H")-3, gmdate("i"), gmdate("s"), gmdate("m"), gmdate("d"), gmdate("Y")));
         $textName = $hbrazil.'.txt';
     
@@ -165,55 +165,55 @@ class ClientHandler {
                 ->where('id', $id)
             ->execute();
     }
-    public function editRg($rg, $id){
+    public static function editRg($rg, $id){
         Client::Update()
                 ->set('rg', $rg)
             ->where('id', $id)
         ->execute();
     }
-    public function editCpf($cpf, $id){
+    public static function editCpf($cpf, $id){
         Client::Update()
                 ->set('cpf', $cpf)
             ->where('id', $id)
         ->execute();
     }
-    public function editSelf($photo_client, $id){
+    public static function editSelf($photo_client, $id){
         Client::Update()
                 ->set('photo_client', $photo_client)
             ->where('id', $id)
         ->execute();
     }
-    public function editExtract($extract, $id){
+    public static function editExtract($extract, $id){
         Client::Update()
                 ->set('extract', $extract)
             ->where('id', $id)
         ->execute();
     }
-    public function editResidence($residence, $id){
+    public static function editResidence($residence, $id){
         Client::Update()
                 ->set('residence', $residence)
             ->where('id', $id)
         ->execute();
     }
-    public function editMirror($mirror, $id){
+    public static function editMirror($mirror, $id){
         Client::Update()
                 ->set('mirror', $mirror)
             ->where('id', $id)
         ->execute();
     }
-    public function editZap($printzap, $id){
+    public static function editZap($printzap, $id){
         Client::Update()
                 ->set('printzap', $printzap)
             ->where('id', $id)
         ->execute();
     }
-    public function editName($name, $id){
+    public static function editName($name, $id){
         Client::Update()
                 ->set('name', $name)
             ->where('id', $id)
         ->execute();
     }
-    public function editComment($comment, $id){
+    public static function editComment($comment, $id){
         Client::Update()
                 ->set('comment', $comment)
             ->where('id', $id)

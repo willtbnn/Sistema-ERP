@@ -64,12 +64,14 @@
                 </div>
                 <div class="modal-body">
                 <?php
-                    $path = "C:/xampp/htdocs/goldbanks/works/public/assets/images/media/scripts/";
+                    $path = $dir."assets/images/media/scripts/";
                     $diretorio = dir($path);
-
+                    if($diretorio->read() != '..'){
                     while($arquivo = $diretorio->read()){
+                        
                         echo "<a href='".$base.'/assets/images/media/scripts/'.$arquivo."' target='_blank'>".$arquivo."</a><br />";
                     }
+                }
                     $diretorio->close();
                 ?>
                 </div>
@@ -94,31 +96,31 @@
                     </div>
                     <div class="modal-body">
                     <!-- Messagens -->
-                        <div class="js_seletorScript alert alert-success" id="js_sucesso" role="alert" >
+                        <div class="js_seletorScriptUpload alert alert-success" id="js_sucessoUpload" role="alert" >
                             <h4 class="alert-heading">Enviado com sucesso</h4>
                         </div>
                         <!--Erro-->
-                        <div class="js_seletorScript alert alert-danger" id="js_error" role="alert">
+                        <div class="js_seletorScriptUpload alert alert-danger" id="js_errorUpload" role="alert">
                             Tente novamente, houve um erro!
                             Caso error persiste, ligue para nos.
                         </div>
                         <!--Enviando-->
                         <div class="d-flex justify-content-center" >
-                            <div class="js_seletorScript spinner-border" role="status" id="js_enviando">
+                            <div class="js_seletorScriptUpload spinner-border" role="status" id="js_enviandoUpload">
                                 <span class="sr-only">Loading...</span>
                             </div>
                         </div>
                     <!-- Messagens -->
                         <form id="jscontrol" method="POST" action="<?=$base;?>/assets/js/requisicao/requisicaopdf.php" enctype="multipart/form-data">
-                        <div class="form-group">
+                            <div class="form-group">
                                 <label for="name" class="col-form-label">Nome do arquivo: <i>*novo nome para o arquivo seja bem curto e especifico</i></label>
                                 <input type="text" class="form-control" id="name" name="name">
                             </div>
                             <div class="form-group">
                                 <label for="script" class="col-form-label">Selecione o roteiro: <i>*.pdf</i></label>
-                                <input type="file" class="form-control" id="script" name="script">
+                                <input type="file" class="form-control" id="file" name="file">
                             </div>
-                            <button type="submit" class="btn btn-success" >Enviar script</button>
+                            <button type="submit" class="btn btn-success Upload" >Enviar script</button>
                         </form>
                     </div>
                     <div class="modal-footer">

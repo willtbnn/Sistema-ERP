@@ -1,5 +1,6 @@
 <?php
 namespace src\controllers;
+use src\Config;
 
 use \core\Controller;
 use \src\handlers\UserHandler;
@@ -9,7 +10,7 @@ use \src\handlers\FunHandler;
 class FunController extends Controller {
     
     private $loggedUser;
-
+    private $dirPast = Config::BASE_PAST;
     public function __construct(){
         $this->loggedUser = UserHandler::checkLogin();
         if($this->loggedUser === false){
@@ -105,10 +106,11 @@ class FunController extends Controller {
             FunHandler::editPhone($phone, $id);
         }
         if(isset($_FILES['cover']) && !empty($_FILES['cover']['tmp_name'])){
-            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/covers/'.$fun->cover);
+            unlink($this->dirPast.'/assets/images/media/covers/'.$fun->cover);
             $newCover = $_FILES['cover'];
             /// DESENVOLVIMENTO 
-            $coverName = FunHandler::cutImage($newCover, 960, 1280, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\covers');
+            
+            $coverName = FunHandler::cutImage($newCover, 960, 1280, $this->dirPast.'\assets\images\media\covers');
             $cover = $coverName;
 
             FunHandler::editCover($cover, $id);
@@ -185,7 +187,7 @@ class FunController extends Controller {
                     // aqui estamos pegando a imagem e difinindo o tamanho e o destino 
 
                 /// DESENVOLVIMENTO 
-                $coverName = FunHandler::cutImage($newCover, 960, 1280, 'C:\xampp\htdocs\goldbanks\works\public\assets\images\media\covers');
+                $coverName = FunHandler::cutImage($newCover, 960, 1280, $this->dirPast.'\assets\images\media\covers');
                 // var_dump($coverName);exit;
                 $cover = $coverName;
                 // /// DESENVOLVIMENTO
@@ -213,7 +215,7 @@ class FunController extends Controller {
         $fun = FunHandler::getFun($id);
         $id = $fun->id;
         if(!empty($id)){
-            unlink('C:/xampp/htdocs/goldbanks/works/public/assets/images/media/covers/'.$fun->cover);
+            unlink($this->dirPast.'/assets/images/media/covers/'.$fun->cover);
             FunHandler::delete($id);
             $_SESSION['flash']= 'Deletado com sucesso!';
             $this->redirect('/employee');

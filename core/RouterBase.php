@@ -12,6 +12,7 @@ class RouterBase {
         // Define os itens padrão
         $controller = Config::ERROR_CONTROLLER;
         $action = Config::DEFAULT_ACTION;
+        $dirPast = Config::BASE_PAST;
         $args = [];
 
         if(isset($routes[$method])) {
@@ -52,6 +53,7 @@ class RouterBase {
         $definedController = new $controller();
 
         $definedController->$action($args);
+        return $dirPast;
     }
     
 }

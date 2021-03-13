@@ -9,16 +9,10 @@
     ;?>
 <div class="container-fluid">
     <div class="my-5">
-    <?php print_r($events);?>
+    
         <div class="row justify-content-center">
         <div class="col-md-4 col-sm-12 ml-md-5 pl-md-5">
             <h1 class="ml-auyto">Bem vindo !</h1>
-        </div>
-            <!-- <div class="col-md-1 col-sm-12 ml-auto border bg-light border-danger pt-2 mr-4 text-center rounded-lg">
-                <p class="border-bottom border-danger pb-4 h4 "> <?php echo $mes;?></p>
-                <p class=" pb-4 h4"><?php echo $data;?></p>
-            </div> -->
-        </div>
     </div>
     <div class="container-fluid ml-home">
         <div class="row ml-md-5 pl-md-5">

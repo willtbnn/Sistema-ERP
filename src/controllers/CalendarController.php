@@ -49,20 +49,20 @@ class CalendarController extends Controller {
     public function updateSchedule($id){
         $event = EventHandler::getEventsingle($id);
         $id = $event->id;
-        $name = filter_input(INPUT_POST, 'name');
+        $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRIPPED);
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-        $title = filter_input(INPUT_POST, 'title'); 
-        $address = filter_input(INPUT_POST, 'address');
-        $address_neigh = filter_input(INPUT_POST, 'address_neigh');
-        $address_city = filter_input(INPUT_POST, 'address_city');
-        $address_state = filter_input(INPUT_POST, 'address_state');
-        $address_zipcode = filter_input(INPUT_POST, 'address_zipcode');
-        $address_number = filter_input(INPUT_POST, 'address_number');
-        $address2 = filter_input(INPUT_POST, 'address2');
-        $start = filter_input(INPUT_POST, 'start');
-        $hour = filter_input(INPUT_POST, 'hour');
-        $phone = filter_input(INPUT_POST, 'phone');
-        $cost = filter_input(INPUT_POST, 'cost');
+        $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRIPPED); 
+        $address = filter_input(INPUT_POST, 'address', FILTER_SANITIZE_STRIPPED);
+        $address_neigh = filter_input(INPUT_POST, 'address_neigh', FILTER_SANITIZE_STRIPPED);
+        $address_city = filter_input(INPUT_POST, 'address_city', FILTER_SANITIZE_STRIPPED);
+        $address_state = filter_input(INPUT_POST, 'address_state', FILTER_SANITIZE_STRIPPED);
+        $address_zipcode = filter_input(INPUT_POST, 'address_zipcode', FILTER_SANITIZE_STRIPPED);
+        $address_number = filter_input(INPUT_POST, 'address_number', FILTER_SANITIZE_STRIPPED);
+        $address2 = filter_input(INPUT_POST, 'address2', FILTER_SANITIZE_STRIPPED);
+        $start = filter_input(INPUT_POST, 'start', FILTER_SANITIZE_STRIPPED);
+        $hour = filter_input(INPUT_POST, 'hour', FILTER_SANITIZE_STRIPPED);
+        $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRIPPED);
+        $cost = filter_input(INPUT_POST, 'cost', FILTER_SANITIZE_STRIPPED);
         if(!empty($name && $email && $title && $address && $start && $hour && $phone & $cost)){
             switch($title){
                 case 'cessão':
@@ -132,20 +132,20 @@ class CalendarController extends Controller {
         }
         $id_user = $this->loggedUser->id;
         $name_user = $this->loggedUser->name;
-        $name = filter_input(INPUT_POST, 'name');
+        $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRIPPED);
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-        $title = filter_input(INPUT_POST, 'title'); 
-        $address = filter_input(INPUT_POST, 'address');
-        $address_neigh = filter_input(INPUT_POST, 'address_neigh');
-        $address_city = filter_input(INPUT_POST, 'address_city');
-        $address_state = filter_input(INPUT_POST, 'address_state');
-        $address_zipcode = filter_input(INPUT_POST, 'address_zipcode');
-        $address_number = filter_input(INPUT_POST, 'address_number');
-        $address2 = filter_input(INPUT_POST, 'address2');
-        $start = filter_input(INPUT_POST, 'start');
-        $hour = filter_input(INPUT_POST, 'hour');;
-        $phone = filter_input(INPUT_POST, 'phone');
-        $cost = filter_input(INPUT_POST, 'cost');
+        $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRIPPED); 
+        $address = filter_input(INPUT_POST, 'address', FILTER_SANITIZE_STRIPPED);
+        $address_neigh = filter_input(INPUT_POST, 'address_neigh', FILTER_SANITIZE_STRIPPED);
+        $address_city = filter_input(INPUT_POST, 'address_city', FILTER_SANITIZE_STRIPPED);
+        $address_state = filter_input(INPUT_POST, 'address_state', FILTER_SANITIZE_STRIPPED);
+        $address_zipcode = filter_input(INPUT_POST, 'address_zipcode', FILTER_SANITIZE_STRIPPED);
+        $address_number = filter_input(INPUT_POST, 'address_number', FILTER_SANITIZE_STRIPPED);
+        $address2 = filter_input(INPUT_POST, 'address2', FILTER_SANITIZE_STRIPPED);
+        $start = filter_input(INPUT_POST, 'start', FILTER_SANITIZE_STRIPPED);
+        $hour = filter_input(INPUT_POST, 'hour', FILTER_SANITIZE_STRIPPED);;
+        $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRIPPED);
+        $cost = filter_input(INPUT_POST, 'cost', FILTER_SANITIZE_STRIPPED);
         switch($title){
             case 'cessão':
                 $color = '#1C1C1C';

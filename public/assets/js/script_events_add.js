@@ -2,7 +2,7 @@ $('input[name=address_zipcode').on('blur', function(){
     var cep =  $(this).val();
 
     $.ajax({
-        url:'http://api.postmon.com.br/v1/cep/'+cep,
+        url:'https://api.postmon.com.br/v1/cep/'+cep,
         type:'GET',
         dataType:'json',
         success:function(json){
