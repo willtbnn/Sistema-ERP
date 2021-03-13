@@ -5,6 +5,7 @@ use src\Config;
 use \core\Controller;
 use \src\handlers\UserHandler;
 use \src\handlers\EventHandler;
+use \src\handlers\ScriptHandler;
 
 
 class HomeController extends Controller {
@@ -33,8 +34,37 @@ class HomeController extends Controller {
             'events' => $events,
             ]);
     }
+    // Adicioando script
+    public function indexScriptAction(){
+        if(!empty($this->loggedUser->id && isset($this->loggedUser->id))){
+            $name = filter_input(INPUT_POST, 'name', FILTER_DEFAULT);
+            if($name){
+                if(isset($_FILES['file']) && !empty($_FILES['file']['tmp_name'])){
+                    $file = $_FILES['file'];
+                    $permitions = ['application/pdf'];
+                    if(in_array($file['type'], $permitions)){
+                        $newName = ScriptHandler::salveScript($name,$file, $this->dirPast.'/assets/images/media/scripts');
+
+                        $name = $newName;
+                        $_SESSION['flash'] = 'Arquivo PDf, enviado com sucesso!';
+                        $this->redirect('/');
+                    }else{
+                        $_SESSION['flash'] = 'Arquivo não permitido!';
+                        $this->redirect('/');
+                    }
+                }
+            }else{
+                $_SESSION['flash'] = 'Precisa preenche um nome para o PDF!';
+                $this->redirect('/'); 
+            }
+        }
+    }
+    // pega os script criados na pasta
+    public function uploadScript(){
+        $dados  = [];
+        
+    }
     public function signup() {
-        $flash  ='';
         if(!empty($_SESSION['flash'])){
             $flash = $_SESSION['flash'];
             $_SESSION['flash'] = '';

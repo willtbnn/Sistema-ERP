@@ -21,11 +21,6 @@
                     <?=$render('script',['loggedUser'=>$loggedUser,]);?>  
                 </div>
             </div>
-            <div class="col-md-5 col-sm-12 ml-md-2 card alert-dark mb-3">
-                <div class="card-body text-secondary">
-                    <?=$render('script',['loggedUser'=>$loggedUser,]);?>  
-                </div>
-            </div>
         </div>
     </div>
     <div class="content container">

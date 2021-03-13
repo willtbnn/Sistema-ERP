@@ -5,7 +5,8 @@ $router = new Router();
 
 $router->get('/', 'HomeController@index');
 $router->get('/login', 'LoginController@signin');
-
+// recebendo script
+$router->post('/', 'HomeController@indexScriptAction');
 
 $router->post('/login', 'LoginController@signAction');
 //logout
