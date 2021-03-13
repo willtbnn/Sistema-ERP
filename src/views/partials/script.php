@@ -66,12 +66,12 @@
                 <?php
                     $path = $dir."assets/images/media/scripts/";
                     $diretorio = dir($path);
-                    if($diretorio->read() != '..'){
-                    while($arquivo = $diretorio->read()){
-                        
-                        echo "<a href='".$base.'/assets/images/media/scripts/'.$arquivo."' target='_blank'>".$arquivo."</a><br />";
+                    if($diretorio->read() != '..' && $diretorio->read() != '.'){
+                        while($arquivo = $diretorio->read()){
+                            
+                            echo "<a href='".$base.'/assets/images/media/scripts/'.$arquivo."' target='_blank'>".$arquivo."</a><br />";
+                        }
                     }
-                }
                     $diretorio->close();
                 ?>
                 </div>
@@ -111,7 +111,7 @@
                             </div>
                         </div>
                     <!-- Messagens -->
-                        <form id="jscontrol" method="POST" action="<?=$base;?>/assets/js/requisicao/requisicaopdf.php" enctype="multipart/form-data">
+                        <form id="jscontrol" method="POST" action="<?=$base;?>/" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="name" class="col-form-label">Nome do arquivo: <i>*novo nome para o arquivo seja bem curto e especifico</i></label>
                                 <input type="text" class="form-control" id="name" name="name">
