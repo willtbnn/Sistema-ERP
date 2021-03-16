@@ -59,6 +59,29 @@ class HomeController extends Controller {
             }
         }
     }
+    //excluido script 
+    // public function delScriptAction($arquivo){
+    //     $arquivo = $_GET;
+    //     if(!empty($arquivo) && isset($arquivo)){
+    //         $dirRemove = $this->dirPast.'/assets/images/media/scripts';
+    //         $dirFiles = array_diff(scandir($dirRemove),['.', '..']);
+    //         $dirCount = count($dirFiles);
+    //         print_r($arquivo);exit;
+    //         if($dirCount >=1){
+    //             ScriptHandler::DelScript($arquivo, $dirRemove);
+    //             $_SESSION['flash'] = 'Arquivo Deletado!';
+    //             $this->redirect('/'); 
+    //         }else{
+    //             $_SESSION['flash'] = 'Nome pode ser deletado!';
+    //             $this->redirect('/'); 
+    //         }
+            
+    //     }else{
+    //         $_SESSION['flash'] = 'Arquivo não encontrado!';
+    //         $this->redirect('/');
+    //     }
+    //     $this->redirect('/');
+    // }
     // pega os script criados na pasta
     public function uploadScript(){
         $dados  = [];

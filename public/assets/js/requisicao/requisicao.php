@@ -3,17 +3,19 @@ $ReqPOST = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 $Json['error'] = true;
 
-$titulo = $ReqPOST["dados"][0]["value"];
+$title = $ReqPOST["dados"][0]["value"];
 $script = $ReqPOST["dados"][1]["value"];
 
-if(!empty($titulo) && isset($titulo)){
+if(!empty($title) && isset($title)){
     require_once '../../../../vendor/autoload.php';
+    $noSpace = str_replace("[^a-zA-Z0-9_]", "", strtr($title, "áàãâéêíóôõúüçÁÀÃÂÉÊÍÓÔÕÚÜÇ%& ", "aaaaeeiooouucAAAAEEIOOOUUC_-_"));
     $mpdf = new \Mpdf\Mpdf();
-    $nomeArquivo = 'C:/xampp/htdocs/Sistema-ERP/public/assets/images/media/scripts/'.$titulo.'.pdf';
-    $conteudo = '<h1>'.$titulo.'</h1><p>'.$script.'</p>';
+    $lineBreak = nl2br($script);
+    $nameFile = 'C:/xampp/htdocs/Sistema-ERP/public/assets/images/media/scripts/'.$noSpace.'.pdf';
+    $content = '<h1>'.$title.'</h1>'.$lineBreak;
 
-    $mpdf->WriteHTML($conteudo);
-    $mpdf->Output($nomeArquivo, 'F');
+    $mpdf->WriteHTML($content);
+    $mpdf->Output($nameFile, 'F');
 
     $Json['error'] = false;
 }

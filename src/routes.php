@@ -3,14 +3,13 @@ use core\Router;
 
 $router = new Router();
 
-$router->get('/', 'HomeController@index');
 $router->get('/login', 'LoginController@signin');
-// recebendo script
-$router->post('/', 'HomeController@indexScriptAction');
 
 $router->post('/login', 'LoginController@signAction');
 //logout
 $router->get('/inlogout', 'LoginController@logout');
+
+$router->get('/', 'HomeController@index');
 
 // Esse vai ser feito pelo usuario do sistema Adicionando Usuario no sistema
 $router->get('/cadastro', 'HomeController@signup');
@@ -26,6 +25,11 @@ $router->post('/configuration/{id}/userUpdate', 'HomeController@UpdateUser');
 $router->get('/configuration', 'HomeController@UserLogged');
 // Atualizando Usuario Logado CONFIGURAÇÂO
 $router->get('/configuration/{id}', 'HomeController@UploadUserLogged');
+
+//excluindo script
+$router->get('/{arquivo}', 'HomeController@delScriptAction');
+// recebendo script
+$router->post('/', 'HomeController@indexScriptAction');
 
 $router->get('/help', 'HomeController@helps');
 

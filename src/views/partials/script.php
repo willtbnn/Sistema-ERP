@@ -62,14 +62,19 @@
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body row justify-content-center">
                 <?php
                     $path = $dir."assets/images/media/scripts/";
                     $diretorio = dir($path);
                     if($diretorio->read() != '..' && $diretorio->read() != '.'){
                         while($arquivo = $diretorio->read()){
+                            $removeEx = substr($arquivo, 0, -4);
+                            echo "
+                            <a class='alert alert-info col-8 mx-2 nav-link' role='alert'
+                                 href='".$base.'/assets/images/media/scripts/'.$arquivo."' target='_blank'>".$arquivo."
+                            </a>    
+                            ";
                             
-                            echo "<a href='".$base.'/assets/images/media/scripts/'.$arquivo."' target='_blank'>".$arquivo."</a><br />";
                         }
                     }
                     $diretorio->close();
