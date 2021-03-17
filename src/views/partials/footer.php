@@ -1,4 +1,4 @@
-    <i class="version">v1.0.1</i>
+    <i class="version">v1.1.1</i>
     <script type="text/javascript" src="<?=$base;?>/assets/js/jquery-3.4.js"></script>
     <script type="text/javascript" src="<?=$base;?>/assets/js/bootstrap.js"></script>
     <script type="text/javascript" src="<?=$base;?>/assets/js/jquery.slimscroll.min.js"></script>

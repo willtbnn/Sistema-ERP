@@ -7,7 +7,6 @@ class UserHandler {
     public static function checkLogin(){
         if(!empty($_SESSION['token'])){
             $token = $_SESSION['token'];
-           
             $data = User::select()->where('token', $token)->one();
             if(count($data) > 0){
                 
@@ -22,6 +21,7 @@ class UserHandler {
                 $loggedUser->work = $data['work'];
                 $loggedUser->avatar = $data['avatar'];
                 $loggedUser->cover = $data['cover'];
+                $loggedUser->hour = $data['hour_login'];
                 $loggedUser->token = $data['token'];
 
                 return $loggedUser;
@@ -35,7 +35,8 @@ class UserHandler {
         if($user){
             if(password_verify($password, $user['password'])){
                 $token = md5(time().rand(0,999).time());
-                User::update()->set('token', $token)->where('email', $email)->execute();
+                $hour = date('H:i:s');
+                User::update()->set('token', $token)->set('hour_login', $hour)->where('email', $email)->execute();
 
                 return $token;
             }
@@ -96,6 +97,7 @@ class UserHandler {
             $viewUsers->avatar = $listaUsers['avatar'];
             $viewUsers->cover = $listaUsers['cover'];
             $viewUsers->funcao = $listaUsers['funcao'];
+            $viewUsers->hour = $listaUsers['hour_login'];
 
             $users[] = $viewUsers;
         }

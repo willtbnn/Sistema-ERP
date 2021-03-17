@@ -42,11 +42,10 @@
                 <table class="col-8 align-self-center table-sm table-light mt-5 border table-hover">
                     <thead>
                         <tr>
-                            <th scope="col d-sm-none">#</th>
-                            <th scope="col">Nome</th>
+                            <th scope="col"></th>
+                            <th scope="col d-sm-none">Nome</th>
                             <th scope="col">Função</th>
-                            <th scope="col">Data de Nascimento</th>
-                            <th scope="col px-5"> Ações</th>
+                            <th scope="col"> Ações</th>
                         </tr>
                     </thead>
                     <tbody>

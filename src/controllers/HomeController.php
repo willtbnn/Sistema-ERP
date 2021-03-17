@@ -3,6 +3,7 @@ namespace src\controllers;
 use src\Config;
 
 use \core\Controller;
+use src\handlers\ControlHandler;
 use \src\handlers\UserHandler;
 use \src\handlers\EventHandler;
 use \src\handlers\ScriptHandler;
@@ -11,9 +12,10 @@ use \src\handlers\ScriptHandler;
 class HomeController extends Controller {
         
     private $loggedUser;
+    private $hour;
     private $dirPast = Config::BASE_PAST;
     public function __construct(){
-        $this->loggedUser = UserHandler::checkLogin();
+        $this->loggedUser = UserHandler::checkLogin($this->hour);
         if($this->loggedUser === false){
             $this->redirect('/login');
         }
@@ -21,18 +23,27 @@ class HomeController extends Controller {
 
     public function index() {
         $flash  ='';
-        if(!empty($_SESSION['flash'])){
-            $flash = $_SESSION['flash'];
-            $_SESSION['flash'] = '';
+        if(!empty($this->loggedUser->id && isset($this->loggedUser->id))){
+            if(!empty($_SESSION['flash'])){
+                $flash = $_SESSION['flash'];
+                $_SESSION['flash'] = '';
+            }
+            
+            $users = UserHandler::getUsers();
+            $events = EventHandler::getEvents();
+          
+            // $usersOn = ControlHandler::onUser($users['id']);
+            
+            $this->render('home', [
+                'loggedUser' => $this->loggedUser,
+                'users' => $users,
+                'flash' => $flash,
+                'events' => $events,
+                // 'userOn' =>$usersOn,
+                ]);
+        }else{
+            $this->redirect('/login');
         }
-        $users = UserHandler::getUsers();
-        $events = EventHandler::getEvents();
-        $this->render('home', [
-            'loggedUser' => $this->loggedUser,
-            'users' => $users,
-            'flash' => $flash,
-            'events' => $events,
-            ]);
     }
     // Adicioando script
     public function indexScriptAction(){

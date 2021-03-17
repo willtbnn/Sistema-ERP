@@ -1,12 +1,19 @@
     <tr>
       <td scope="row d-sm-none">
         <img src="<?=$base;?>/assets/images/media/avatars/<?=$data->avatar;?>" alt="" class="rounded-circle  bg-light border border-white img-fluid" style="max-width: 2rem;">
+        <?php if($data->hour > date('H:i:s', strtotime("-2 minutes"))):?>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#00FF00" class="bi bi-circle-fill" viewBox="0 0 16 16" style="
+            margin-right: -100px;
+            margin-left: -1em;
+          ">
+            <circle cx="8" cy="8" r="8"/>
+          </svg>
+        <?php endif;?>
       </td>
       <td><?=$data->name;?></td>
       <td><?=$data->funcao;?></td>
-      <td><?=$data->email;?></td>
       <td>
-        <a href="<?=$base;?>/configuration/<?=$data->id;?>/userUpdate" class="mx-5">
+        <a href="<?=$base;?>/configuration/<?=$data->id;?>/userUpdate">
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
             <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>

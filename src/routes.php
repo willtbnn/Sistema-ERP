@@ -27,7 +27,7 @@ $router->get('/configuration', 'HomeController@UserLogged');
 $router->get('/configuration/{id}', 'HomeController@UploadUserLogged');
 
 //excluindo script
-$router->get('/{arquivo}', 'HomeController@delScriptAction');
+// $router->get('/{arquivo}', 'HomeController@delScriptAction');
 // recebendo script
 $router->post('/', 'HomeController@indexScriptAction');
 
