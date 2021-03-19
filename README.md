@@ -70,6 +70,8 @@ header('Location: http://localhost/Sistema-ERP/public/login');?>
 
 Estruruta de pasta para salva arquivos, da forma que esta o nosso **controller** atual: 
 
+>IMPORTANTE: para funcionar a consulta a arquivos internos, uma vez que os arquivos seram consultados nesse diretorio.
+
 ![alt text](http://woza.com.br/estruturadepasta-works2.JPG "Estrutura de pasta")
 
 ## Uso
