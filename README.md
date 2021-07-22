@@ -1,6 +1,3 @@
-
-![alt text](http://woza.com.br/woza.png "Woza Soluções web")
-
 # Woza projeto Works 
 
 >Um projeto que se comunica com página web da empresa, onde através dele pode está atualizando os funcionários da empresa e suas informação, para consulta do cliente e interessados.
@@ -24,7 +21,7 @@ Vá até a pasta do projeto, pelo *prompt/terminal* e execute:
 
 Depois é só aguardar.
 
-[Banco de dados aqui!!!](https://mega.nz/file/sVhy0QrS#p9WW1xU_jo-kNNjWe2w8aMaAjW6-_R2g0pEABRYmH68)<br>
+[Banco de dados aqui!!!](https://mega.nz/file/wug0Xa7Z#wSrBfky7TDNrHy1GNqfy5m9Yf-ykn30h7swQs1SgIUU)<br>
 
 >Para instalar primeiro passo é cria o banco de dados com o nome works;
 >Em seguida importa as tabelas banco de dados baixado em cima.
@@ -38,17 +35,17 @@ As configurações de Banco de Dados e URL terão que ser criada  no arquivo *sr
 <?php
 namespace src;
 
-class Config {<br>
+class Config {
 
-    //developer<br>
-    const BASE_DIR = '/Sistema-ERP/public';// url base do sistema <br>
+    //developer
+    const BASE_DIR = '/Sistema-ERP/public';// url base do sistema 
     const BASE_PAST = 'C:/xampp/htdocs/Sistema-ERP/public/'; //base do projeto 
     
     const DB_DRIVER = 'mysql';
-    const DB_HOST = 'localhost'; //local do banco de dados <br>
-    const DB_DATABASE = 'works'; //nome do banco de dados<br>
-    CONST DB_USER = 'root';// nome de login no banco de dados<br> 
-    const DB_PASS = '';// senha de login no banco de dados <br>
+    const DB_HOST = 'localhost'; //local do banco de dados 
+    const DB_DATABASE = 'works'; //nome do banco de dados
+    CONST DB_USER = 'root';// nome de login no banco de dados 
+    const DB_PASS = '';// senha de login no banco de dados 
 
     const ERROR_CONTROLLER = 'ErrorController';
     const DEFAULT_ACTION = 'index';

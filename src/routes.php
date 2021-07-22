@@ -64,9 +64,9 @@ $router->post('/schedule/{id}/editevent', 'CalendarController@updateSchedule');
 $router->get('/schedule/{id}', 'CalendarController@delSchedule');
 
 //formulario de evento para calendario  @recebendo
-$router->get('/uploadevent', 'CalendarController@toreceive');
+$router->get('/uploadEvent', 'CalendarController@toreceive');
 // Enviando evento para o calendario @enviando
-$router->post('/uploadevent', 'CalendarController@upload');
+$router->post('/uploadEvent', 'CalendarController@upload');
 
 
 /////////////////////////Router DE CLIENTE/////////////////////////

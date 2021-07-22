@@ -42,7 +42,7 @@
     <div class="form-row justify-content-center">
         <div class="form-group col-md-4">
             <label for="cover">foto do funcionario</label>
-            <img src="<?=$base;?>/assets/images/media/covers/<?php echo $fun->cover;?>" alt="" width="100" heigth="150">
+            <img src="" alt="" width="100" heigth="150">
             <input type="file" class="form-control-file btn btn-light" id="cover" name="cover" required>
         </div>
     </div>

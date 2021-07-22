@@ -119,7 +119,7 @@ class CalendarController extends Controller {
             $flash = $_SESSION['flash'];
             $_SESSION['flash'] = '';
         }
-        $this->render('uploadevent', [
+        $this->render('uploadEvent', [
             'loggedUser' => $this->loggedUser,
             'flash' => $flash
         ]);

@@ -1,12 +1,6 @@
 <?=$render('header', [
     'loggedUser'=>$loggedUser,
     ]);?>
-    <?php
-        $dataAtual = new DateTime();
-        $mes = date("M");
-        $data =  date("j");
-
-    ;?>
 <div class="container-fluid">
     <div class="my-5">
     
